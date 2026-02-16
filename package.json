@@ -1,0 +1,24 @@
+{
+  "name": "stageink-website",
+  "version": "1.0.0",
+  "description": "stageink.org Website",
+  "homepage": "https://github.com/amonbenson/stageink-website#readme",
+  "bugs": {
+    "url": "https://github.com/amonbenson/stageink-website/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amonbenson/stageink-website.git"
+  },
+  "license": "ISC",
+  "author": "Amon Benson",
+  "type": "commonjs",
+  "main": "public/index.html",
+  "scripts": {
+    "dev": "http-server public -p 3000",
+    "deploy": "./deploy.sh"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

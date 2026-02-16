@@ -1,0 +1,13 @@
+# Node/NPM files
+node_modules/
+build/
+dist/
+npm-debug.log
+.env
+.DS_Store
+
+# SSH keys
+*.pem
+*.key
+*.pub
+*.ppk
