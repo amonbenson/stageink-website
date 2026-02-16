@@ -11,3 +11,6 @@ npm-debug.log
 *.key
 *.pub
 *.ppk
+
+# Backup directory
+/.backup/
