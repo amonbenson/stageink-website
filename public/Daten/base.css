@@ -63,7 +63,7 @@ body {
   /* --color-redwine: #312; */
   --color-redwine-contrast: white;
 
-  --color-primary: var(--color-lemon);
+  --color-primary: #ffffff80;
   --color-primary-active: var(--color-lemon-active);
   --color-primary-contrast: var(--color-lemon-contrast);
   --color-primary-contrast-contrast: white;
@@ -86,6 +86,7 @@ body {
 .tint.primary {
   background-color: var(--color-primary);
   color: var(--color-primary-contrast);
+  backdrop-filter: blur(10px);
 }
 
 .tint.primary.interactive:hover,
