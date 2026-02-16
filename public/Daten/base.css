@@ -17,13 +17,15 @@ body {
 body {
   font-family: "BerlinTypeWeb", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 100%;
+}
 
+.background-container {
   background-image: url("../Bilder/website_plakate_final_v2.webp");
   background-position: center top;
   background-size: cover;
 }
 
-body::after {
+.background-container::after {
   content: "";
   position: fixed;
   top: 0;
