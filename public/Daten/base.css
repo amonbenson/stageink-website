@@ -17,6 +17,21 @@ body {
 body {
   font-family: "BerlinTypeWeb", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 100%;
+
+  background-image: url("../Bilder/website_plakate_final_v1.png");
+  background-position: center top;
+  background-size: cover;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #12141640;
+  pointer-events: none;
 }
 
 .font-mono {
@@ -270,9 +285,9 @@ section {
 
 /* HEADER */
 #start {
-  background-image: url("../Bilder/Rolltreppe Kontrast.tinyweb.webp");
+  /* background-image: url("../Bilder/Rolltreppe Kontrast.tinyweb.webp");
   background-position: left bottom;
-  background-size: cover;
+  background-size: cover; */
 }
 
 #header-content {
@@ -336,7 +351,7 @@ section {
   left: 0;
   top: 0;
   border-radius: 50%;
-  box-shadow: 0 0 25em 25em hsla(0, 0%, 0%, 0.65);
+  box-shadow: 0 0 25em 25em hsla(0, 0%, 0%, 0.62);
 
   /* background-color: red; */
   /* background-image: radial-gradient(circle, hsla(0, 0%, 0%, 0.51) 0%, hsla(0, 0%, 0%, 0.29) 35%, hsla(0, 0%, 0%, 0) 100%); */
@@ -434,15 +449,15 @@ section {
   padding-bottom: 3em;
   box-sizing: border-box;
 
-  background-image: url("../Bilder/IMG_1616 kontrast.tinyweb.webp");
+  /* background-image: url("../Bilder/IMG_1616 kontrast.tinyweb.webp");
   background-size: cover;
-  background-position: center center;
+  background-position: center center; */
 }
 
 #wir-section .container {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .buchen-textcontent {
@@ -457,9 +472,9 @@ section {
   padding-bottom: 3em;
   box-sizing: border-box;
 
-  background-image: url("../Bilder/tauben\ kontrast.tinyweb.webp");
+  /* background-image: url("../Bilder/tauben\ kontrast.tinyweb.webp");
   background-size: cover;
-  background-position: center center;
+  background-position: center center; */
 }
 
 /* SPENDEN */

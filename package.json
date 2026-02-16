@@ -15,7 +15,7 @@
   "type": "commonjs",
   "main": "public/index.html",
   "scripts": {
-    "dev": "http-server public -p 3000",
+    "dev": "http-server public -p 3000 -c-1",
     "deploy": "./deploy.sh"
   },
   "devDependencies": {
