@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "BerlinTypeWeb";
+  src: url("/fonts/BerlinTypeWeb-Regular.woff2") format("woff2"),
+    url("./BerlinTypeWeb-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BerlinTypeWeb";
+  src: url("./BerlinTypeWeb-Bold.woff2") format("woff2"),
+    url("./BerlinTypeWeb-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Fira Mono";
+  src: url("./FiraMono-Regular.woff2") format("woff2"),
+    url("./FiraMono-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@theme {
+  --font-sans: "BerlinTypeWeb", sans-serif;
+
+  --color-dark: var(--color-gray-900);
+  --color-light: var(--color-gray-50);
+
+  --color-primary: var(--color-blue-100);
+}
+
+html, body, #app {
+  @apply size-full bg-dark text-light;
+}
+
+@utility bg-blob {
+  @apply before:content-[''] before:absolute before:-inset-20 before:bg-black/50 before:blur-3xl;
+}
+
+@utility sectionbox {
+  @apply bg-dark/80 backdrop-blur-3xl rounded-lg overflow-hidden text-light p-4 sm:p-8 text-xl text-justify space-y-4;
+}

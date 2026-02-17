@@ -3,6 +3,7 @@ set -euo pipefail
 
 # Load environment variables
 source .env
+source .env.local
 
 # Convert PuTTY key to OpenSSH format
 echo "Converting PuTTY key to OpenSSH format..."
@@ -28,7 +29,7 @@ echo "Backup complete!"
 echo "Uploading public directory to $DEPLOY_HOST..."
 # sftp -i deploy.key "$DEPLOY_USERNAME@$DEPLOY_HOST" <<EOF
 # cd $DEPLOY_PUBLIC_DIRECTORY
-# lcd public
+# lcd dist
 # put -r *
 # exit
 # EOF

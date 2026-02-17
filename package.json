@@ -1,24 +1,26 @@
 {
   "name": "stageink-website",
-  "version": "1.0.0",
-  "description": "stageink.org Website",
-  "homepage": "https://github.com/amonbenson/stageink-website#readme",
-  "bugs": {
-    "url": "https://github.com/amonbenson/stageink-website/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/amonbenson/stageink-website.git"
-  },
-  "license": "ISC",
-  "author": "Amon Benson",
-  "type": "commonjs",
-  "main": "public/index.html",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "http-server public -p 3000 -c-1",
-    "deploy": "./deploy.sh"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ignore-pattern 'dist/*' --ignore-pattern 'node_modules/*'",
+    "lint:fix": "eslint .  --ignore-pattern 'dist/*' --ignore-pattern 'node_modules/*' --fix",
+    "deploy": "npm run build && ./deploy.sh"
+  },
+  "dependencies": {
+    "vue": "^3.5.25",
+    "vue-router": "^4.6.4"
   },
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "@tailwindcss/vite": "^4.1.18",
+    "@vitejs/plugin-vue": "^6.0.2",
+    "eslint": "^10.0.0",
+    "eslint-plugin-vue": "^10.8.0",
+    "tailwindcss": "^4.1.18",
+    "vite": "^7.3.1"
   }
 }
