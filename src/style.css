@@ -35,6 +35,23 @@
 
 html, body, #app {
   @apply size-full bg-dark text-light;
+  font-size: 16pt;
+}
+
+h1 {
+  @apply text-8xl;
+}
+
+h2 {
+  @apply text-4xl uppercase;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+h4 {
+  @apply text-xl;
 }
 
 @utility bg-blob {
@@ -42,5 +59,6 @@ html, body, #app {
 }
 
 @utility sectionbox {
-  @apply bg-dark/80 backdrop-blur-3xl rounded-lg overflow-hidden text-light p-4 sm:p-8 text-xl text-justify space-y-4;
+  /* @apply bg-dark/80 backdrop-blur-3xl rounded-lg overflow-hidden text-light p-4 sm:p-8 text-xl text-justify space-y-4; */
+  @apply overflow-hidden text-light text-xl text-justify space-y-4;
 }

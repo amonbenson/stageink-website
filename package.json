@@ -7,8 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ignore-pattern 'dist/*' --ignore-pattern 'node_modules/*'",
-    "lint:fix": "eslint .  --ignore-pattern 'dist/*' --ignore-pattern 'node_modules/*' --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "deploy": "npm run build && ./deploy.sh"
   },
   "dependencies": {
@@ -16,11 +16,15 @@
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
+    "@stylistic/eslint-plugin": "^5.10.0",
     "@tailwindcss/vite": "^4.1.18",
     "@vitejs/plugin-vue": "^6.0.2",
     "eslint": "^10.0.0",
+    "eslint-plugin-better-tailwindcss": "^4.3.2",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-vue": "^10.8.0",
     "tailwindcss": "^4.1.18",
-    "vite": "^7.3.1"
+    "vite": "^7.3.1",
+    "vite-imagetools": "^10.0.0"
   }
 }
