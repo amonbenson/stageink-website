@@ -30,7 +30,8 @@
   --color-dark: var(--color-gray-900);
   --color-light: var(--color-gray-50);
 
-  --color-primary: var(--color-blue-100);
+  --color-cfa: #054a97;
+  --color-cfa-alt: #2465cd;
 }
 
 html, body, #app {
