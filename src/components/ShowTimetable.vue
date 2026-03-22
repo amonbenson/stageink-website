@@ -28,7 +28,7 @@ const formatDate = date => date.toLocaleDateString("de-DE", { day: "numeric", mo
     :href="ticketUrl"
     target="_blank"
     rel="noopener noreferrer"
-    class="w-fit space-y-4 justify-self-center bg-timetable-surface p-4 text-center [grid-area:timetable] md:p-8"
+    class="block w-fit space-y-4 bg-timetable-surface p-4 text-center md:p-8"
   >
     <h2>{{ title }}</h2>
     <p>Im <strong>{{ venue }}</strong></p>

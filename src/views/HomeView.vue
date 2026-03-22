@@ -41,7 +41,7 @@ const showWeekends = [
       >
         <!-- Logo -->
         <div class="flex justify-center [grid-area:logo]">
-          <div class="bg-blob before:bottom-1/4 before:bg-sky/50">
+          <div class="bg-blob before:bottom-1/4 before:bg-sky/65">
             <img
               class="w-64 fill-white lg:w-96"
               src="/images/logo.svg"
@@ -51,18 +51,22 @@ const showWeekends = [
         </div>
 
         <!-- Social Icons -->
-        <SocialLinks
-          :links="socialLinks"
-          class="[grid-area:socials]"
-        />
+        <div class="[grid-area:socials]">
+          <SocialLinks
+            :links="socialLinks"
+            class="bg-blob before:bg-sky/65"
+          />
+        </div>
 
         <!-- Production Timetable -->
-        <ShowTimetable
-          title="Come From Away"
-          venue="Centre Français, 13349 Berlin"
-          ticket-url="https://www.tickettailor.com/events/stagiesberlinev/1943079"
-          :weekends="showWeekends"
-        />
+        <div class="bg-blob justify-self-center [grid-area:timetable]">
+          <ShowTimetable
+            title="Come From Away"
+            venue="Centre Français, 13349 Berlin"
+            ticket-url="https://www.tickettailor.com/events/stagiesberlinev/1943079"
+            :weekends="showWeekends"
+          />
+        </div>
       </div>
     </BackgroundSection>
 

@@ -10,7 +10,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="flex flex-row items-center justify-center gap-6 lg:flex-col lg:justify-start">
+  <div class="flex flex-row items-center justify-center gap-6 lg:flex-col">
     <a
       v-for="link in links"
       :key="link.label"
