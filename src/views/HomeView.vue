@@ -41,11 +41,13 @@ const showWeekends = [
       >
         <!-- Logo -->
         <div class="flex justify-center [grid-area:logo]">
-          <img
-            class="w-32 fill-light sm:w-64 lg:w-96"
-            src="/images/logo.svg"
-            alt="StageInk Logo"
-          >
+          <div class="bg-blob before:bottom-1/4 before:bg-sky/50">
+            <img
+              class="w-32 fill-light sm:w-64 lg:w-96"
+              src="/images/logo.svg"
+              alt="StageInk Logo"
+            >
+          </div>
         </div>
 
         <!-- Social Icons -->
@@ -66,7 +68,10 @@ const showWeekends = [
 
     <BackgroundSection :image="backgroundBushesUrl">
       <!-- Welcome Text -->
-      <ContentSection title="Wir">
+      <ContentSection
+        title="Wir"
+        class="bg-blob"
+      >
         <p>
           Stageink, gegründet 2009 in Berlin und seit 2016 als Stagies Berlin e.V. &mdash; das ist eine bunte Mischung von Menschen, die mit viel Herzblut und Engagement singen, schauspielern und tanzen. Wir bringen unterschiedlichste Musical- und Konzert-Produktionen auf große und kleine Berliner Bühnen. <span>Mehr dazu...</span><!-- TODO: add link -->
         </p>
@@ -86,46 +91,48 @@ const showWeekends = [
         aspect="3840/4799"
         align-end
       >
-        <ContentSection title="Spenden">
-          <p>
-            Du möchtest uns finanziell unterstützen?<br>
-            Wir freuen uns über deine Spende!
-          </p>
-          <div class="flex items-center justify-start gap-4">
-            <a
-              href="https://paypal.me/Stageink"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex flex-col items-center gap-1"
-            >
-              <img
-                class="h-20 md:h-40"
-                :src="paypalLogo"
-                alt="PayPal Logo"
+        <div class="bg-blob w-full [clip-path:inset(-4rem_-4rem_0_-4rem)]">
+          <ContentSection title="Spenden">
+            <p>
+              Du möchtest uns finanziell unterstützen?<br>
+              Wir freuen uns über deine Spende!
+            </p>
+            <div class="flex w-fit items-center justify-start gap-4">
+              <a
+                href="https://paypal.me/Stageink"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex flex-col items-center gap-1"
               >
-              <span>paypal.me/stageink</span>
-            </a>
+                <img
+                  class="h-20 md:h-40"
+                  :src="paypalLogo"
+                  alt="PayPal Logo"
+                >
+                <span>paypal.me/stageink</span>
+              </a>
 
-            <div class="h-[125px] w-[150px] overflow-hidden md:h-auto md:w-auto">
-              <iframe
-                title="Gooding Banner-Widget"
-                width="300"
-                height="250"
-                class="origin-top-left scale-50 border-0 md:scale-100"
-                src="https://erweiterungen.gooding.de/app/widget/stagies-e-v-stageink-56510/medium-rectangle/tab/1/donations/1/v/1712678994.7kOLHJlrcY0f%252FXGTwckbNvNwYHNwmZ0LUrw9R2mdNEaiUaKmCALFNd4JKOE5QWtI6jfyfLSVZuySKZbp6yXonUmJK6No0QftSlMwze0tLxUykQ7SYCQdqVKPmKaQjyFM"
-              />
+              <div class="h-[125px] w-[150px] overflow-hidden md:h-auto md:w-auto">
+                <iframe
+                  title="Gooding Banner-Widget"
+                  width="300"
+                  height="250"
+                  class="origin-top-left scale-50 border-0 md:scale-100"
+                  src="https://erweiterungen.gooding.de/app/widget/stagies-e-v-stageink-56510/medium-rectangle/tab/1/donations/1/v/1712678994.7kOLHJlrcY0f%252FXGTwckbNvNwYHNwmZ0LUrw9R2mdNEaiUaKmCALFNd4JKOE5QWtI6jfyfLSVZuySKZbp6yXonUmJK6No0QftSlMwze0tLxUykQ7SYCQdqVKPmKaQjyFM"
+                />
+              </div>
             </div>
-          </div>
-        </ContentSection>
-        <ContentSection title="Kontakt">
-          <p>info[at]stageink.org</p>
-          <p>
-            Stagies Berlin e.V.<br>
-            c/o D. Sophia Blume<br>
-            Frankfurter Allee 131<br>
-            10365 Berlin
-          </p>
-        </ContentSection>
+          </ContentSection>
+          <ContentSection title="Kontakt">
+            <p>info[at]stageink.org</p>
+            <p>
+              Stagies Berlin e.V.<br>
+              c/o D. Sophia Blume<br>
+              Frankfurter Allee 131<br>
+              10365 Berlin
+            </p>
+          </ContentSection>
+        </div>
       </BackgroundSection>
     </BackgroundSection>
 

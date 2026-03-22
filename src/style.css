@@ -27,8 +27,10 @@
 @theme {
   --font-sans: "BerlinTypeWeb", sans-serif;
 
-  --color-dark: var(--color-gray-900);
-  --color-light: var(--color-gray-50);
+  --color-dark: #000000;
+  --color-light: #ffffff;
+
+  --color-sky: #89b1da;
 
   --color-cfa: #054a97;
   --color-cfa-alt: #2465cd;
@@ -56,10 +58,5 @@ h4 {
 }
 
 @utility bg-blob {
-  @apply before:content-[''] before:absolute before:-inset-20 before:bg-black/50 before:blur-3xl;
-}
-
-@utility sectionbox {
-  /* @apply bg-dark/80 backdrop-blur-3xl rounded-lg overflow-hidden text-light p-4 sm:p-8 text-xl text-justify space-y-4; */
-  @apply overflow-hidden text-light text-xl text-justify space-y-4;
+  @apply relative isolate before:content-[''] before:absolute before:-inset-10 before:-z-10 before:rounded-full before:bg-black/50 before:blur-xl;
 }
