@@ -10,7 +10,10 @@ defineProps({
 </script>
 
 <template>
-  <nav aria-label="Social Media" class="flex flex-row items-center justify-center gap-6 lg:flex-col">
+  <nav
+    aria-label="Social Media"
+    class="flex flex-row items-center justify-center gap-6 lg:flex-col"
+  >
     <a
       v-for="link in links"
       :key="link.label"
