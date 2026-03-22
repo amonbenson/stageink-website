@@ -30,24 +30,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v6
-      #   with:
-      #     node-version: "20"
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
 
-      # - name: Install dependencies
-      #   run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-      # - name: Build
-      #   run: npm run build
+      - name: Build
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: "./public"
+          path: "./dist"
 
       - name: Deploy to GitHub Pages
         id: deployment
