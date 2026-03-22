@@ -6,6 +6,7 @@ import { defineConfig } from "vite";
 import { imagetools } from "vite-imagetools";
 
 export default defineConfig({
+  base: process.env.VITE_BASE ?? "/",
   plugins: [
     vue(),
     tailwindcss(),
