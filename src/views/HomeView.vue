@@ -30,7 +30,7 @@ const showWeekends = [
 </script>
 
 <template>
-  <div class="overflow-hidden">
+  <main class="overflow-hidden">
     <BackgroundSection
       :image="backgroundSkyUrl"
       cover
@@ -43,7 +43,7 @@ const showWeekends = [
         <div class="flex justify-center [grid-area:logo]">
           <div class="bg-blob-sky before:bottom-1/4">
             <img
-              class="w-64 fill-white lg:w-96"
+              class="w-64 lg:w-96"
               src="/images/logo.svg"
               alt="StageInk Logo"
             >
@@ -96,7 +96,7 @@ const showWeekends = [
         align-end
       >
         <div class="bg-blob w-full">
-          <div class="section-container">
+          <section class="section-container">
             <h2>Spenden</h2>
             <p>
               Du möchtest uns finanziell unterstützen?<br>
@@ -121,30 +121,34 @@ const showWeekends = [
                 title="Gooding Banner-Widget"
                 width="300"
                 height="250"
+                loading="lazy"
                 class="origin-top-left rounded-xl border-0"
                 src="https://erweiterungen.gooding.de/app/widget/stagies-e-v-stageink-56510/medium-rectangle/tab/1/donations/1/v/1712678994.7kOLHJlrcY0f%252FXGTwckbNvNwYHNwmZ0LUrw9R2mdNEaiUaKmCALFNd4JKOE5QWtI6jfyfLSVZuySKZbp6yXonUmJK6No0QftSlMwze0tLxUykQ7SYCQdqVKPmKaQjyFM"
               />
             </div>
-          </div>
-          <div class="section-container">
+          </section>
+          <section class="section-container">
             <h2>Kontakt</h2>
-            <p>info[at]stageink.org</p>
-            <p>
-              Stagies Berlin e.V.<br>
-              c/o D. Sophia Blume<br>
-              Frankfurter Allee 131<br>
-              10365 Berlin
-            </p>
-          </div>
+            <address>
+              <p>info[at]stageink.org</p>
+              <p>
+                Stagies Berlin e.V.<br>
+                c/o D. Sophia Blume<br>
+                Frankfurter Allee 131<br>
+                10365 Berlin
+              </p>
+            </address>
+          </section>
         </div>
       </BackgroundSection>
     </BackgroundSection>
 
-    <SectionContainer
-      title="Haftungsausschluss"
-      class="isolate"
-      collapsible
-    >
+    <footer>
+      <SectionContainer
+        title="Haftungsausschluss"
+        class="isolate"
+        collapsible
+      >
       <p>
         Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den
         allgemeinen
@@ -288,6 +292,7 @@ const showWeekends = [
       <p>
         Quellenangaben: eRecht24, Facebook-Disclaimer von eRecht24, Datenschutzerklärung Twitter
       </p>
-    </SectionContainer>
-  </div>
+      </SectionContainer>
+    </footer>
+  </main>
 </template>

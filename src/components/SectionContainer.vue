@@ -53,4 +53,10 @@ summary::before {
 details[open] > summary::before {
   @apply -translate-y-1/2 rotate-90;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  summary::before {
+    @apply transition-none;
+  }
+}
 </style>
