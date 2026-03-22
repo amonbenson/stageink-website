@@ -24,7 +24,7 @@ defineProps({
 
 <template>
   <div
-    class="flex w-full flex-col items-center"
+    class="isolate flex w-full flex-col items-center"
     :class="[
       cover ? 'bg-cover bg-center' : 'bg-size-[100%_auto]',
       alignEnd ? 'justify-end' : '',

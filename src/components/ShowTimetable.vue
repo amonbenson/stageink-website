@@ -28,7 +28,7 @@ const formatDate = date => date.toLocaleDateString("de-DE", { day: "numeric", mo
     :href="ticketUrl"
     target="_blank"
     rel="noopener noreferrer"
-    class="block w-fit space-y-4 bg-timetable-surface p-4 text-center md:p-8"
+    class="block w-fit space-y-4 rounded-4xl bg-white/50 p-4 text-center text-black backdrop-blur-lg lg:p-8"
   >
     <h2>{{ title }}</h2>
     <p>Im <strong>{{ venue }}</strong></p>
@@ -57,8 +57,8 @@ const formatDate = date => date.toLocaleDateString("de-DE", { day: "numeric", mo
         </template>
       </template>
     </div>
-    <span class="mt-2 block rounded-full bg-timetable-primary px-6 py-2 font-bold shadow-xl">
+    <div class="rounded-full bg-yellow-300 px-6 py-2 font-bold text-black shadow-xl">
       TICKETS jetzt HIER verfügbar!
-    </span>
+    </div>
   </a>
 </template>

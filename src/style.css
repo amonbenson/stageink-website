@@ -1,30 +1,24 @@
-@import "tailwindcss";
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+@import "tailwindcss";
 
 @theme {
   --font-sans: "Poppins", sans-serif;
 
   --color-sky: #89b1da;
-
-  --color-cfa: #054a97;
-  --color-cfa-alt: #2465cd;
-  --color-cfa-primary: #ffa636;
-
-  --color-timetable-surface: var(--color-cfa-alt);
-  --color-timetable-primary: var(--color-cfa-primary);
+  --color-primary: #fad324;
 }
 
 html, body, #app {
-  @apply size-full bg-black text-white lg:text-[16pt];
+  @apply size-full bg-black text-white lg:text-[14pt];
 }
 
 h1 {
-  @apply text-8xl;
+  @apply text-5xl;
 }
 
 h2 {
-  @apply text-4xl uppercase;
+  @apply text-3xl uppercase;
 }
 
 h3 {
@@ -35,6 +29,14 @@ h4 {
   @apply text-xl;
 }
 
+@utility section-container {
+  @apply mx-auto w-full max-w-4xl space-y-4 px-4 py-4 text-justify md:px-8 lg:px-16;
+}
+
 @utility bg-blob {
-  @apply relative isolate before:content-[''] before:absolute before:-inset-10 before:-z-10 before:rounded-full before:bg-black/35 before:blur-2xl;
+  @apply relative before:content-[''] before:absolute before:-inset-10 before:-z-10 before:rounded-full before:bg-black/50 before:blur-2xl;
+}
+
+@utility bg-blob-sky {
+  @apply relative before:content-[''] before:absolute before:-inset-10 before:-z-10 before:rounded-full before:bg-sky/65 before:blur-2xl;
 }

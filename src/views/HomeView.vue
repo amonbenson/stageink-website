@@ -4,10 +4,10 @@ import backgroundSkyUrl from "@/assets/backgroundSky.png?format=webp&imagetools"
 import backgroundWallUrl from "@/assets/backgroundWall.png?format=webp&imagetools";
 import paypalLogo from "@/assets/paypalLogo.png?format=webp&imagetools";
 import BackgroundSection from "@/components/BackgroundSection.vue";
-import CollapsibleSection from "@/components/CollapsibleSection.vue";
-import ContentSection from "@/components/ContentSection.vue";
 import ShowTimetable from "@/components/ShowTimetable.vue";
 import SocialLinks from "@/components/SocialLinks.vue";
+
+import SectionContainer from "../components/SectionContainer.vue";
 
 const socialLinks = [
   { label: "Instagram", icon: "simple-icons:instagram", url: "https://www.instagram.com/_stageink_/" },
@@ -30,7 +30,7 @@ const showWeekends = [
 </script>
 
 <template>
-  <div>
+  <div class="overflow-hidden">
     <BackgroundSection
       :image="backgroundSkyUrl"
       cover
@@ -41,7 +41,7 @@ const showWeekends = [
       >
         <!-- Logo -->
         <div class="flex justify-center [grid-area:logo]">
-          <div class="bg-blob before:bottom-1/4 before:bg-sky/65">
+          <div class="bg-blob-sky before:bottom-1/4">
             <img
               class="w-64 fill-white lg:w-96"
               src="/images/logo.svg"
@@ -54,12 +54,12 @@ const showWeekends = [
         <div class="[grid-area:socials]">
           <SocialLinks
             :links="socialLinks"
-            class="bg-blob before:bg-sky/65"
+            class="bg-blob-sky"
           />
         </div>
 
         <!-- Production Timetable -->
-        <div class="bg-blob justify-self-center [grid-area:timetable]">
+        <div class="justify-self-center [grid-area:timetable]">
           <ShowTimetable
             title="Come From Away"
             venue="Centre Français, 13349 Berlin"
@@ -72,7 +72,7 @@ const showWeekends = [
 
     <BackgroundSection :image="backgroundBushesUrl">
       <!-- Welcome Text -->
-      <ContentSection
+      <SectionContainer
         title="Wir"
         class="bg-blob"
       >
@@ -87,7 +87,7 @@ const showWeekends = [
           <strong>BE MORE CHILL</strong> (neue Übersetzung)<br>
           <strong>KOPFKINO</strong> (1. Inszenierung seit UA 2017)
         </p>
-      </ContentSection>
+      </SectionContainer>
 
       <BackgroundSection
         :image="backgroundWallUrl"
@@ -95,8 +95,9 @@ const showWeekends = [
         aspect="3840/4799"
         align-end
       >
-        <div class="bg-blob w-full [clip-path:inset(-8rem_-8rem_0_-8rem)]">
-          <ContentSection title="Spenden">
+        <div class="bg-blob w-full">
+          <div class="section-container">
+            <h2>Spenden</h2>
             <p>
               Du möchtest uns finanziell unterstützen?<br>
               Wir freuen uns über deine Spende!
@@ -109,28 +110,24 @@ const showWeekends = [
                 class="flex flex-col items-center gap-1"
               >
                 <img
-                  class="h-20 md:h-40"
+                  class="h-40"
                   :src="paypalLogo"
                   alt="PayPal Logo"
                 >
                 <span>paypal.me/stageink</span>
               </a>
 
-              <div class="h-[125px] w-[150px] overflow-hidden md:h-auto md:w-auto">
-                <iframe
-                  title="Gooding Banner-Widget"
-                  width="300"
-                  height="250"
-                  class="origin-top-left scale-50 border-0 md:scale-100"
-                  src="https://erweiterungen.gooding.de/app/widget/stagies-e-v-stageink-56510/medium-rectangle/tab/1/donations/1/v/1712678994.7kOLHJlrcY0f%252FXGTwckbNvNwYHNwmZ0LUrw9R2mdNEaiUaKmCALFNd4JKOE5QWtI6jfyfLSVZuySKZbp6yXonUmJK6No0QftSlMwze0tLxUykQ7SYCQdqVKPmKaQjyFM"
-                />
-              </div>
+              <iframe
+                title="Gooding Banner-Widget"
+                width="300"
+                height="250"
+                class="origin-top-left rounded-xl border-0"
+                src="https://erweiterungen.gooding.de/app/widget/stagies-e-v-stageink-56510/medium-rectangle/tab/1/donations/1/v/1712678994.7kOLHJlrcY0f%252FXGTwckbNvNwYHNwmZ0LUrw9R2mdNEaiUaKmCALFNd4JKOE5QWtI6jfyfLSVZuySKZbp6yXonUmJK6No0QftSlMwze0tLxUykQ7SYCQdqVKPmKaQjyFM"
+              />
             </div>
-          </ContentSection>
-          <ContentSection
-            title="Kontakt"
-            class="lg:pb-16"
-          >
+          </div>
+          <div class="section-container">
+            <h2>Kontakt</h2>
             <p>info[at]stageink.org</p>
             <p>
               Stagies Berlin e.V.<br>
@@ -138,162 +135,159 @@ const showWeekends = [
               Frankfurter Allee 131<br>
               10365 Berlin
             </p>
-          </ContentSection>
+          </div>
         </div>
       </BackgroundSection>
     </BackgroundSection>
 
-    <div class="flex w-full flex-col items-center justify-end">
-      <ContentSection>
-        <CollapsibleSection title="Haftungsausschluss">
-          <p>
-            Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den
-            allgemeinen
-            Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht
-            verpflichtet,
-            übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen,
-            die
-            auf eine
-            rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von
-            Informationen
-            nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst
-            ab
-            dem
-            Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von
-            entsprechenden
-            Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.<br>
-            <br>
-            Haftung für Links<br>
-            <br>
-            Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss
-            haben.
-            Deshalb
-            können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten
-            Seiten
-            ist
-            stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden
-            zum
-            Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum
-            Zeitpunkt der
-            Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch
-            ohne
-            konkrete
-            Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden
-            wir
-            derartige Links umgehend entfernen.<br>
-            <br>
-            Urheberrecht<br>
-            <br>
-            Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
-            deutschen
-            Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb
-            der
-            Grenzen
-            des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
-            Downloads und
-            Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die
-            Inhalte auf
-            dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet.
-            Insbesondere werden
-            Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung
-            aufmerksam
-            werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden
-            wir
-            derartige Inhalte umgehend entfernen.<br>
-            <br>
-            <br>
-
-            Quellenangaben: eRecht24<br>
-
-            <br>
-            Datenschutzerklärung:<br>
-            <br>
-            Datenschutz<br>
-            <br>
-            Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit
-            auf
-            unseren
-            Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder eMail-Adressen) erhoben werden,
-            erfolgt dies,
-            soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung
-            nicht an
-            Dritte weitergegeben.<br>
-            <br>
-            Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail)
-            Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist
-            nicht
-            möglich.<br>
-            <br>
-            Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur
-            Übersendung von
-            nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich
-            widersprochen.
-            Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten
-            Zusendung von
-            Werbeinformationen, etwa durch Spam-Mails, vor.<br>
-            <br>
-            <br>
-
-            Datenschutzerklärung für die Nutzung von Facebook-Plugins (Like-Button)<br>
-            <br>
-            Auf unseren Seiten sind Plugins des sozialen Netzwerks Facebook (Facebook Inc., 1601 Willow Road,
-            Menlo
-            Park,
-            California, 94025, USA) integriert. Die Facebook-Plugins erkennen Sie an dem Facebook-Logo oder dem
-            "Like-Button" ("Gefällt mir") auf unserer Seite. Eine Übersicht über die Facebook-Plugins finden Sie
-            hier:
-            http://developers.facebook.com/docs/plugins/.<br>
-            Wenn Sie unsere Seiten besuchen, wird über das Plugin eine direkte Verbindung zwischen Ihrem Browser
-            und
-            dem
-            Facebook-Server hergestellt. Facebook erhält dadurch die Information, dass Sie mit Ihrer IP-Adresse
-            unsere Seite
-            besucht haben. Wenn Sie den Facebook "Like-Button" anklicken während Sie in Ihrem Facebook-Account
-            eingeloggt
-            sind, können Sie die Inhalte unserer Seiten auf Ihrem Facebook-Profil verlinken. Dadurch kann
-            Facebook
-            den
-            Besuch unserer Seiten Ihrem Benutzerkonto zuordnen. Wir weisen darauf hin, dass wir als Anbieter der
-            Seiten
-            keine Kenntnis vom Inhalt der übermittelten Daten sowie deren Nutzung durch Facebook erhalten.
-            Weitere
-            Informationen hierzu finden Sie in der Datenschutzerklärung von facebook unter
-            http://de-de.facebook.com/policy.php<br>
-            <br>
-            Wenn Sie nicht wünschen, dass Facebook den Besuch unserer Seiten Ihrem Facebook-Nutzerkonto zuordnen
-            kann,
-            loggen Sie sich bitte aus Ihrem Facebook-Benutzerkonto aus.
-            <br>
-            <br>
-
-            Datenschutzerklärung für die Nutzung von Twitter<br>
-            <br>
-            Auf unseren Seiten sind Funktionen des Dienstes Twitter eingebunden. Diese Funktionen werden
-            angeboten
-            durch die
-            Twitter Inc., Twitter, Inc. 1355 Market St, Suite 900, San Francisco, CA 94103, USA. Durch das
-            Benutzen
-            von
-            Twitter und der Funktion "Re-Tweet" werden die von Ihnen besuchten Webseiten mit Ihrem
-            Twitter-Account
-            verknüpft
-            und anderen Nutzern bekannt gegeben. Dabei werden auch Daten an Twitter übertragen.<br>
-            <br>
-            Wir weisen darauf hin, dass wir als Anbieter der Seiten keine Kenntnis vom Inhalt der übermittelten
-            Daten sowie
-            deren Nutzung durch Twitter erhalten. Weitere Informationen hierzu finden Sie in der
-            Datenschutzerklärung von
-            Twitter unter http://twitter.com/privacy.<br>
-            <br>
-            Ihre Datenschutzeinstellungen bei Twitter können Sie in den Konto-Einstellungen unter
-            http://twitter.com/account/settings ändern.<br>
-            <br>
-            <br>
-
-            Quellenangaben: eRecht24, Facebook-Disclaimer von eRecht24, Datenschutzerklärung Twitter
-          </p>
-        </CollapsibleSection>
-      </ContentSection>
-    </div>
+    <SectionContainer
+      title="Haftungsausschluss"
+      class="isolate"
+      collapsible
+    >
+      <p>
+        Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den
+        allgemeinen
+        Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht
+        verpflichtet,
+        übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen,
+        die
+        auf eine
+        rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von
+        Informationen
+        nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst
+        ab
+        dem
+        Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von
+        entsprechenden
+        Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+      </p>
+      <h3>Haftung für Links</h3>
+      <p>
+        Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss
+        haben.
+        Deshalb
+        können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten
+        Seiten
+        ist
+        stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden
+        zum
+        Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum
+        Zeitpunkt der
+        Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch
+        ohne
+        konkrete
+        Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden
+        wir
+        derartige Links umgehend entfernen.
+      </p>
+      <h3>Urheberrecht</h3>
+      <p>
+        Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
+        deutschen
+        Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb
+        der
+        Grenzen
+        des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+        Downloads und
+        Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die
+        Inhalte auf
+        dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet.
+        Insbesondere werden
+        Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung
+        aufmerksam
+        werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden
+        wir
+        derartige Inhalte umgehend entfernen.
+      </p>
+      <p>
+        Quellenangaben: eRecht24
+      </p>
+      <h3>Datenschutzerklärung</h3>
+      <h4>Datenschutz</h4>
+      <p>
+        Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit
+        auf
+        unseren
+        Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder eMail-Adressen) erhoben werden,
+        erfolgt dies,
+        soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung
+        nicht an
+        Dritte weitergegeben.
+      </p>
+      <p>
+        Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail)
+        Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist
+        nicht
+        möglich.
+      </p>
+      <p>
+        Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur
+        Übersendung von
+        nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich
+        widersprochen.
+        Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten
+        Zusendung von
+        Werbeinformationen, etwa durch Spam-Mails, vor.
+      </p>
+      <h4>Datenschutzerklärung für die Nutzung von Facebook-Plugins (Like-Button)</h4>
+      <p>
+        Auf unseren Seiten sind Plugins des sozialen Netzwerks Facebook (Facebook Inc., 1601 Willow Road,
+        Menlo
+        Park,
+        California, 94025, USA) integriert. Die Facebook-Plugins erkennen Sie an dem Facebook-Logo oder dem
+        "Like-Button" ("Gefällt mir") auf unserer Seite. Eine Übersicht über die Facebook-Plugins finden Sie
+        hier:
+        http://developers.facebook.com/docs/plugins/.<br>
+        Wenn Sie unsere Seiten besuchen, wird über das Plugin eine direkte Verbindung zwischen Ihrem Browser
+        und
+        dem
+        Facebook-Server hergestellt. Facebook erhält dadurch die Information, dass Sie mit Ihrer IP-Adresse
+        unsere Seite
+        besucht haben. Wenn Sie den Facebook "Like-Button" anklicken während Sie in Ihrem Facebook-Account
+        eingeloggt
+        sind, können Sie die Inhalte unserer Seiten auf Ihrem Facebook-Profil verlinken. Dadurch kann
+        Facebook
+        den
+        Besuch unserer Seiten Ihrem Benutzerkonto zuordnen. Wir weisen darauf hin, dass wir als Anbieter der
+        Seiten
+        keine Kenntnis vom Inhalt der übermittelten Daten sowie deren Nutzung durch Facebook erhalten.
+        Weitere
+        Informationen hierzu finden Sie in der Datenschutzerklärung von facebook unter
+        http://de-de.facebook.com/policy.php
+      </p>
+      <p>
+        Wenn Sie nicht wünschen, dass Facebook den Besuch unserer Seiten Ihrem Facebook-Nutzerkonto zuordnen
+        kann,
+        loggen Sie sich bitte aus Ihrem Facebook-Benutzerkonto aus.
+      </p>
+      <h4>Datenschutzerklärung für die Nutzung von Twitter</h4>
+      <p>
+        Auf unseren Seiten sind Funktionen des Dienstes Twitter eingebunden. Diese Funktionen werden
+        angeboten
+        durch die
+        Twitter Inc., Twitter, Inc. 1355 Market St, Suite 900, San Francisco, CA 94103, USA. Durch das
+        Benutzen
+        von
+        Twitter und der Funktion "Re-Tweet" werden die von Ihnen besuchten Webseiten mit Ihrem
+        Twitter-Account
+        verknüpft
+        und anderen Nutzern bekannt gegeben. Dabei werden auch Daten an Twitter übertragen.
+      </p>
+      <p>
+        Wir weisen darauf hin, dass wir als Anbieter der Seiten keine Kenntnis vom Inhalt der übermittelten
+        Daten sowie
+        deren Nutzung durch Twitter erhalten. Weitere Informationen hierzu finden Sie in der
+        Datenschutzerklärung von
+        Twitter unter http://twitter.com/privacy.
+      </p>
+      <p>
+        Ihre Datenschutzeinstellungen bei Twitter können Sie in den Konto-Einstellungen unter
+        http://twitter.com/account/settings ändern.
+      </p>
+      <p>
+        Quellenangaben: eRecht24, Facebook-Disclaimer von eRecht24, Datenschutzerklärung Twitter
+      </p>
+    </SectionContainer>
   </div>
 </template>
