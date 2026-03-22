@@ -26,7 +26,7 @@ defineProps({
   <div
     class="flex w-full flex-col items-center"
     :class="[
-      cover ? 'bg-cover' : 'bg-[length:100%_auto]',
+      cover ? 'bg-cover bg-center' : 'bg-size-[100%_auto]',
       alignEnd ? 'justify-end' : '',
     ]"
     :style="{

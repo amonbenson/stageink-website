@@ -27,18 +27,18 @@
 @theme {
   --font-sans: "BerlinTypeWeb", sans-serif;
 
-  --color-dark: #000000;
-  --color-light: #ffffff;
-
   --color-sky: #89b1da;
 
   --color-cfa: #054a97;
   --color-cfa-alt: #2465cd;
+  --color-cfa-primary: #ffa636;
+
+  --color-timetable-surface: var(--color-cfa-alt);
+  --color-timetable-primary: var(--color-cfa-primary);
 }
 
 html, body, #app {
-  @apply size-full bg-dark text-light;
-  font-size: 16pt;
+  @apply size-full bg-black text-white lg:text-[16pt];
 }
 
 h1 {

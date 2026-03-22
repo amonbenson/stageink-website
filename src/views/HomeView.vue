@@ -43,7 +43,7 @@ const showWeekends = [
         <div class="flex justify-center [grid-area:logo]">
           <div class="bg-blob before:bottom-1/4 before:bg-sky/50">
             <img
-              class="w-32 fill-light sm:w-64 lg:w-96"
+              class="w-64 fill-white lg:w-96"
               src="/images/logo.svg"
               alt="StageInk Logo"
             >
@@ -91,7 +91,7 @@ const showWeekends = [
         aspect="3840/4799"
         align-end
       >
-        <div class="bg-blob w-full [clip-path:inset(-4rem_-4rem_0_-4rem)]">
+        <div class="bg-blob w-full [clip-path:inset(-8rem_-8rem_0_-8rem)]">
           <ContentSection title="Spenden">
             <p>
               Du möchtest uns finanziell unterstützen?<br>
@@ -123,7 +123,10 @@ const showWeekends = [
               </div>
             </div>
           </ContentSection>
-          <ContentSection title="Kontakt">
+          <ContentSection
+            title="Kontakt"
+            class="lg:pb-16"
+          >
             <p>info[at]stageink.org</p>
             <p>
               Stagies Berlin e.V.<br>
