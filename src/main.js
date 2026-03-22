@@ -1,10 +1,11 @@
 import "./style.css";
 
-import { createApp } from "vue";
+import { ViteSSG } from "vite-ssg";
 
 import App from "./App.vue";
-import { router } from "./router/router";
+import { routes } from "./router/router";
 
-createApp(App)
-  .use(router)
-  .mount("#app");
+export const createApp = ViteSSG(App, {
+  routes,
+  base: import.meta.env.BASE_URL,
+});
