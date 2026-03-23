@@ -57,8 +57,8 @@ const formatDate = date => date.toLocaleDateString("de-DE", { day: "numeric", mo
         </template>
       </template>
     </div>
-    <div class="rounded-full bg-yellow-300 px-6 py-2 font-bold text-black shadow-xl">
-      TICKETS jetzt HIER verfügbar!
+    <div class="rounded-full bg-primary px-6 py-2 text-white shadow-xl">
+      TICKETS jetzt <strong>HIER</strong> verfügbar!
     </div>
   </a>
 </template>

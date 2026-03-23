@@ -1,6 +1,8 @@
 <script setup>
 import backgroundBushesUrl from "@/assets/backgroundBushes.png?format=webp&imagetools";
+import backgroundBushesLqip from "@/assets/backgroundBushes.png?w=50&format=webp&inline";
 import backgroundSkyUrl from "@/assets/backgroundSky.png?format=webp&imagetools";
+import backgroundSkyLqip from "@/assets/backgroundSky.png?w=50&format=webp&inline";
 import backgroundWallUrl from "@/assets/backgroundWall.png?format=webp&imagetools";
 import paypalLogo from "@/assets/paypalLogo.png?format=webp&imagetools";
 import BackgroundSection from "@/components/BackgroundSection.vue";
@@ -33,6 +35,7 @@ const showWeekends = [
   <main class="overflow-hidden">
     <BackgroundSection
       :image="backgroundSkyUrl"
+      :placeholder="backgroundSkyLqip"
       class="bg-position-[35%_50%]"
       cover
       aspect="3840/2977"
@@ -71,7 +74,10 @@ const showWeekends = [
       </div>
     </BackgroundSection>
 
-    <BackgroundSection :image="backgroundBushesUrl">
+    <BackgroundSection
+      :image="backgroundBushesUrl"
+      :placeholder="backgroundBushesLqip"
+    >
       <!-- Welcome Text -->
       <SectionContainer
         title="Wir"
@@ -90,6 +96,7 @@ const showWeekends = [
         </p>
       </SectionContainer>
 
+      <!-- No placeholder here, because the semitransparency would cause visible bleeds -->
       <BackgroundSection
         :image="backgroundWallUrl"
         cover
@@ -102,7 +109,7 @@ const showWeekends = [
               Du möchtest uns finanziell unterstützen?<br>
               Wir freuen uns über deine Spende!
             </p>
-            <div class="flex w-fit items-center justify-start gap-4">
+            <div class="flex w-fit flex-col items-center justify-start gap-4 sm:flex-row">
               <a
                 href="https://paypal.me/Stageink"
                 target="_blank"

@@ -4,6 +4,10 @@ defineProps({
     type: String,
     required: true,
   },
+  placeholder: {
+    type: String,
+    default: null,
+  },
   // e.g. "3840/4799" — passed as CSS aspect-ratio value
   aspect: {
     type: String,
@@ -30,7 +34,7 @@ defineProps({
       alignEnd ? 'justify-end' : '',
     ]"
     :style="{
-      backgroundImage: `url(${image})`,
+      backgroundImage: placeholder ? `url(${image}), url(${placeholder})` : `url(${image})`,
       aspectRatio: aspect ?? undefined,
     }"
   >

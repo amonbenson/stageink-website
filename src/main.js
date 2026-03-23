@@ -1,4 +1,5 @@
 import "./style.css";
+import "virtual:auto-icons";
 
 import { ViteSSG } from "vite-ssg";
 
