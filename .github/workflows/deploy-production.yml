@@ -1,0 +1,40 @@
+name: Deploy to Production
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Install PuTTY tools
+        run: sudo apt-get install -y putty-tools
+
+      - name: Prepare SSH key
+        run: |
+          echo "${{ secrets.DEPLOY_PUTTY_KEY }}" > deploy.ppk
+          puttygen deploy.ppk -O private-openssh -o deploy.key
+          chmod 600 deploy.key
+
+      - name: Upload to server
+        run: |
+          rsync -avz --delete \
+            -e "ssh -i deploy.key -o StrictHostKeyChecking=no" \
+            dist/ \
+            "${{ secrets.DEPLOY_USERNAME }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PUBLIC_DIR }}/"
+
+      - name: Cleanup
+        if: always()
+        run: rm -f deploy.ppk deploy.key

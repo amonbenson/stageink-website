@@ -18,7 +18,7 @@ mkdir -p "$BACKUP_DIR"
 echo "Backing up remote directory to $BACKUP_DIR..."
 sftp -i deploy.key "$DEPLOY_USERNAME@$DEPLOY_HOST" <<EOF
 lcd $BACKUP_DIR
-cd $DEPLOY_PUBLIC_DIRECTORY
+cd $DEPLOY_PUBLIC_DIR
 get -r *
 exit
 EOF
@@ -28,7 +28,7 @@ echo "Backup complete!"
 # Upload public directory
 echo "Uploading public directory to $DEPLOY_HOST..."
 # sftp -i deploy.key "$DEPLOY_USERNAME@$DEPLOY_HOST" <<EOF
-# cd $DEPLOY_PUBLIC_DIRECTORY
+# cd $DEPLOY_PUBLIC_DIR
 # lcd dist
 # put -r *
 # exit
