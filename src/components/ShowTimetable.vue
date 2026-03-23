@@ -28,7 +28,7 @@ const formatDate = date => date.toLocaleDateString("de-DE", { day: "numeric", mo
     :href="ticketUrl"
     target="_blank"
     rel="noopener noreferrer"
-    class="block w-fit space-y-4 rounded-4xl bg-white/50 p-4 text-center text-black backdrop-blur-lg lg:p-8"
+    class="block w-fit space-y-4 rounded-4xl bg-white/75 p-4 text-center text-black backdrop-blur-lg lg:p-8"
   >
     <h2>{{ title }}</h2>
     <p>Im <strong>{{ venue }}</strong></p>
@@ -48,10 +48,10 @@ const formatDate = date => date.toLocaleDateString("de-DE", { day: "numeric", mo
           <div class="text-start">
             {{ formatWeekday(show.date) }} {{ formatDate(show.date) }}
           </div>
-          <div class="text-end font-bold">
+          <div class="text-end">
             {{ show.afternoon ?? '' }}
           </div>
-          <div class="text-end font-bold">
+          <div class="text-end">
             {{ show.evening }}
           </div>
         </template>
