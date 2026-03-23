@@ -48,10 +48,10 @@ const formatDate = date => date.toLocaleDateString("de-DE", { day: "numeric", mo
           <div class="text-start">
             {{ formatWeekday(show.date) }} {{ formatDate(show.date) }}
           </div>
-          <div class="text-end">
+          <div class="text-end font-bold">
             {{ show.afternoon ?? '' }}
           </div>
-          <div class="text-end">
+          <div class="text-end font-bold">
             {{ show.evening }}
           </div>
         </template>
