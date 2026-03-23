@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'BerlinTypeWeb';
+    src: url('./BerlinTypeWeb-Regular.woff2') format('woff2'),
+        url('./BerlinTypeWeb-Regular.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BerlinTypeWeb';
+    src: url('./BerlinTypeWeb-Bold.woff2') format('woff2'),
+        url('./BerlinTypeWeb-Bold.woff2') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
