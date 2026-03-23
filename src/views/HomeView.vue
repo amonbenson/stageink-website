@@ -33,6 +33,7 @@ const showWeekends = [
   <main class="overflow-hidden">
     <BackgroundSection
       :image="backgroundSkyUrl"
+      class="bg-position-[35%_50%]"
       cover
       aspect="3840/2977"
     >
@@ -96,8 +97,7 @@ const showWeekends = [
         align-end
       >
         <div class="bg-blob w-full">
-          <section class="section-container">
-            <h2>Spenden</h2>
+          <SectionContainer title="Spenden">
             <p>
               Du möchtest uns finanziell unterstützen?<br>
               Wir freuen uns über deine Spende!
@@ -126,9 +126,8 @@ const showWeekends = [
                 src="https://erweiterungen.gooding.de/app/widget/stagies-e-v-stageink-56510/medium-rectangle/tab/1/donations/1/v/1712678994.7kOLHJlrcY0f%252FXGTwckbNvNwYHNwmZ0LUrw9R2mdNEaiUaKmCALFNd4JKOE5QWtI6jfyfLSVZuySKZbp6yXonUmJK6No0QftSlMwze0tLxUykQ7SYCQdqVKPmKaQjyFM"
               />
             </div>
-          </section>
-          <section class="section-container">
-            <h2>Kontakt</h2>
+          </SectionContainer>
+          <SectionContainer title="Kontakt">
             <address>
               <p>info[at]stageink.org</p>
               <p>
@@ -138,7 +137,7 @@ const showWeekends = [
                 10365 Berlin
               </p>
             </address>
-          </section>
+          </SectionContainer>
         </div>
       </BackgroundSection>
     </BackgroundSection>
