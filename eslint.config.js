@@ -56,7 +56,7 @@ export default [
     },
     settings: {
       "better-tailwindcss": {
-        entryPoint: "src/style.css",
+        entryPoint: "src/main.css",
       },
     },
     rules: {

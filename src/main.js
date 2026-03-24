@@ -1,4 +1,4 @@
-import "./style.css";
+import "./main.css";
 import "virtual:auto-icons";
 
 import { ViteSSG } from "vite-ssg";
