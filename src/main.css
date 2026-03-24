@@ -32,7 +32,7 @@ h4 {
 }
 
 ul {
-  @apply list-disc list-outside pl-5 space-y-1;
+  @apply list-disc list-outside pl-[1em] space-y-1;
 }
 
 @utility aura {

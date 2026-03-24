@@ -18,6 +18,7 @@
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
+    "@iconify-json/lucide": "^1.2.98",
     "@iconify-json/simple-icons": "^1.2.75",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@tailwindcss/vite": "^4.1.18",

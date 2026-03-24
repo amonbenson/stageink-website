@@ -111,7 +111,7 @@ const showWeekends = [
               Du möchtest uns finanziell unterstützen?<br>
               Wir freuen uns über deine Spende!
             </p>
-            <div class="flex w-fit flex-col items-center justify-start gap-4 sm:flex-row">
+            <div class="flex w-full flex-col items-center gap-4 sm:w-fit sm:flex-row sm:justify-start">
               <a
                 href="https://paypal.me/Stageink"
                 target="_blank"
@@ -130,7 +130,7 @@ const showWeekends = [
                 href="https://www.gooding.de/donation/stagies-e-v-stageink-56510"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="aura-hover flex items-center aura-givio/25 aura-spread-[-2rem]"
+                class="aura-hover flex flex-col items-center aura-givio/25 aura-spread-[-2rem] sm:flex-row"
               >
                 <div class="flex flex-col items-center gap-1">
                   <img
@@ -140,7 +140,7 @@ const showWeekends = [
                   >
                   <span class="text-givio">givio.org</span>
                 </div>
-                <ul class="-mx-4 list-none pl-0 text-sm">
+                <ul class="list-none px-0! text-sm">
                   <li
                     v-for="item in ['Mit Spendenbescheinigung', 'Steuerlich absetzbar', 'Sichere Datenübertragung']"
                     :key="item"
