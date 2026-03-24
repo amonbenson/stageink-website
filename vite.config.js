@@ -132,8 +132,15 @@ function autoIconBundlePlugin() {
 // Inject <link rel="preload"> for background images so the browser fetches
 // them during HTML parsing rather than waiting for JS to run.
 function preloadBackgroundsPlugin() {
+  let base = "/";
+
   return {
     name: "preload-backgrounds",
+
+    configResolved(config) {
+      base = config.base;
+    },
+
     transformIndexHtml: {
       order: "post",
       handler(_html, ctx) {
@@ -150,7 +157,7 @@ function preloadBackgroundsPlugin() {
             attrs: {
               rel: "preload",
               as: "image",
-              href: `/${k}`,
+              href: `${base}${k}`,
               fetchpriority: i === 0 ? "high" : "low",
             },
             injectTo: "head",
