@@ -15,6 +15,11 @@ html, body, #app {
   @apply size-full bg-black text-white text-base md:text-lg lg:text-xl;
 }
 
+p {
+  hyphens: auto;
+  hyphenate-limit-chars: 6 3 3;
+}
+
 h1 {
   @apply text-5xl;
 }
