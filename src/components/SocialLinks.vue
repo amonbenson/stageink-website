@@ -21,6 +21,7 @@ defineProps({
       :aria-label="link.label"
       target="_blank"
       rel="noopener noreferrer"
+      class="aura-hover aura-spread-5 aura-white"
     >
       <Icon
         :icon="link.icon"

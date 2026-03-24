@@ -4,8 +4,11 @@
 @theme {
   --font-sans: "Poppins", sans-serif;
 
-  --color-sky: #89b1da;
   --color-primary: #e32625;
+
+  --color-sky: #89b1da;
+  --color-paypal: #006fe0;
+  --color-givio: #7db021;
 }
 
 html, body, #app {
@@ -28,10 +31,28 @@ h4 {
   @apply text-xl;
 }
 
-@utility bg-blob {
-  @apply relative before:content-[''] before:absolute before:-inset-10 before:-z-10 before:rounded-full before:bg-black/50 before:blur-2xl;
+ul {
+  @apply list-disc list-outside pl-5 space-y-1;
 }
 
-@utility bg-blob-sky {
-  @apply relative before:content-[''] before:absolute before:-inset-10 before:-z-10 before:rounded-full before:bg-sky/65 before:blur-2xl;
+@utility aura {
+  @apply relative before:content-[''] before:absolute before:-z-10 before:rounded-2xl before:blur-2xl;
+  &::before {
+    inset: var(--aura-inset, calc(var(--spacing) * -10));
+    background-color: var(--aura-color, oklch(0 0 0 / 50%));
+  }
+}
+
+@utility aura-* {
+  --aura-opacity: calc(--modifier(integer) * 1%);
+  --aura-color: --alpha(--value(--color-*, [color]) / var(--aura-opacity, 100%));
+}
+
+@utility aura-spread-* {
+  --aura-inset: calc(--value(integer, [integer]) * var(--spacing) * -1);
+  --aura-inset: calc(--value([length]) * -1);
+}
+
+@utility aura-hover {
+  @apply aura before:opacity-0 before:transition-opacity hover:before:opacity-100 aura-spread-0;
 }
