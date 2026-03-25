@@ -30,7 +30,7 @@ jobs:
 
       - name: Upload to server
         run: |
-          rsync -avz --delete \
+          rsync -n -avz --delete \
             -e "ssh -i deploy.key -o StrictHostKeyChecking=no" \
             dist/ \
             "${{ secrets.DEPLOY_USERNAME }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PUBLIC_DIR }}/"
