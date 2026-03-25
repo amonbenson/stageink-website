@@ -30,10 +30,13 @@ jobs:
 
       - name: Upload to server
         run: |
-          rsync -n -avz --delete \
-            -e "ssh -i deploy.key -o StrictHostKeyChecking=no" \
-            dist/ \
-            "${{ secrets.DEPLOY_USERNAME }}@${{ vars.DEPLOY_HOST }}:${{ vars.DEPLOY_PUBLIC_DIR }}/"
+          sftp -i deploy.key -o StrictHostKeyChecking=no \
+            "${{ secrets.DEPLOY_USERNAME }}@${{ vars.DEPLOY_HOST }}" <<EOF
+          cd ${{ vars.DEPLOY_PUBLIC_DIR }}
+          lcd dist
+          # put -r *
+          exit
+          EOF
 
       - name: Cleanup
         if: always()
