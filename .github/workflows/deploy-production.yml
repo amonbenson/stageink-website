@@ -33,7 +33,7 @@ jobs:
           rsync -n -avz --delete \
             -e "ssh -i deploy.key -o StrictHostKeyChecking=no" \
             dist/ \
-            "${{ secrets.DEPLOY_USERNAME }}@${{ variables.DEPLOY_HOST }}:${{ variables.DEPLOY_PUBLIC_DIR }}/"
+            "${{ secrets.DEPLOY_USERNAME }}@${{ vars.DEPLOY_HOST }}:${{ vars.DEPLOY_PUBLIC_DIR }}/"
 
       - name: Cleanup
         if: always()
