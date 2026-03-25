@@ -45,6 +45,7 @@ ul {
   &::before {
     inset: var(--aura-inset, calc(var(--spacing) * -10));
     background-color: var(--aura-color, oklch(0 0 0 / 50%));
+    will-change: opacity;
   }
 }
 
