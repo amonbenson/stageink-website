@@ -34,7 +34,7 @@ jobs:
             "${{ secrets.DEPLOY_USERNAME }}@${{ vars.DEPLOY_HOST }}" <<EOF
           cd ${{ vars.DEPLOY_PUBLIC_DIR }}
           lcd dist
-          # put -r *
+          put -r *
           exit
           EOF
 
