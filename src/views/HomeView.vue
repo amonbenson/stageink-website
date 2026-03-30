@@ -22,14 +22,14 @@ const socialLinks = [
 
 const showWeekends = [
   [
-    { date: new Date(2025, 5, 5), afternoon: null, evening: "19:00" },
-    { date: new Date(2025, 5, 6), afternoon: "14:00", evening: "19:00" },
-    { date: new Date(2025, 5, 7), afternoon: null, evening: "18:00" },
+    { date: new Date(2026, 5, 5), afternoon: null, evening: "19:00" },
+    { date: new Date(2026, 5, 6), afternoon: "14:00", evening: "19:00" },
+    { date: new Date(2026, 5, 7), afternoon: null, evening: "18:00" },
   ],
   [
-    { date: new Date(2025, 5, 12), afternoon: null, evening: "19:00" },
-    { date: new Date(2025, 5, 13), afternoon: "14:00", evening: "19:00" },
-    { date: new Date(2025, 5, 14), afternoon: null, evening: "18:00" },
+    { date: new Date(2026, 5, 12), afternoon: null, evening: "19:00" },
+    { date: new Date(2026, 5, 13), afternoon: "14:00", evening: "19:00" },
+    { date: new Date(2026, 5, 14), afternoon: null, evening: "18:00" },
   ],
 ];
 </script>
