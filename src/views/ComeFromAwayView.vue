@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { onBeforeUnmount, onMounted } from "vue";
 
 import backgroundMapUrl from "@/assets/cfa/backgroundMap.png?format=webp&quality=100&imagetools";
+import backgroundMapLqip from "@/assets/cfa/backgroundMap.png?w=50&format=webp&inline";
 import cfaLogoUrl from "@/assets/cfa/cfaLogo.png?format=webp&imagetools";
 import BackgroundSection from "@/components/BackgroundSection.vue";
 import FlatCard from "@/components/FlatCard.vue";
@@ -75,6 +76,7 @@ onBeforeUnmount(() => {
     <BackgroundSection
       id="cfa-background-map"
       :image="backgroundMapUrl"
+      :placeholder="backgroundMapLqip"
       cover
       class="fixed inset-0 origin-[20%_33%] bg-fixed bg-position-[20%_33%]"
     />
