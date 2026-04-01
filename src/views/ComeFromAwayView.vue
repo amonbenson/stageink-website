@@ -2,7 +2,7 @@
 import { gsap } from "gsap";
 import { onBeforeUnmount, onMounted } from "vue";
 
-import backgroundMapUrl from "@/assets/cfa/backgroundMap.png?format=webp&imagetools";
+import backgroundMapUrl from "@/assets/cfa/backgroundMap.png?format=webp&quality=100&imagetools";
 import cfaLogoUrl from "@/assets/cfa/cfaLogo.png?format=webp&imagetools";
 import BackgroundSection from "@/components/BackgroundSection.vue";
 import FlatCard from "@/components/FlatCard.vue";
