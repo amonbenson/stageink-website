@@ -39,7 +39,7 @@ const showWeekends = [
     <BackgroundSection
       :image="backgroundSkyUrl"
       :placeholder="backgroundSkyLqip"
-      class="bg-position-[35%_50%]"
+      class="mt-[-20vw] bg-position-[35%_100%] pt-[20vw]"
       cover
       aspect="3840/2977"
     >
@@ -48,7 +48,7 @@ const showWeekends = [
       >
         <!-- Logo -->
         <div class="flex justify-center [grid-area:logo]">
-          <div class="aura aura-sky/65 before:bottom-1/4">
+          <div class="aura mt-4 aura-sky/65 before:bottom-1/4">
             <img
               class="w-64 lg:w-96"
               src="/images/logo.svg"
@@ -82,7 +82,7 @@ const showWeekends = [
       :placeholder="backgroundBushesLqip"
     >
       <!-- Welcome Text -->
-      <div class="aura w-full">
+      <div class="aura w-full 3xl:mt-[calc(-20vw+15rem)]">
         <SectionContainer title="Wir">
           <p>
             Stageink, gegründet 2009 in Berlin und seit 2016 als Stagies Berlin e.V. &mdash; das ist eine bunte Mischung von Menschen, die mit viel Herzblut und Engagement singen, schauspielern und tanzen. Wir bringen unterschiedlichste Musical- und Konzert-Produktionen auf große und kleine Berliner Bühnen.
@@ -104,6 +104,7 @@ const showWeekends = [
         cover
         aspect="3840/4799"
         align-end
+        class="max-h-360 bg-top"
       >
         <div class="aura w-full">
           <SectionContainer title="Spenden">

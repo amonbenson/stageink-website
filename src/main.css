@@ -2,6 +2,9 @@
 @import "./fonts.css";
 
 @theme {
+  --breakpoint-3xl: 120rem;
+  --breakpoint-4xl: 160rem;
+
   --font-sans: "Poppins", sans-serif;
 
   --color-primary: #e32625;
