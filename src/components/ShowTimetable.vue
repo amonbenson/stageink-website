@@ -58,7 +58,13 @@ const formatDate = date => date.toLocaleDateString("de-DE", { day: "numeric", mo
       </template>
     </div>
     <div class="aura-hover rounded-full bg-primary px-6 py-2 text-white shadow-xl aura-primary/50 group-hover:before:opacity-100">
-      TICKETS jetzt <strong>HIER</strong> verfügbar!
+      Tickets jetzt <strong>HIER</strong> verfügbar!
     </div>
+    <RouterLink
+      class="block rounded-full bg-white/50 px-6 py-2 text-black"
+      to="/cfa"
+    >
+      Weitere Informationen
+    </RouterLink>
   </a>
 </template>

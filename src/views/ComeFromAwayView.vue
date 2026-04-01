@@ -5,6 +5,7 @@ import { onBeforeUnmount, onMounted } from "vue";
 import backgroundMapUrl from "@/assets/cfa/backgroundMap.png?format=webp&quality=100&imagetools";
 import backgroundMapLqip from "@/assets/cfa/backgroundMap.png?w=50&format=webp&inline";
 import cfaLogoUrl from "@/assets/cfa/cfaLogo.png?format=webp&imagetools";
+import planeUrl from "@/assets/cfa/plane.png?format=webp&imagetools";
 import BackgroundSection from "@/components/BackgroundSection.vue";
 import FlatCard from "@/components/FlatCard.vue";
 import SectionContainer from "@/components/SectionContainer.vue";
@@ -73,13 +74,16 @@ onBeforeUnmount(() => {
     <div class="isolate">
       <div class="flex w-full flex-col items-center justify-center gap-4 p-4 lg:mb-32">
         <!-- StageInk Logo -->
-        <div class="aura aura-black/25 lg:self-start">
+        <RouterLink
+          class="aura block aura-black/25 lg:self-start"
+          to="/"
+        >
           <img
             class="w-64"
             src="/images/logo.svg"
             alt="StageInk Logo"
           >
-        </div>
+        </RouterLink>
 
         <!-- Come From Away Logo -->
         <FlatCard
@@ -163,6 +167,13 @@ onBeforeUnmount(() => {
           </FlatCard>
         </div>
       </SectionContainer>
+
+      <div
+        class="my-32 h-(--animate-scroll-x-amount) w-full animate-scroll-x bg-size-[auto_100%] bg-repeat-x [--animate-scroll-x-amount:2rem]"
+        :style="{
+          backgroundImage: `url(${planeUrl})`,
+        }"
+      />
     </div>
   </main>
 </template>
