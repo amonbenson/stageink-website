@@ -1,4 +1,5 @@
 <script setup>
+import backgroundMapUrl from "@/assets/cfa/backgroundMap.png?format=webp&imagetools";
 import BackgroundSection from "@/components/BackgroundSection.vue";
 import FlatCard from "@/components/FlatCard.vue";
 import SectionContainer from "@/components/SectionContainer.vue";
@@ -7,29 +8,44 @@ import SectionContainer from "@/components/SectionContainer.vue";
 <template>
   <main class="relative overflow-hidden">
     <!-- StageInk Logo -->
-    <div class="absolute top-4 right-4 left-4 flex items-center justify-center md:justify-start">
-      <img
-        class="w-64"
-        src="/images/logo.svg"
-        alt="StageInk Logo"
-      >
+    <div class="absolute top-4 right-4 left-4 z-10 flex items-center justify-center md:justify-start">
+      <div class="aura aura-black/25">
+        <img
+          class="w-64"
+          src="/images/logo.svg"
+          alt="StageInk Logo"
+        >
+      </div>
     </div>
 
-    <BackgroundSection>
+    <BackgroundSection
+      :image="backgroundMapUrl"
+      cover
+      class="bg-fixed"
+    >
       <!-- Come From Away Logo -->
       <div class="flex w-full items-center justify-center p-4">
-        <FlatCard class="mt-32 w-full max-w-md xl:mt-4">
+        <FlatCard
+          class="mt-32 w-full max-w-md xl:mt-4"
+          transparent
+          shadow
+        >
           <template #image>
-            <div class="flex aspect-4/3 w-full max-w-md items-center justify-center bg-gray-800 text-center">
-              CFA Logo
-            </div>
+            <img
+              class="w-full"
+              src="/images/cfa/cfaLogo.png"
+              alt="Come From Away"
+            >
           </template>
         </FlatCard>
       </div>
 
       <!-- Trailer Video -->
       <SectionContainer>
-        <FlatCard class="w-full">
+        <FlatCard
+          class="w-full"
+          shadow
+        >
           <template #image>
             <div class="flex aspect-video items-center justify-center bg-gray-800">
               Trailer
@@ -44,6 +60,7 @@ import SectionContainer from "@/components/SectionContainer.vue";
           <FlatCard
             v-for="i in 6"
             :key="i"
+            shadow
           >
             <template #image>
               <div class="flex aspect-3/4 w-full items-center justify-center bg-gray-800">
@@ -68,13 +85,19 @@ import SectionContainer from "@/components/SectionContainer.vue";
 
       <SectionContainer>
         <div class="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
-          <FlatCard title="Spielzeiten">
+          <FlatCard
+            title="Spielzeiten"
+            shadow
+          >
             <div class="flex aspect-4/3 w-full items-center justify-center bg-gray-800">
               Tabelle
             </div>
           </FlatCard>
 
-          <FlatCard title="Spielort">
+          <FlatCard
+            title="Spielort"
+            shadow
+          >
             <template #image>
               <div class="flex aspect-4/3 w-full items-center justify-center bg-gray-800">
                 Karte
