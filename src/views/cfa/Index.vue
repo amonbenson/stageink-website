@@ -32,6 +32,13 @@ const cast = [
   { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
   { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
   { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
+  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
+  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
+  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
+  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
+  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
+  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
+  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
 ];
 
 const shows = [

@@ -76,7 +76,7 @@ const shows = [
             </RoundButton>
 
             <RoundButton to="/cfa">
-              Weitere Informationen
+              Mehr...
             </RoundButton>
           </div>
         </div>
