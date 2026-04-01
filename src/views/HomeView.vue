@@ -9,10 +9,9 @@ import backgroundWallUrl from "@/assets/backgroundWall.png?format=webp&imagetool
 import givioLogo from "@/assets/givioLogo.png?format=webp&imagetools";
 import paypalLogo from "@/assets/paypalLogo.png?format=webp&imagetools";
 import BackgroundSection from "@/components/BackgroundSection.vue";
+import SectionContainer from "@/components/SectionContainer.vue";
 import ShowTimetable from "@/components/ShowTimetable.vue";
 import SocialLinks from "@/components/SocialLinks.vue";
-
-import SectionContainer from "../components/SectionContainer.vue";
 
 const socialLinks = [
   { label: "Instagram", icon: "simple-icons:instagram", url: "https://www.instagram.com/_stageink_/" },

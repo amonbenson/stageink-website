@@ -12,10 +12,19 @@
   --color-sky: #89b1da;
   --color-paypal: #006fe0;
   --color-givio: #7db021;
+
+  --color-cfa-yellow: #ffb300;
+  --color-cfa-blue-light: #2465cd;
+  --color-cfa-blue: #033daa;
+  --color-cfa-blue-dark: #021a87;
+}
+
+body {
+  @apply bg-black;
 }
 
 html, body, #app {
-  @apply size-full bg-black text-white text-base md:text-lg lg:text-xl;
+  @apply w-full min-h-full text-white text-base md:text-lg lg:text-xl;
 }
 
 p {

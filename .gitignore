@@ -32,3 +32,4 @@ dist-ssr
 
 # Local backup directory
 /.backup/
+/design/
