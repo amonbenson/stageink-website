@@ -62,17 +62,6 @@ onBeforeUnmount(() => {
 
 <template>
   <main class="relative overflow-hidden">
-    <!-- StageInk Logo -->
-    <div class="absolute top-4 right-4 left-4 z-10 flex items-center justify-center md:justify-start">
-      <div class="aura aura-black/25">
-        <img
-          class="w-64"
-          src="/images/logo.svg"
-          alt="StageInk Logo"
-        >
-      </div>
-    </div>
-
     <BackgroundSection
       id="cfa-background-map"
       :image="backgroundMapUrl"
@@ -82,10 +71,19 @@ onBeforeUnmount(() => {
     />
 
     <div class="isolate">
-      <!-- Come From Away Logo -->
-      <div class="flex w-full items-center justify-center p-4">
+      <div class="flex w-full flex-col items-center justify-center gap-4 p-4 lg:mb-32">
+        <!-- StageInk Logo -->
+        <div class="aura aura-black/25 lg:self-start">
+          <img
+            class="w-64"
+            src="/images/logo.svg"
+            alt="StageInk Logo"
+          >
+        </div>
+
+        <!-- Come From Away Logo -->
         <FlatCard
-          class="mt-32 w-full max-w-md xl:mt-4"
+          class="w-full max-w-md"
           transparent
           shadow
         >
