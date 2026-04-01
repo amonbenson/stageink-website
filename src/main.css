@@ -19,8 +19,12 @@
   --color-cfa-blue-dark: #021a87;
 }
 
+body {
+  @apply bg-black;
+}
+
 html, body, #app {
-  @apply size-full bg-black text-white text-base md:text-lg lg:text-xl;
+  @apply w-full min-h-full text-white text-base md:text-lg lg:text-xl;
 }
 
 p {
