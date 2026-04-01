@@ -1,5 +1,6 @@
 <script setup>
 import BackgroundSection from "@/components/BackgroundSection.vue";
+import RoundButton from "@/components/RoundButton.vue";
 import SectionContainer from "@/components/SectionContainer.vue";
 import ShowDates from "@/components/ShowDates.vue";
 import SiteLogo from "@/components/SiteLogo.vue";
@@ -60,29 +61,24 @@ const shows = [
 
         <!-- Production Timetable -->
         <div class="justify-self-center [grid-area:timetable]">
-          <a
-            href="https://www.tickettailor.com/events/stagiesberlinev/1943079"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group block w-fit space-y-4 rounded-4xl bg-white/75 p-4 text-center text-black backdrop-blur-lg lg:p-8"
-          >
+          <div class="group block w-fit space-y-4 rounded-4xl bg-white/75 p-4 text-center text-black backdrop-blur-lg lg:p-8">
             <h2>Come From Away</h2>
 
             <p>Im <strong>Centre Français, 13349 Berlin</strong></p>
 
             <ShowDates :shows="shows" />
 
-            <div class="aura-hover rounded-full bg-primary px-6 py-2 text-white shadow-xl aura-primary/50 group-hover:before:opacity-100">
-              Tickets jetzt <strong>HIER</strong> verfügbar!
-            </div>
-
-            <RouterLink
-              class="block rounded-full bg-white/50 px-6 py-2 text-black"
-              to="/cfa"
+            <RoundButton
+              href="https://www.tickettailor.com/events/stagiesberlinev/1943079"
+              style="--btn-color: var(--color-primary); --btn-text: white;"
             >
+              Tickets jetzt <strong>HIER</strong> verfügbar!
+            </RoundButton>
+
+            <RoundButton to="/cfa">
               Weitere Informationen
-            </RouterLink>
-          </a>
+            </RoundButton>
+          </div>
         </div>
       </div>
     </BackgroundSection>

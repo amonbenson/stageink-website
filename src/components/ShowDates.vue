@@ -5,7 +5,6 @@ const props = defineProps({
   shows: {
     type: Array,
     required: true,
-    // Array of Date objects, each representing a single performance (time included)
   },
 });
 
@@ -13,65 +12,60 @@ const formatWeekday = date => date.toLocaleDateString("de-DE", { weekday: "short
 const formatDate = date => date.toLocaleDateString("de-DE", { day: "numeric", month: "numeric" });
 const formatTime = date => date.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
 
-const weekends = computed(() => {
+function isoWeek(date) {
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+}
+
+const weekKey = date => `${date.getFullYear()}-${isoWeek(date)}`;
+
+const weeks = computed(() => {
   const sorted = [...props.shows].sort((a, b) => a - b);
 
-  // Split into clusters where a gap > 4 days starts a new weekend
-  const clusters = [];
-  let current = [];
+  const result = [];
+  let currentWeek = null;
+  let currentDay = null;
 
   for (const show of sorted) {
-    if (current.length > 0) {
-      const dayGap = (show - current[current.length - 1]) / (1000 * 60 * 60 * 24);
-
-      if (dayGap > 4) {
-        clusters.push(current);
-        current = [];
-      }
+    // Group by week
+    const wk = weekKey(show);
+    if (wk !== currentWeek) {
+      result.push([]);
+      currentWeek = wk;
+      currentDay = null;
     }
 
-    current.push(show);
-  }
-
-  if (current.length > 0) {
-    clusters.push(current);
-  }
-
-  // Within each cluster, group by calendar day; split matinee (<17:00) vs evening
-  return clusters.map((cluster) => {
-    const byDay = new Map();
-
-    for (const show of cluster) {
-      const key = show.toDateString();
-
-      if (!byDay.has(key)) {
-        byDay.set(key, { date: show, matinee: null, evening: null });
-      }
-
-      if (show.getHours() < 17) {
-        byDay.get(key).matinee = show;
-      } else {
-        byDay.get(key).evening = show;
-      }
+    // Group by day
+    const dayStr = show.toDateString();
+    if (dayStr !== currentDay) {
+      result[result.length - 1].push({ date: show, shows: [show] });
+      currentDay = dayStr;
+    } else {
+      result[result.length - 1].at(-1).shows.push(show);
     }
+  }
 
-    return [...byDay.values()];
-  });
+  return result.map(week =>
+    week.map(day => ({
+      date: day.date,
+      matinee: day.shows.length > 1 ? day.shows[0] : null,
+      evening: day.shows.at(-1),
+    })),
+  );
 });
 </script>
 
 <template>
-  <div class="grid grid-cols-[1fr_auto_auto] gap-x-4 gap-y-1 tabular-nums">
-    <template
-      v-for="(weekend, wi) in weekends"
+  <div class="flex flex-col gap-4">
+    <div
+      v-for="(week, wi) in weeks"
       :key="wi"
+      class="grid grid-cols-[1fr_auto_auto] gap-x-4 gap-y-1 tabular-nums"
     >
-      <div
-        v-if="wi > 0"
-        class="col-span-3 h-3"
-      />
       <template
-        v-for="day in weekend"
+        v-for="day in week"
         :key="day.date.toDateString()"
       >
         <div class="text-start">
@@ -84,6 +78,6 @@ const weekends = computed(() => {
           {{ day.evening ? formatTime(day.evening) : '' }}
         </div>
       </template>
-    </template>
+    </div>
   </div>
 </template>

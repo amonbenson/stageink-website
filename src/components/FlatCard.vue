@@ -11,7 +11,7 @@ defineProps({
 
 <template>
   <div
-    class="flex flex-col items-stretch justify-stretch gap-4"
+    class="flex flex-col items-stretch justify-between gap-4"
     :class="[
       title || $slots.default ? 'p-4' : '',
       transparent ? '' : 'bg-black/35 backdrop-blur-lg',
@@ -21,10 +21,12 @@ defineProps({
     <h2 v-if="title">
       {{ title }}
     </h2>
+
     <slot
       v-if="$slots.image"
       name="image"
     />
+
     <slot v-if="$slots.default" />
   </div>
 </template>
