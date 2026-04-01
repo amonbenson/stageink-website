@@ -1,5 +1,5 @@
-import ComeFromAwayView from "@/views/ComeFromAwayView.vue";
-import HomeView from "@/views/HomeView.vue";
+import ComeFromAwayView from "@/views/cfa/Index.vue";
+import HomeView from "@/views/home/Index.vue";
 
 export const routes = [
   { name: "home", path: "/", component: HomeView },

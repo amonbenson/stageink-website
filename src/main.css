@@ -17,8 +17,6 @@
 
   --breakpoint-3xl: 120rem;
   --breakpoint-4xl: 160rem;
-
-  --animate-scroll-x: scroll-x 0.5s linear infinite;
 }
 
 body {
@@ -52,11 +50,6 @@ h4 {
 
 ul {
   @apply list-disc list-outside pl-[1em] space-y-1;
-}
-
-@keyframes scroll-x {
-  from { background-position: 0 0; }
-  to { background-position: var(--animate-scroll-x-amount) 0; }
 }
 
 @utility aura {
