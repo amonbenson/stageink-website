@@ -77,6 +77,7 @@ export default [
       }],
       "curly": ["error", "all"],
       "vue/block-order": ["error", { order: ["script", "template", "style"] }],
+      "vue/multi-word-component-names": "off",
     },
   },
 ];
