@@ -9,7 +9,7 @@ import { useScrollTimeline } from "@/composables/useScrollTimeline.js";
 
 import backgroundMapUrl from "./assets/backgroundMap.png?format=webp&quality=100&imagetools";
 import backgroundMapLqip from "./assets/backgroundMap.png?w=50&format=webp&inline";
-import cfaLogoUrl from "./assets/cfaLogo.png?format=webp&imagetools";
+import cfaLogo from "./assets/cfaLogo.png?lqip";
 import CastCard from "./CastCard.vue";
 import PlaneScroller from "./PlaneScroller.vue";
 
@@ -71,19 +71,14 @@ const shows = [
         />
 
         <!-- Come From Away Logo -->
-        <FlatCard
-          class="w-full max-w-md"
-          transparent
-          shadow
-        >
-          <template #image>
-            <img
-              class="w-full"
-              :src="cfaLogoUrl"
-              alt="Come From Away"
-            >
-          </template>
-        </FlatCard>
+        <div class="aura w-full max-w-md aura-black/25">
+          <LqipImage
+            class="w-full"
+            :src="cfaLogo"
+            alt="Come From Away"
+            transparent
+          />
+        </div>
       </div>
 
       <!-- Trailer Video -->
