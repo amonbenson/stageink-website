@@ -1,8 +1,8 @@
 <script setup>
 import { Icon } from "@iconify/vue";
 
-import givioLogoUrl from "./assets/givioLogo.png?format=webp&imagetools";
-import paypalLogoUrl from "./assets/paypalLogo.png?format=webp&imagetools";
+import givioLogo from "./assets/givioLogo.png?lqip";
+import paypalLogo from "./assets/paypalLogo.png?lqip";
 </script>
 
 <template>
@@ -13,11 +13,12 @@ import paypalLogoUrl from "./assets/paypalLogo.png?format=webp&imagetools";
       rel="noopener noreferrer"
       class="aura-hover flex flex-col items-center gap-1 aura-paypal/25 aura-spread-[-2rem]"
     >
-      <img
+      <LqipImage
         class="h-40"
-        :src="paypalLogoUrl"
+        :src="paypalLogo"
         alt="PayPal Logo"
-      >
+        transparent
+      />
       <span class="text-paypal">paypal.me/stageink</span>
     </a>
 
@@ -28,11 +29,12 @@ import paypalLogoUrl from "./assets/paypalLogo.png?format=webp&imagetools";
       class="aura-hover flex flex-col items-center aura-givio/25 aura-spread-[-2rem] sm:flex-row"
     >
       <div class="flex flex-col items-center gap-1">
-        <img
+        <LqipImage
           class="h-40"
-          :src="givioLogoUrl"
+          :src="givioLogo"
           alt="Givio Logo"
-        >
+          transparent
+        />
         <span class="text-givio">givio.org</span>
       </div>
       <ul class="list-none px-0! text-sm">

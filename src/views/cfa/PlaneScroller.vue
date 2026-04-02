@@ -1,13 +1,12 @@
 <script setup>
-import planeUrl from "./assets/plane.png?format=webp&imagetools";
+import plane from "./assets/plane.png?lqip";
 </script>
 
 <template>
-  <div
+  <LqipImage
+    :src="plane"
+    background
     class="plane-scroller my-32 h-(--animate-scroll-x-amount) w-full bg-size-[auto_100%] bg-repeat-x [--animate-scroll-x-amount:2rem]"
-    :style="{
-      backgroundImage: `url(${planeUrl})`,
-    }"
   />
 </template>
 

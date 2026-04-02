@@ -1,12 +1,8 @@
 <script setup>
 defineProps({
-  image: {
-    type: String,
+  src: {
+    type: Object,
     required: true,
-  },
-  placeholder: {
-    type: String,
-    default: null,
   },
   // e.g. "3840/4799" — passed as CSS aspect-ratio value
   aspect: {
@@ -23,21 +19,27 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  // pass through to LqipImage — set true if the image has transparency so the
+  // LQIP is removed once the real image has loaded
+  transparent: {
+    type: Boolean,
+    default: false,
+  },
 });
 </script>
 
 <template>
-  <div
+  <LqipImage
+    :src="src"
+    background
+    :transparent="transparent"
     class="isolate flex w-full flex-col items-center"
     :class="[
       cover ? 'bg-cover bg-center' : 'bg-size-[100%_auto]',
       alignEnd ? 'justify-end' : '',
     ]"
-    :style="{
-      backgroundImage: placeholder ? `url(${image}), url(${placeholder})` : `url(${image})`,
-      aspectRatio: aspect ?? undefined,
-    }"
+    :style="{ aspectRatio: aspect ?? undefined }"
   >
     <slot />
-  </div>
+  </LqipImage>
 </template>

@@ -6,11 +6,9 @@ import ShowDates from "@/components/ShowDates.vue";
 import SiteLogo from "@/components/SiteLogo.vue";
 import SocialLinks from "@/components/SocialLinks.vue";
 
-import backgroundBushesUrl from "./assets/backgroundBushes.png?format=webp&imagetools";
-import backgroundBushesLqip from "./assets/backgroundBushes.png?w=50&format=webp&inline";
-import backgroundSkyUrl from "./assets/backgroundSky.png?format=webp&imagetools";
-import backgroundSkyLqip from "./assets/backgroundSky.png?w=50&format=webp&inline";
-import backgroundWallUrl from "./assets/backgroundWall.png?format=webp&imagetools";
+import backgroundBushes from "./assets/backgroundBushes.png?lqip";
+import backgroundSky from "./assets/backgroundSky.png?lqip";
+import backgroundWall from "./assets/backgroundWall.png?lqip";
 import DonationLinks from "./DonationLinks.vue";
 
 const socialLinks = [
@@ -34,8 +32,7 @@ const shows = [
 <template>
   <main class="overflow-hidden">
     <BackgroundSection
-      :image="backgroundSkyUrl"
-      :placeholder="backgroundSkyLqip"
+      :src="backgroundSky"
       class="mt-[-20vw] bg-position-[35%_100%] pt-[20vw]"
       cover
       aspect="3840/2977"
@@ -83,10 +80,7 @@ const shows = [
       </div>
     </BackgroundSection>
 
-    <BackgroundSection
-      :image="backgroundBushesUrl"
-      :placeholder="backgroundBushesLqip"
-    >
+    <BackgroundSection :src="backgroundBushes">
       <!-- Welcome Text -->
       <div class="aura w-full 3xl:mt-[calc(-20vw+15rem)]">
         <SectionContainer title="Wir">
@@ -104,12 +98,12 @@ const shows = [
         </SectionContainer>
       </div>
 
-      <!-- No placeholder here, because the semitransparency would cause visible bleeds -->
       <BackgroundSection
-        :image="backgroundWallUrl"
+        :src="backgroundWall"
         cover
         aspect="3840/4799"
         align-end
+        transparent
         class="max-h-360 bg-top"
       >
         <div class="aura w-full">

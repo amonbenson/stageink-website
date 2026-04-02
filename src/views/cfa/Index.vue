@@ -7,8 +7,7 @@ import ShowDates from "@/components/ShowDates.vue";
 import SiteLogo from "@/components/SiteLogo.vue";
 import { useScrollTimeline } from "@/composables/useScrollTimeline.js";
 
-import backgroundMapUrl from "./assets/backgroundMap.png?format=webp&quality=100&imagetools";
-import backgroundMapLqip from "./assets/backgroundMap.png?w=50&format=webp&inline";
+import backgroundMap from "./assets/backgroundMap.png?lqip&quality=100";
 import cfaLogo from "./assets/cfaLogo.png?lqip";
 import CastCard from "./CastCard.vue";
 import PlaneScroller from "./PlaneScroller.vue";
@@ -57,8 +56,7 @@ const shows = [
   <main class="relative overflow-hidden">
     <BackgroundSection
       id="cfa-background-map"
-      :image="backgroundMapUrl"
-      :placeholder="backgroundMapLqip"
+      :src="backgroundMap"
       cover
       class="fixed inset-0 origin-[20%_33%] bg-fixed bg-position-[20%_33%]"
     />
