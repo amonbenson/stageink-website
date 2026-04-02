@@ -7,7 +7,7 @@ import vue from "@vitejs/plugin-vue";
 import { defineConfig } from "vite";
 import { imagetools } from "vite-imagetools";
 
-import resourceHintsPlugin from "./design/resourceHints.js";
+import resourceHintsPlugin from "./plugins/resourceHints.js";
 
 const resourceHints = resourceHintsPlugin({
   rules: [

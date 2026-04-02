@@ -56,6 +56,7 @@ function watchBackgroundLoad() {
       containerRef.value.style.backgroundImage = `url(${props.src.url})`;
     }
   };
+
   img.src = props.src.url;
 
   // Already in cache — fire immediately.
