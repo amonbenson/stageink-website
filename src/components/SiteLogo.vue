@@ -1,4 +1,6 @@
 <script setup>
+import StageInkLogo from "@/assets/stageInkLogo.svg?component";
+
 defineProps({
   large: Boolean,
 });
@@ -6,10 +8,6 @@ defineProps({
 
 <template>
   <RouterLink to="/">
-    <img
-      :class="large ? 'w-64 lg:w-96' : 'w-64'"
-      src="/images/logo.svg"
-      alt="StageInk Logo"
-    >
+    <StageInkLogo :class="large ? 'w-64 lg:w-96' : 'w-64'" />
   </RouterLink>
 </template>

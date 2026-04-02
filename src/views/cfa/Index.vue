@@ -8,7 +8,7 @@ import SiteLogo from "@/components/SiteLogo.vue";
 import { useScrollTimeline } from "@/composables/useScrollTimeline.js";
 
 import backgroundMap from "./assets/backgroundMap.png?lqip&quality=100";
-import cfaLogo from "./assets/cfaLogo.png?lqip";
+import cfaLogo from "./assets/cfaLogo.png?lqip&lqipsize=200";
 import CastCard from "./CastCard.vue";
 import PlaneScroller from "./PlaneScroller.vue";
 

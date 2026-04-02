@@ -6,6 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 import vue from "@vitejs/plugin-vue";
 import { defineConfig } from "vite";
 import { imagetools } from "vite-imagetools";
+import svgLoader from "vite-svg-loader";
 
 // Transforms a single `?lqip` image import into an object with all derived
 // resources: { url, lqip, width, height }. The three sub-imports are handled
@@ -207,6 +208,7 @@ export default defineConfig({
     imageBundlePlugin(),
     imagetools(),
     autoIconBundlePlugin(),
+    svgLoader(),
   ],
   resolve: {
     alias: {
