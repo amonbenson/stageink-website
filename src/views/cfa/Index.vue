@@ -86,7 +86,7 @@ const shows = [
           shadow
         >
           <template #image>
-            <img src="https://placehold.co/800x540">
+            <img src="https://placehold.co/800x450">
           </template>
         </FlatCard>
       </SectionContainer>
