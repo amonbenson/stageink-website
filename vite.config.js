@@ -7,68 +7,6 @@ import vue from "@vitejs/plugin-vue";
 import { defineConfig } from "vite";
 import { imagetools } from "vite-imagetools";
 
-import resourceHintsPlugin from "./plugins/resourceHints.js";
-
-const resourceHints = resourceHintsPlugin({
-  rules: [
-    // Fonts are global — preloaded on every page.
-    {
-      test: /^assets\/fonts\/.*\.woff2$/,
-      rel: "preload",
-      as: "font",
-      type: "font/woff2",
-      crossorigin: "",
-    },
-  ],
-  routes: [
-    {
-      // Home page: preload its own background images.
-      match: /^\/$/,
-      rules: [
-        {
-          test: /^assets\/backgroundSky.*\.webp$/,
-          rel: "preload",
-          as: "image",
-          fetchpriority: "high",
-        },
-        {
-          test: /^assets\/background(Wall|Bushes).*\.webp$/,
-          rel: "preload",
-          as: "image",
-        },
-        // Prefetch CFA assets so they are ready when the user navigates.
-        {
-          test: /^assets\/backgroundMap.*\.webp$/,
-          rel: "prefetch",
-          as: "image",
-        },
-        {
-          test: /^assets\/cfaLogo.*\.webp$/,
-          rel: "prefetch",
-          as: "image",
-        },
-        {
-          test: /^assets\/plane.*\.webp$/,
-          rel: "prefetch",
-          as: "image",
-        },
-      ],
-    },
-    {
-      // CFA page: preload the map background above the fold at high priority.
-      match: /^\/cfa/,
-      rules: [
-        {
-          test: /^assets\/backgroundMap.*\.webp$/,
-          rel: "preload",
-          as: "image",
-          fetchpriority: "high",
-        },
-      ],
-    },
-  ],
-});
-
 // Transforms a single `?lqip` image import into an object with all derived
 // resources: { url, lqip, width, height }. The three sub-imports are handled
 // by vite-imagetools, so this plugin must be registered before imagetools().
@@ -269,11 +207,7 @@ export default defineConfig({
     imageBundlePlugin(),
     imagetools(),
     autoIconBundlePlugin(),
-    resourceHints.vitePlugin,
   ],
-  ssgOptions: {
-    onPageRendered: resourceHints.onPageRendered,
-  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
