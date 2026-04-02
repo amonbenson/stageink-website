@@ -10,7 +10,7 @@ import plane from "./assets/plane.png?lqip";
   />
 </template>
 
-<style>
+<style scoped>
 .plane-scroller {
   animation: scroll-x 0.5s linear infinite;
 }
@@ -18,5 +18,11 @@ import plane from "./assets/plane.png?lqip";
 @keyframes scroll-x {
   from { background-position: 0 0; }
   to { background-position: var(--animate-scroll-x-amount) 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plane-scroller {
+    animation: none;
+  }
 }
 </style>
