@@ -7,6 +7,68 @@ import vue from "@vitejs/plugin-vue";
 import { defineConfig } from "vite";
 import { imagetools } from "vite-imagetools";
 
+import resourceHintsPlugin from "./design/resourceHints.js";
+
+const resourceHints = resourceHintsPlugin({
+  rules: [
+    // Fonts are global — preloaded on every page.
+    {
+      test: /^assets\/fonts\/.*\.woff2$/,
+      rel: "preload",
+      as: "font",
+      type: "font/woff2",
+      crossorigin: "",
+    },
+  ],
+  routes: [
+    {
+      // Home page: preload its own background images.
+      match: /^\/$/,
+      rules: [
+        {
+          test: /^assets\/backgroundSky.*\.webp$/,
+          rel: "preload",
+          as: "image",
+          fetchpriority: "high",
+        },
+        {
+          test: /^assets\/background(Wall|Bushes).*\.webp$/,
+          rel: "preload",
+          as: "image",
+        },
+        // Prefetch CFA assets so they are ready when the user navigates.
+        {
+          test: /^assets\/backgroundMap.*\.webp$/,
+          rel: "prefetch",
+          as: "image",
+        },
+        {
+          test: /^assets\/cfaLogo.*\.webp$/,
+          rel: "prefetch",
+          as: "image",
+        },
+        {
+          test: /^assets\/plane.*\.webp$/,
+          rel: "prefetch",
+          as: "image",
+        },
+      ],
+    },
+    {
+      // CFA page: preload the map background above the fold at high priority.
+      match: /^\/cfa/,
+      rules: [
+        {
+          test: /^assets\/backgroundMap.*\.webp$/,
+          rel: "preload",
+          as: "image",
+          fetchpriority: "high",
+        },
+      ],
+    },
+  ],
+});
+
 // Transforms a single `?lqip` image import into an object with all derived
 // resources: { url, lqip, width, height }. The three sub-imports are handled
 // by vite-imagetools, so this plugin must be registered before imagetools().
@@ -199,44 +261,6 @@ function autoIconBundlePlugin() {
   };
 }
 
-// Inject <link rel="preload"> for background images so the browser fetches
-// them during HTML parsing rather than waiting for JS to run.
-function preloadBackgroundsPlugin() {
-  let base = "/";
-
-  return {
-    name: "preload-backgrounds",
-
-    configResolved(config) {
-      base = config.base;
-    },
-
-    transformIndexHtml: {
-      order: "post",
-      handler(_html, ctx) {
-        if (!ctx?.bundle) {
-          return [];
-        }
-
-        return Object.keys(ctx.bundle)
-          .filter(k => /^assets\/background.*\.webp$/.test(k))
-          // Sky is above the fold — give it higher fetch priority
-          .sort((a, b) => (a.includes("Sky") ? -1 : b.includes("Sky") ? 1 : 0))
-          .map((k, i) => ({
-            tag: "link",
-            attrs: {
-              rel: "preload",
-              as: "image",
-              href: `${base}${k}`,
-              fetchpriority: i === 0 ? "high" : "low",
-            },
-            injectTo: "head",
-          }));
-      },
-    },
-  };
-}
-
 export default defineConfig({
   base: process.env.VITE_BASE ?? "/",
   plugins: [
@@ -245,8 +269,11 @@ export default defineConfig({
     imageBundlePlugin(),
     imagetools(),
     autoIconBundlePlugin(),
-    preloadBackgroundsPlugin(),
+    resourceHints.vitePlugin,
   ],
+  ssgOptions: {
+    onPageRendered: resourceHints.onPageRendered,
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
