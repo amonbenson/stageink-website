@@ -72,9 +72,9 @@ const shows = [
               Tickets jetzt <strong>HIER</strong> verfügbar!
             </RoundButton>
 
-            <RoundButton to="/cfa">
+            <!-- <RoundButton to="/cfa">
               Mehr...
-            </RoundButton>
+            </RoundButton> -->
           </div>
         </div>
       </div>
