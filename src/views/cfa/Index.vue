@@ -7,6 +7,7 @@ import ShowDates from "@/components/ShowDates.vue";
 import SiteLogo from "@/components/SiteLogo.vue";
 import { useScrollTimeline } from "@/composables/useScrollTimeline.js";
 
+import { shuffle } from "../../utils/shuffle";
 import backgroundMap from "./assets/backgroundMap.png?lqip&quality=100";
 import cfaLogo from "./assets/cfaLogo.png?lqip&lqipsize=200";
 import CastCard from "./CastCard.vue";
@@ -25,20 +26,24 @@ useScrollTimeline((timeline) => {
 });
 
 const cast = [
-  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
-  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
-  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
-  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
-  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
-  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
-  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
-  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
-  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
-  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
-  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
-  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
-  { name: "Person X", role: "Rolle Y", image: "https://placehold.co/400x533" },
+  { name: "Sven Edthofer", roles: ["Claude", "Derm", "Brendas Bruder"], image: "https://placehold.co/400x500" },
+  { name: "Sophia Blume", roles: ["Bonnie", "Martha"], image: "https://placehold.co/400x500" },
+  { name: "Francesca Valetta", roles: ["Beulah", "Delores", "Brenda"], image: "https://placehold.co/400x500" },
+  { name: "Fidias Curiel", roles: ["Oz", "Joey", "Mr. Michaels", "Rabbi", "Matty"], image: "https://placehold.co/400x500" },
+  { name: "Daniel Wollförster", roles: ["Doug", "Eddie", "Robin"], image: "https://placehold.co/400x500" },
+  { name: "Josephine Lichel", roles: ["Janice", "Flugbegleiterin"], image: "https://placehold.co/400x500" },
+  { name: "Kristin \"Kae\" Knillmann", roles: ["Annette", "Beverly"], image: "https://placehold.co/400x500" },
+  { name: "Chris Zieroth", roles: ["Garth", "Kevin J.", "Chef-Kardiologe"], image: "https://placehold.co/400x500" },
+  { name: "Yasmina Giebeler", roles: ["Diane", "Crystal"], image: "https://placehold.co/400x500" },
+  { name: "Felix Moebus", roles: ["Nick"], image: "https://placehold.co/400x500" },
+  { name: "Matthias Busch", roles: ["Kevin T.", "Captain Bristol"], image: "https://placehold.co/400x500" },
+  { name: "Joël-Edmond Kenfack Nguetsop", roles: ["Kevin T.", "Captain Bristol"], image: "https://placehold.co/400x500" },
+  { name: "Christine Milo", roles: ["Hannah", "Margie", "Micky"], image: "https://placehold.co/400x500" },
+  { name: "Fitim Qenaj", roles: ["Dwight", "Ali"], image: "https://placehold.co/400x500" },
 ];
+
+// Shuffle cast entries in-place
+shuffle(cast);
 
 const shows = [
   new Date(2026, 5, 5, 19, 0),
@@ -99,13 +104,13 @@ const shows = [
             :key="i"
             :image="member.image"
             :name="member.name"
-            :role="member.role"
+            :roles="member.roles"
           />
         </div>
       </SectionContainer>
 
       <!-- Spielzeiten & Spielort -->
-      <SectionContainer>
+      <SectionContainer class="-mb-4">
         <div class="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
           <FlatCard
             title="Spielzeiten"
