@@ -15,7 +15,8 @@ defineProps({
       <LqipImage
         :src="image"
         :alt="name"
-        class="aspect-4/5 w-full object-cover"
+        aspect-ratio="4/5"
+        class="w-full object-cover"
       />
     </template>
 
