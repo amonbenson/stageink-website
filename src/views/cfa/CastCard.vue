@@ -1,8 +1,9 @@
 <script setup>
 import FlatCard from "@/components/FlatCard.vue";
+import LqipImage from "@/components/LqipImage.vue";
 
 defineProps({
-  image: { type: String, required: true },
+  image: { type: Object, required: true },
   name: { type: String, required: true },
   roles: { type: Array, required: true },
 });
@@ -11,11 +12,11 @@ defineProps({
 <template>
   <FlatCard shadow>
     <template #image>
-      <img
+      <LqipImage
         :src="image"
         :alt="name"
         class="aspect-4/5 w-full object-cover"
-      >
+      />
     </template>
 
     <div class="flex h-full flex-col items-center justify-center gap-2 text-center">

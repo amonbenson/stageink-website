@@ -10,6 +10,20 @@ import { useScrollTimeline } from "@/composables/useScrollTimeline.js";
 import { shuffle } from "../../utils/shuffle";
 import backgroundMap from "./assets/backgroundMap.png?lqip&quality=100";
 import cfaLogo from "./assets/cfaLogo.png?lqip&lqipsize=200";
+import imgChrimi from "./assets/profiles/Chrimi_Story.jpg?lqip";
+import imgChris from "./assets/profiles/Chris_Story.jpg?lqip";
+import imgDaniel from "./assets/profiles/Daniel_Story.jpg?lqip";
+import imgFelix from "./assets/profiles/Felix_Story.jpg?lqip";
+import imgFidias from "./assets/profiles/Fidias_Story.jpg?lqip";
+import imgFitim from "./assets/profiles/Fitim_Story.jpg?lqip";
+import imgFranzi from "./assets/profiles/Franzi_Story.jpg?lqip";
+import imgJoël from "./assets/profiles/Joël_Story.jpg?lqip";
+import imgJosi from "./assets/profiles/Josi_Story.jpg?lqip";
+import imgKae from "./assets/profiles/Kae_Story.jpg?lqip";
+import imgMatthias from "./assets/profiles/Matthias_Story.jpg?lqip";
+import imgSophia from "./assets/profiles/Sophia_Story.jpg?lqip";
+import imgSven from "./assets/profiles/Sven_Story.jpg?lqip";
+import imgYasmina from "./assets/profiles/Yasmina_Story.jpg?lqip";
 import CastCard from "./CastCard.vue";
 import PlaneScroller from "./PlaneScroller.vue";
 
@@ -26,20 +40,20 @@ useScrollTimeline((timeline) => {
 });
 
 const cast = [
-  { name: "Sven Edthofer", roles: ["Claude", "Derm", "Brendas Bruder"], image: "https://placehold.co/400x500" },
-  { name: "Sophia Blume", roles: ["Bonnie", "Martha"], image: "https://placehold.co/400x500" },
-  { name: "Francesca Valetta", roles: ["Beulah", "Delores", "Brenda"], image: "https://placehold.co/400x500" },
-  { name: "Fidias Curiel", roles: ["Oz", "Joey", "Mr. Michaels", "Rabbi", "Matty"], image: "https://placehold.co/400x500" },
-  { name: "Daniel Wollförster", roles: ["Doug", "Eddie", "Robin"], image: "https://placehold.co/400x500" },
-  { name: "Josephine Lichel", roles: ["Janice", "Flugbegleiterin"], image: "https://placehold.co/400x500" },
-  { name: "Kristin \"Kae\" Knillmann", roles: ["Annette", "Beverly"], image: "https://placehold.co/400x500" },
-  { name: "Chris Zieroth", roles: ["Garth", "Kevin J.", "Chef-Kardiologe"], image: "https://placehold.co/400x500" },
-  { name: "Yasmina Giebeler", roles: ["Diane", "Crystal"], image: "https://placehold.co/400x500" },
-  { name: "Felix Moebus", roles: ["Nick"], image: "https://placehold.co/400x500" },
-  { name: "Matthias Busch", roles: ["Kevin T.", "Captain Bristol"], image: "https://placehold.co/400x500" },
-  { name: "Joël-Edmond Kenfack Nguetsop", roles: ["Kevin T.", "Captain Bristol"], image: "https://placehold.co/400x500" },
-  { name: "Christine Milo", roles: ["Hannah", "Margie", "Micky"], image: "https://placehold.co/400x500" },
-  { name: "Fitim Qenaj", roles: ["Dwight", "Ali"], image: "https://placehold.co/400x500" },
+  { name: "Sven Edthofer", roles: ["Claude", "Derm", "Brendas Bruder"], image: imgSven },
+  { name: "Sophia Blume", roles: ["Bonnie", "Martha"], image: imgSophia },
+  { name: "Francesca Valetta", roles: ["Beulah", "Delores", "Brenda"], image: imgFranzi },
+  { name: "Fidias Curiel", roles: ["Oz", "Joey", "Mr. Michaels", "Rabbi", "Matty"], image: imgFidias },
+  { name: "Daniel Wollförster", roles: ["Doug", "Eddie", "Robin"], image: imgDaniel },
+  { name: "Josephine Lichel", roles: ["Janice", "Flugbegleiterin"], image: imgJosi },
+  { name: "Kristin \"Kae\" Knillmann", roles: ["Annette", "Beverly"], image: imgKae },
+  { name: "Chris Zieroth", roles: ["Garth", "Kevin J.", "Chef-Kardiologe"], image: imgChris },
+  { name: "Yasmina Giebeler", roles: ["Diane", "Crystal"], image: imgYasmina },
+  { name: "Felix Moebus", roles: ["Nick"], image: imgFelix },
+  { name: "Matthias Busch", roles: ["Kevin T.", "Captain Bristol"], image: imgMatthias },
+  { name: "Joël-Edmond Kenfack Nguetsop", roles: ["Kevin T.", "Captain Bristol"], image: imgJoël },
+  { name: "Christine Milo", roles: ["Hannah", "Margie", "Micky"], image: imgChrimi },
+  { name: "Fitim Qenaj", roles: ["Dwight", "Ali"], image: imgFitim },
 ];
 
 // Shuffle cast entries in-place
