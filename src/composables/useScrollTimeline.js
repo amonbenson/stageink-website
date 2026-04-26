@@ -5,20 +5,26 @@ import { onBeforeUnmount, onMounted } from "vue";
  * Drives a GSAP timeline via scroll progress.
  * @param {(timeline: gsap.core.Timeline) => void} setup - Called each time the
  *   timeline is (re)built. Use it to add tweens to the provided timeline.
- * @param {() => boolean} [enabled] - Optional guard evaluated on each (re)init.
- *   Return false to skip building the timeline (e.g. on mobile). Reduced-motion
- *   preference is always checked regardless of this guard.
  */
 export function useScrollTimeline(setup) {
   let timeline = null;
+  let rafId = null;
 
-  function handleScroll() {
+  function update() {
+    rafId = null;
     if (!timeline) {
       return;
     }
 
-    const progress = Math.min(1, window.scrollY / (document.body.offsetHeight - window.innerHeight));
+    const scrollable = document.body.offsetHeight - window.innerHeight;
+    const progress = scrollable > 0 ? Math.min(1, window.scrollY / scrollable) : 0;
     timeline.progress(progress);
+  }
+
+  function handleScroll() {
+    if (rafId === null) {
+      rafId = requestAnimationFrame(update);
+    }
   }
 
   function init() {
@@ -33,17 +39,21 @@ export function useScrollTimeline(setup) {
 
     timeline = gsap.timeline({ paused: true });
     setup(timeline);
-    handleScroll();
+    update();
   }
 
   onMounted(() => {
-    document.addEventListener("scroll", handleScroll);
+    document.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", init);
     init();
   });
 
   onBeforeUnmount(() => {
-    timeline.kill();
+    if (rafId !== null) {
+      cancelAnimationFrame(rafId);
+    }
+
+    timeline?.kill();
     document.removeEventListener("scroll", handleScroll);
     window.removeEventListener("resize", init);
   });
