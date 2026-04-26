@@ -119,7 +119,7 @@ const shows = [
       id="cfa-background-map"
       :src="backgroundMap"
       cover
-      class="fixed inset-0 origin-[20%_33%] bg-fixed bg-position-[20%_33%]"
+      class="fixed top-0 left-0 size-full origin-[20%_33%] bg-fixed bg-position-[20%_33%]"
     />
 
     <div class="isolate">
@@ -214,9 +214,24 @@ const shows = [
             title="Spielort"
             shadow
           >
-            <template #image>
-              <img src="https://placehold.co/800x480">
-            </template>
+            <div>
+              <a
+                href="https://www.centre-francais.de/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>Centre Français</strong>
+              </a>
+              <p>Müllerstrasse 74</p>
+              <p>13349 Berlin</p>
+            </div>
+
+            <div>
+              <GoogleMapsEmbed
+                class="aspect-video w-full"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d481.30355221682305!2d13.339652748269584!3d52.55843849653598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a853dc64a7bb7d%3A0xcf534af820ae74c8!2sCentre%20Fran%C3%A7ais%20de%20Berlin!5e0!3m2!1sen!2sde!4v1777204253443!5m2!1sen!2sde"
+              />
+            </div>
           </FlatCard>
         </div>
       </SectionContainer>
