@@ -21,6 +21,12 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  // Override the auto-computed aspect ratio (e.g. "1/1", "4/3", "16/9").
+  // Defaults to the image's natural dimensions.
+  aspectRatio: {
+    type: String,
+    default: null,
+  },
 });
 
 defineOptions({ inheritAttrs: false });
@@ -79,7 +85,10 @@ onMounted(() => {
     v-if="background"
     ref="containerRef"
     v-bind="$attrs"
-    :style="{ backgroundImage: `url(${src.url}), url(${src.lqip})` }"
+    :style="{
+      backgroundImage: `url(${src.url}), url(${src.lqip})`,
+      aspectRatio: aspectRatio ?? `${src.width} / ${src.height}`,
+    }"
   >
     <slot />
   </div>
@@ -90,7 +99,7 @@ onMounted(() => {
     v-bind="$attrs"
     :src="src.url"
     :style="{
-      aspectRatio: `${src.width} / ${src.height}`,
+      aspectRatio: aspectRatio ?? `${src.width} / ${src.height}`,
       backgroundImage: `url(${src.lqip})`,
       backgroundSize: 'cover',
       color: 'transparent',

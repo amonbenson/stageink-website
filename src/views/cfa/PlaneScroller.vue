@@ -6,7 +6,7 @@ import plane from "./assets/plane.png?lqip";
   <LqipImage
     :src="plane"
     background
-    class="plane-scroller my-32 h-(--animate-scroll-x-amount) w-full bg-size-[auto_100%] bg-repeat-x [--animate-scroll-x-amount:2rem]"
+    class="plane-scroller h-(--animate-scroll-x-amount) w-full bg-size-[auto_100%] bg-repeat-x [--animate-scroll-x-amount:2rem]"
   />
 </template>
 
