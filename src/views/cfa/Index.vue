@@ -119,11 +119,11 @@ const shows = [
       id="cfa-background-map"
       :src="backgroundMap"
       cover
-      class="fixed top-0 left-0 size-full origin-[20%_33%] bg-fixed bg-position-[20%_33%]"
+      class="fixed top-0 left-0 h-screen w-screen origin-[20%_33%] bg-fixed bg-position-[20%_33%]"
     />
 
-    <div class="isolate">
-      <div class="mb-16 flex w-full flex-col items-center justify-center gap-16 p-4 lg:mb-32">
+    <div class="isolate mb-16 space-y-16 lg:mb-32 lg:space-y-32">
+      <div class="flex w-full flex-col items-center justify-center gap-16 p-4">
         <!-- StageInk Logo -->
         <SiteLogo
           class="aura block aura-black/25 lg:self-start"
@@ -191,10 +191,10 @@ const shows = [
         </div>
       </SectionContainer>
 
-      <PlaneScroller class="my-16" />
+      <PlaneScroller />
 
       <!-- Spielzeiten & Spielort -->
-      <SectionContainer class="mb-16">
+      <SectionContainer>
         <div class="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
           <FlatCard
             title="Spielzeiten"
