@@ -165,11 +165,11 @@ const shows = [
         </div>
       </SectionContainer>
 
-      <!-- Kreativteam -->
-      <SectionContainer title="Kreativteam">
+      <!-- Band -->
+      <SectionContainer title="Band">
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           <CastCard
-            v-for="member, i in creativeTeam"
+            v-for="member, i in band"
             :key="i"
             :image="member.image"
             :name="member.name"
@@ -178,11 +178,11 @@ const shows = [
         </div>
       </SectionContainer>
 
-      <!-- Band -->
-      <SectionContainer title="Band">
+      <!-- Kreativteam -->
+      <SectionContainer title="Kreativteam">
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           <CastCard
-            v-for="member, i in band"
+            v-for="member, i in creativeTeam"
             :key="i"
             :image="member.image"
             :name="member.name"
