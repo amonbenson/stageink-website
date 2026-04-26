@@ -65,7 +65,7 @@ const cast = [
   { name: "Yasmina Giebeler", roles: ["Diane", "Crystal"], image: imgYasmina },
   { name: "Felix Moebus", roles: ["Nick"], image: imgFelix },
   { name: "Matthias Busch", roles: ["Kevin T.", "Captain Bristol"], image: imgMatthias },
-  { name: "Joël-Edmond Kenfack Nguetsop", roles: ["Kevin T.", "Captain Bristol"], image: imgJoël },
+  { name: "Joël-Edmond Kenfack Nguetsop", roles: ["Bob", "Muhumuza"], image: imgJoël },
   { name: "Christine Milo", roles: ["Hannah", "Margie", "Micky"], image: imgChrimi },
   { name: "Fitim Qenaj", roles: ["Dwight", "Ali"], image: imgFitim },
 ];

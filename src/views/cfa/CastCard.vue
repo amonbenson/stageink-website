@@ -8,11 +8,17 @@ const props = defineProps({
   name: { type: String, required: true },
   roles: { type: Array, required: true },
   infix: { type: String, default: "" },
-  order: { type: String, default: "name-roles" },
-  rolesRenderer: { type: Function, default: roles => roles.join(" & ") },
+  separator: { type: String, default: ", " },
+  breakRoles: { type: Boolean, default: false },
 });
 
-const rolesString = computed(() => props.rolesRenderer(props.roles.map(r => r.replace(" ", "\u00A0"))));
+const rolesString = computed(() => {
+  // Trim roles and optionally replace spaces with non-breaking spaces
+  const roles = props.roles.map(role => props.breakRoles ? role.trim().replace(" ", "\u00A0") : role.trim());
+
+  // Join roles with the specified separator
+  return roles.join(props.separator);
+});
 </script>
 
 <template>
@@ -27,7 +33,7 @@ const rolesString = computed(() => props.rolesRenderer(props.roles.map(r => r.re
 
     <div class="flex h-full flex-col items-center justify-center gap-2 text-center">
       <div class="text-2xl font-bold uppercase">
-        {{ order === 'name-roles' ? name : rolesString }}
+        {{ name }}
       </div>
       <div class="text-sm">
         {{ infix }}
@@ -41,7 +47,7 @@ const rolesString = computed(() => props.rolesRenderer(props.roles.map(r => r.re
         </div>
       </div> -->
       <div class="text-2xl uppercase">
-        {{ order === 'name-roles' ? rolesString : name }}
+        {{ rolesString }}
       </div>
     </div>
   </FlatCard>
