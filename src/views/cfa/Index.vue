@@ -91,7 +91,7 @@ const band = [
   { name: "Ruben O. Doering", roles: ["Mandoline", "Mandoloncello"], image: imgRuben },
   { name: "Marco Pragliola", roles: ["Gitarre"], image: imgMarco },
   { name: "Lukas Wallnig", roles: ["Bass"], image: imgLukas },
-  { name: "Tim Hildebrandt", roles: ["Fidel"], image: imgTim },
+  { name: "Tim Hildebrandt", roles: ["Fiddle"], image: imgTim },
   { name: "Max Schramm", roles: ["Drums"], image: imgMax },
   { name: "Joseph Pierce", roles: ["Keyboard 2"], image: imgJoseph },
 ];
