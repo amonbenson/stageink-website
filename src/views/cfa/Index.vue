@@ -10,20 +10,20 @@ import { useScrollTimeline } from "@/composables/useScrollTimeline.js";
 import { shuffle } from "../../utils/shuffle";
 import backgroundMap from "./assets/backgroundMap.png?lqip&quality=100";
 import cfaLogo from "./assets/cfaLogo.png?lqip&lqipsize=200";
-import imgChrimi from "./assets/profiles/Chrimi_Story.jpg?lqip";
-import imgChris from "./assets/profiles/Chris_Story.jpg?lqip";
-import imgDaniel from "./assets/profiles/Daniel_Story.jpg?lqip";
-import imgFelix from "./assets/profiles/Felix_Story.jpg?lqip";
-import imgFidias from "./assets/profiles/Fidias_Story.jpg?lqip";
-import imgFitim from "./assets/profiles/Fitim_Story.jpg?lqip";
-import imgFranzi from "./assets/profiles/Franzi_Story.jpg?lqip";
-import imgJoël from "./assets/profiles/Joël_Story.jpg?lqip";
-import imgJosi from "./assets/profiles/Josi_Story.jpg?lqip";
-import imgKae from "./assets/profiles/Kae_Story.jpg?lqip";
-import imgMatthias from "./assets/profiles/Matthias_Story.jpg?lqip";
-import imgSophia from "./assets/profiles/Sophia_Story.jpg?lqip";
-import imgSven from "./assets/profiles/Sven_Story.jpg?lqip";
-import imgYasmina from "./assets/profiles/Yasmina_Story.jpg?lqip";
+import imgChrimi from "./assets/profiles/Chrimi_Story.jpg?format=webp&imagetools";
+import imgChris from "./assets/profiles/Chris_Story.jpg?format=webp&imagetools";
+import imgDaniel from "./assets/profiles/Daniel_Story.jpg?format=webp&imagetools";
+import imgFelix from "./assets/profiles/Felix_Story.jpg?format=webp&imagetools";
+import imgFidias from "./assets/profiles/Fidias_Story.jpg?format=webp&imagetools";
+import imgFitim from "./assets/profiles/Fitim_Story.jpg?format=webp&imagetools";
+import imgFranzi from "./assets/profiles/Franzi_Story.jpg?format=webp&imagetools";
+import imgJoël from "./assets/profiles/Joël_Story.jpg?format=webp&imagetools";
+import imgJosi from "./assets/profiles/Josi_Story.jpg?format=webp&imagetools";
+import imgKae from "./assets/profiles/Kae_Story.jpg?format=webp&imagetools";
+import imgMatthias from "./assets/profiles/Matthias_Story.jpg?format=webp&imagetools";
+import imgSophia from "./assets/profiles/Sophia_Story.jpg?format=webp&imagetools";
+import imgSven from "./assets/profiles/Sven_Story.jpg?format=webp&imagetools";
+import imgYasmina from "./assets/profiles/Yasmina_Story.jpg?format=webp&imagetools";
 import CastCard from "./CastCard.vue";
 import PlaneScroller from "./PlaneScroller.vue";
 
@@ -99,7 +99,7 @@ const shows = [
       </div>
 
       <!-- Trailer Video -->
-      <SectionContainer>
+      <!-- <SectionContainer>
         <FlatCard
           class="w-full"
           shadow
@@ -108,10 +108,36 @@ const shows = [
             <img src="https://placehold.co/800x450">
           </template>
         </FlatCard>
-      </SectionContainer>
+      </SectionContainer> -->
 
       <!-- Cast -->
-      <SectionContainer>
+      <SectionContainer title="Cast">
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+          <CastCard
+            v-for="member, i in cast"
+            :key="i"
+            :image="member.image"
+            :name="member.name"
+            :roles="member.roles"
+          />
+        </div>
+      </SectionContainer>
+
+      <!-- Kreativteam -->
+      <SectionContainer title="Kreativteam">
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+          <CastCard
+            v-for="member, i in cast"
+            :key="i"
+            :image="member.image"
+            :name="member.name"
+            :roles="member.roles"
+          />
+        </div>
+      </SectionContainer>
+
+      <!-- Band -->
+      <SectionContainer title="Kreativteam">
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           <CastCard
             v-for="member, i in cast"
