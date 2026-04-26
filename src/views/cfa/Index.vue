@@ -73,15 +73,15 @@ const cast = [
 const creativeTeam = [
   { name: "Matthias Busch", roles: ["Projektleitung", "Regie"], image: imgMatthias },
   { name: "Marie Hilmer", roles: ["Regieassistenz"], image: imgMarie },
-  { name: "Kae Fox", roles: ["Intimacy Coordination"], image: imgKae },
-  { name: "Patrizia Lebek", roles: ["Sprechtraining"], image: imgPatrizia },
-  { name: "Fabian Menzel", roles: ["Musikalische Leitung Band"], image: imgFabi },
-  { name: "Hannah Savory", roles: ["Musikalische Leitung Gesang"], image: imgHannah },
   { name: "Kate Greer", roles: ["Choreografie"], image: imgKate },
+  { name: "Hannah Savory", roles: ["Musikalische Leitung Gesang"], image: imgHannah },
+  { name: "Fabian Menzel", roles: ["Musikalische Leitung Band"], image: imgFabi },
   { name: "Lukas Bosse", roles: ["Kostüm"], image: imgPlaceholder },
   { name: "Josephine Lichel", roles: ["Maske"], image: imgJosi },
   { name: "Sven Edthofer", roles: ["Bühnenbild"], image: imgSven },
   { name: "Christine Milo", roles: ["Requisite"], image: imgChrimi },
+  { name: "Patrizia Lebek", roles: ["Sprechtraining"], image: imgPatrizia },
+  { name: "Kae Fox", roles: ["Intimacy Coordination"], image: imgKae },
 ];
 
 const band = [
