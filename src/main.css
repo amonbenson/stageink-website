@@ -20,7 +20,7 @@
 }
 
 body {
-  @apply bg-black;
+  @apply bg-black overscroll-none;
 }
 
 html, body, #app {
