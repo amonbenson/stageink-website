@@ -76,11 +76,12 @@ const creativeTeam = [
   { name: "Hannah Savory", roles: ["Musikalische Leitung Gesang"], image: imgHannah },
   { name: "Kate Greer", roles: ["Choreografie"], image: imgKate },
   { name: "Fabian Menzel", roles: ["Musikalische Leitung Band"], image: imgFabi },
-  { name: "Patrizia Lebek", roles: ["Sprechtrainerin"], image: imgPatrizia },
+  { name: "Patrizia Lebek", roles: ["Sprechtraining"], image: imgPatrizia },
   { name: "Sven Edthofer", roles: ["Bühnenbild"], image: imgSven },
   { name: "Lukas Bosse", roles: ["Kostüm"], image: imgPlaceholder },
   { name: "Christine Milo", roles: ["Requisite"], image: imgChrimi },
   { name: "Josephine Lichel", roles: ["Maske"], image: imgJosi },
+  { name: "Kae Fox", roles: ["Intimacy Coordination"], image: imgKae },
 ];
 
 const band = [
@@ -190,8 +191,10 @@ const shows = [
         </div>
       </SectionContainer>
 
+      <PlaneScroller class="my-16" />
+
       <!-- Spielzeiten & Spielort -->
-      <SectionContainer class="-mb-4">
+      <SectionContainer class="mb-16">
         <div class="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
           <FlatCard
             title="Spielzeiten"
@@ -217,8 +220,6 @@ const shows = [
           </FlatCard>
         </div>
       </SectionContainer>
-
-      <PlaneScroller />
     </div>
   </main>
 </template>
