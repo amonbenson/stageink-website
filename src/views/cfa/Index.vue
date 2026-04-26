@@ -10,19 +10,33 @@ import { useScrollTimeline } from "@/composables/useScrollTimeline.js";
 import { shuffle } from "../../utils/shuffle";
 import backgroundMap from "./assets/backgroundMap.png?lqip&quality=100";
 import cfaLogo from "./assets/cfaLogo.png?lqip&lqipsize=200";
+import imgAmon from "./assets/profiles/Amon_Story.jpg?format=webp&imagetools";
 import imgChrimi from "./assets/profiles/Chrimi_Story.jpg?format=webp&imagetools";
 import imgChris from "./assets/profiles/Chris_Story.jpg?format=webp&imagetools";
 import imgDaniel from "./assets/profiles/Daniel_Story.jpg?format=webp&imagetools";
+import imgFabi from "./assets/profiles/Fabi_Story.jpg?format=webp&imagetools";
 import imgFelix from "./assets/profiles/Felix_Story.jpg?format=webp&imagetools";
 import imgFidias from "./assets/profiles/Fidias_Story.jpg?format=webp&imagetools";
 import imgFitim from "./assets/profiles/Fitim_Story.jpg?format=webp&imagetools";
 import imgFranzi from "./assets/profiles/Franzi_Story.jpg?format=webp&imagetools";
-import imgJoël from "./assets/profiles/Joël_Story.jpg?format=webp&imagetools";
+import imgHannah from "./assets/profiles/Hannah_Story.jpg?format=webp&imagetools";
+import imgJamila from "./assets/profiles/Jamila_Story.jpg?format=webp&imagetools";
+import imgJoël from "./assets/profiles/Joel_Story.jpg?format=webp&imagetools";
+import imgJoseph from "./assets/profiles/Joseph_Story.jpg?format=webp&imagetools";
 import imgJosi from "./assets/profiles/Josi_Story.jpg?format=webp&imagetools";
 import imgKae from "./assets/profiles/Kae_Story.jpg?format=webp&imagetools";
+import imgKate from "./assets/profiles/Kate_Story.jpg?format=webp&imagetools";
+import imgLukas from "./assets/profiles/Lukas_Story.jpg?format=webp&imagetools";
+import imgMarco from "./assets/profiles/Marco_Story.jpg?format=webp&imagetools";
+import imgMarie from "./assets/profiles/Marie_Story.jpg?format=webp&imagetools";
 import imgMatthias from "./assets/profiles/Matthias_Story.jpg?format=webp&imagetools";
+import imgMax from "./assets/profiles/Max_Story.jpg?format=webp&imagetools";
+import imgPatrizia from "./assets/profiles/Patrizia_Story.jpg?format=webp&imagetools";
+import imgPlaceholder from "./assets/profiles/Placeholder.png?format=webp&imagetools";
+import imgRuben from "./assets/profiles/Ruben_Story.jpg?format=webp&imagetools";
 import imgSophia from "./assets/profiles/Sophia_Story.jpg?format=webp&imagetools";
 import imgSven from "./assets/profiles/Sven_Story.jpg?format=webp&imagetools";
+import imgTim from "./assets/profiles/Tim_Story.jpg?format=webp&imagetools";
 import imgYasmina from "./assets/profiles/Yasmina_Story.jpg?format=webp&imagetools";
 import CastCard from "./CastCard.vue";
 import PlaneScroller from "./PlaneScroller.vue";
@@ -46,7 +60,7 @@ const cast = [
   { name: "Fidias Curiel", roles: ["Oz", "Joey", "Mr. Michaels", "Rabbi", "Matty"], image: imgFidias },
   { name: "Daniel Wollförster", roles: ["Doug", "Eddie", "Robin"], image: imgDaniel },
   { name: "Josephine Lichel", roles: ["Janice", "Flugbegleiterin"], image: imgJosi },
-  { name: "Kae Fox (?)", roles: ["Annette", "Beverly"], image: imgKae },
+  { name: "Kae Fox", roles: ["Annette", "Beverly"], image: imgKae },
   { name: "Chris Zieroth", roles: ["Garth", "Kevin J.", "Chef-Kardiologe"], image: imgChris },
   { name: "Yasmina Giebeler", roles: ["Diane", "Crystal"], image: imgYasmina },
   { name: "Felix Moebus", roles: ["Nick"], image: imgFelix },
@@ -56,8 +70,35 @@ const cast = [
   { name: "Fitim Qenaj", roles: ["Dwight", "Ali"], image: imgFitim },
 ];
 
+const creativeTeam = [
+  { name: "Matthias Busch", roles: ["Projektleitung", "Regie"], image: imgMatthias },
+  { name: "Marie Hilmer", roles: ["Regieassistenz"], image: imgMarie },
+  { name: "Hannah Savory", roles: ["Musikalische Leitung Gesang"], image: imgHannah },
+  { name: "Kate Greer", roles: ["Choreografie"], image: imgKate },
+  { name: "Fabian Menzel", roles: ["Musikalische Leitung Band"], image: imgFabi },
+  { name: "Patrizia Lebek", roles: ["Sprechtrainerin"], image: imgPatrizia },
+  { name: "Sven Edthofer", roles: ["Bühnenbild"], image: imgSven },
+  { name: "Lukas Bosse", roles: ["Kostüm"], image: imgPlaceholder },
+  { name: "Christine Milo", roles: ["Requisite"], image: imgChrimi },
+  { name: "Josephine Lichel", roles: ["Maske"], image: imgJosi },
+];
+
+const band = [
+  { name: "Fabian Menzel", roles: ["Dirigat"], image: imgFabi },
+  { name: "Jamila Loutfi", roles: ["Keyboard 1"], image: imgJamila },
+  { name: "Amon Benson", roles: ["Percussion"], image: imgAmon },
+  { name: "Ruben O. Doering", roles: ["Mandoline", "Mandoloncello"], image: imgRuben },
+  { name: "Marco Pragliola", roles: ["Gitarre"], image: imgMarco },
+  { name: "Lukas Wallnig", roles: ["Bass"], image: imgLukas },
+  { name: "Tim Hildebrandt", roles: ["Fidel"], image: imgTim },
+  { name: "Max Schramm", roles: ["Drums"], image: imgMax },
+  { name: "Joseph Pierce", roles: ["Keyboard 2"], image: imgJoseph },
+];
+
 // Shuffle cast entries in-place
 shuffle(cast);
+shuffle(creativeTeam);
+shuffle(band);
 
 const shows = [
   new Date(2026, 5, 5, 19, 0),
@@ -127,7 +168,7 @@ const shows = [
       <SectionContainer title="Kreativteam">
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           <CastCard
-            v-for="member, i in cast"
+            v-for="member, i in creativeTeam"
             :key="i"
             :image="member.image"
             :name="member.name"
@@ -137,10 +178,10 @@ const shows = [
       </SectionContainer>
 
       <!-- Band -->
-      <SectionContainer title="Kreativteam">
+      <SectionContainer title="Band">
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           <CastCard
-            v-for="member, i in cast"
+            v-for="member, i in band"
             :key="i"
             :image="member.image"
             :name="member.name"
