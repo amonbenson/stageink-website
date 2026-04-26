@@ -123,14 +123,14 @@ const shows = [
     />
 
     <div class="isolate">
-      <div class="flex w-full flex-col items-center justify-center gap-4 p-4 lg:mb-32">
+      <div class="mb-16 flex w-full flex-col items-center justify-center gap-16 p-4 lg:mb-32">
         <!-- StageInk Logo -->
         <SiteLogo
           class="aura block aura-black/25 lg:self-start"
         />
 
         <!-- Come From Away Logo -->
-        <div class="aura w-full max-w-md aura-black/25">
+        <div class="aura w-full max-w-lg aura-black/25">
           <LqipImage
             class="w-full"
             :src="cfaLogo"
@@ -238,3 +238,22 @@ const shows = [
     </div>
   </main>
 </template>
+
+<!-- CSS scroll-driven animation alternative (no JS, compositor-thread). Requires Firefox 128+ and Chrome 115+, safari not supported yet. So we use a JS-based approach for now -->
+<!--
+<style>
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes cfa-parallax {
+      from { transform: scale(1) rotate(0deg); }
+      to   { transform: scale(1.5) rotate(5deg); }
+    }
+
+    #cfa-background-map {
+      animation: cfa-parallax linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+}
+</style>
+-->
