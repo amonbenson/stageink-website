@@ -73,15 +73,15 @@ const cast = [
 const creativeTeam = [
   { name: "Matthias Busch", roles: ["Projektleitung", "Regie"], image: imgMatthias },
   { name: "Marie Hilmer", roles: ["Regieassistenz"], image: imgMarie },
+  { name: "Kae Fox", roles: ["Intimacy Coordination"], image: imgKae },
+  { name: "Patrizia Lebek", roles: ["Sprechtraining"], image: imgPatrizia },
+  { name: "Fabian Menzel", roles: ["Musikalische Leitung Band"], image: imgFabi },
   { name: "Hannah Savory", roles: ["Musikalische Leitung Gesang"], image: imgHannah },
   { name: "Kate Greer", roles: ["Choreografie"], image: imgKate },
-  { name: "Fabian Menzel", roles: ["Musikalische Leitung Band"], image: imgFabi },
-  { name: "Patrizia Lebek", roles: ["Sprechtraining"], image: imgPatrizia },
-  { name: "Sven Edthofer", roles: ["Bühnenbild"], image: imgSven },
   { name: "Lukas Bosse", roles: ["Kostüm"], image: imgPlaceholder },
-  { name: "Christine Milo", roles: ["Requisite"], image: imgChrimi },
   { name: "Josephine Lichel", roles: ["Maske"], image: imgJosi },
-  { name: "Kae Fox", roles: ["Intimacy Coordination"], image: imgKae },
+  { name: "Sven Edthofer", roles: ["Bühnenbild"], image: imgSven },
+  { name: "Christine Milo", roles: ["Requisite"], image: imgChrimi },
 ];
 
 const band = [
@@ -98,7 +98,7 @@ const band = [
 
 // Shuffle cast entries in-place
 shuffle(cast);
-shuffle(creativeTeam);
+// shuffle(creativeTeam);
 shuffle(band);
 
 const shows = [
