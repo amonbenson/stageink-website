@@ -65,16 +65,16 @@ const shows = [
 
             <ShowDates :shows="shows" />
 
+            <RoundButton to="/cfa">
+              Zur Projektseite
+            </RoundButton>
+
             <RoundButton
               href="https://www.tickettailor.com/events/stagiesberlinev/1943079"
               style="--btn-color: var(--color-primary); --btn-text: white;"
             >
               Tickets jetzt <strong>HIER</strong> verfügbar!
             </RoundButton>
-
-            <!-- <RoundButton to="/cfa">
-              Mehr...
-            </RoundButton> -->
           </div>
         </div>
       </div>

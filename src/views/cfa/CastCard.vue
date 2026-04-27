@@ -7,7 +7,7 @@ const props = defineProps({
   image: { type: String, required: true },
   name: { type: String, required: true },
   roles: { type: Array, required: true },
-  infix: { type: String, default: "" },
+  // infix: { type: String, default: "" },
   separator: { type: String, default: ", " },
   breakRoles: { type: Boolean, default: false },
 });
@@ -35,9 +35,9 @@ const rolesString = computed(() => {
       <div class="text-2xl font-bold uppercase">
         {{ name }}
       </div>
-      <div class="text-sm">
+      <!-- <div class="text-sm">
         {{ infix }}
-      </div>
+      </div> -->
       <!-- <div class="flex flex-col items-center justify-center text-2xl uppercase">
         <div
           v-for="role in roles"
