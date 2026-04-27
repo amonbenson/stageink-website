@@ -65,7 +65,7 @@ const shows = [
 
             <ShowDates :shows="shows" />
 
-            <RoundButton to="/cfa">
+            <RoundButton to="/cfa/">
               Zur Projektseite
             </RoundButton>
 
