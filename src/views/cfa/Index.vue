@@ -63,7 +63,7 @@ const cast = [
   { name: "Kae Fox", roles: ["Annette", "Beverley"], image: imgKae },
   { name: "Chris Zieroth", roles: ["Garth", "Kevin J.", "Chef-Kardiologe"], image: imgChris },
   { name: "Yasmina Giebeler", roles: ["Diane", "Crystal"], image: imgYasmina },
-  { name: "Felix Moebus", roles: ["Nick"], image: imgFelix },
+  { name: "Felix Möbus", roles: ["Nick"], image: imgFelix },
   { name: "Matthias Busch", roles: ["Kevin T.", "Captain Bristol"], image: imgMatthias },
   { name: "Joël-Edmond Kenfack Nguetsop", roles: ["Bob", "Muhumuza"], image: imgJoël },
   { name: "Christine Milo", roles: ["Hannah", "Margie", "Micky"], image: imgChrimi },
