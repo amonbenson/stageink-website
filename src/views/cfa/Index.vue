@@ -47,7 +47,7 @@ useScrollTimeline((timeline) => {
     scale: 1.0,
     rotation: 0,
   }, {
-    scale: 1.5,
+    scale: 2.0,
     rotation: 5,
     ease: "power1.in",
   }, 0);
@@ -60,7 +60,7 @@ const cast = [
   { name: "Fidias Curiel", roles: ["Oz", "Joey", "Mr. Michaels", "Rabbi", "Matty"], image: imgFidias },
   { name: "Daniel Wollförster", roles: ["Doug", "Eddie", "Robin"], image: imgDaniel },
   { name: "Josephine Lichel", roles: ["Janice", "Flugbegleiterin"], image: imgJosi },
-  { name: "Kae Fox", roles: ["Annette", "Beverly"], image: imgKae },
+  { name: "Kae Fox", roles: ["Annette", "Beverley"], image: imgKae },
   { name: "Chris Zieroth", roles: ["Garth", "Kevin J.", "Chef-Kardiologe"], image: imgChris },
   { name: "Yasmina Giebeler", roles: ["Diane", "Crystal"], image: imgYasmina },
   { name: "Felix Moebus", roles: ["Nick"], image: imgFelix },
