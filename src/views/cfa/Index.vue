@@ -10,7 +10,7 @@ import { useScrollTimeline } from "@/composables/useScrollTimeline.js";
 import { shuffle } from "../../utils/shuffle";
 import backgroundMap from "./assets/backgroundMap.png?lqip&quality=100";
 import cfaLogo from "./assets/cfaLogo.png?lqip&lqipsize=200";
-import imgPlaceholder from "./assets/profiles/_Placeholder.png?w=500&format=webp&imagetools";
+// import imgPlaceholder from "./assets/profiles/_Placeholder.png?w=500&format=webp&imagetools";
 import imgAmon from "./assets/profiles/Amon_Post.jpg?w=500&format=webp&imagetools";
 import imgChrimi from "./assets/profiles/Chrimi_Post.jpg?w=500&format=webp&imagetools";
 import imgChris from "./assets/profiles/Chris_Post.jpg?w=500&format=webp&imagetools";
@@ -27,6 +27,7 @@ import imgJoseph from "./assets/profiles/Joseph_Post.jpg?w=500&format=webp&image
 import imgJosi from "./assets/profiles/Josi_Post.jpg?w=500&format=webp&imagetools";
 import imgKae from "./assets/profiles/Kae_Post.jpg?w=500&format=webp&imagetools";
 import imgKate from "./assets/profiles/Kate_Post.jpg?w=500&format=webp&imagetools";
+import imgLukasB from "./assets/profiles/Lukas_B_Post.jpeg?w=500&format=webp&imagetools";
 import imgLukas from "./assets/profiles/Lukas_Post.jpg?w=500&format=webp&imagetools";
 import imgMarco from "./assets/profiles/Marco_Post.jpg?w=500&format=webp&imagetools";
 import imgMarie from "./assets/profiles/Marie_Post.jpg?w=500&format=webp&imagetools";
@@ -76,7 +77,7 @@ const creativeTeam = [
   { name: "Kate Greer", roles: ["Choreografie"], image: imgKate },
   { name: "Hannah Savory", roles: ["Musikalische Leitung Gesang"], image: imgHannah },
   { name: "Fabian Menzel", roles: ["Musikalische Leitung Band"], image: imgFabi },
-  { name: "Lukas Bosse", roles: ["Kostüm"], image: imgPlaceholder },
+  { name: "Lukas Bosse", roles: ["Kostüm"], image: imgLukasB },
   { name: "Josephine Lichel", roles: ["Maske"], image: imgJosi },
   { name: "Sven Edthofer", roles: ["Bühnenbild"], image: imgSven },
   { name: "Christine Milo", roles: ["Requisite"], image: imgChrimi },
