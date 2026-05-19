@@ -120,7 +120,7 @@ const shows = [
       class="fixed top-0 left-0 h-screen w-screen origin-[20%_33%] bg-fixed bg-position-[20%_33%]"
     />
 
-    <div class="isolate mb-32 space-y-32">
+    <div class="isolate mb-32 space-y-12 lg:space-y-32">
       <div class="flex w-full flex-col items-center justify-center gap-16 p-4">
         <!-- StageInk Logo -->
         <SiteLogo
@@ -138,7 +138,8 @@ const shows = [
         </div>
       </div>
 
-      <SectionContainer class="-mt-16 mb-12">
+      <!-- Ticket Button -->
+      <SectionContainer>
         <div class="flex items-center justify-center">
           <RoundButton
             class="w-full max-w-lg font-bold"
