@@ -97,3 +97,13 @@ Production deployments must be triggered manually to prevent accidental releases
 
 The server credentials (SSH key, username, host, target directory) are stored as
 [GitHub Actions secrets and variables](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions).
+
+## Miscellaneous
+
+### Video embedding
+
+Videos have been converted to WebM format using the following FFmpeg command:
+
+```bash
+ffmpeg -i input.mp4 -c:v libvpx-vp9 -crf 33 -b:v 0 -deadline best -c:a libopus -b:a 96k output.webm
+```

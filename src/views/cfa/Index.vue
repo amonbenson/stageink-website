@@ -154,16 +154,34 @@ const shows = [
       </SectionContainer>
 
       <!-- Trailer Video -->
-      <!-- <SectionContainer>
+      <SectionContainer>
         <FlatCard
           class="w-full"
           shadow
         >
           <template #image>
-            <img src="https://placehold.co/800x450">
+            <video
+              controls
+              class="w-full"
+            >
+              <source
+                src="@/views/cfa/assets/trailer.webm"
+                type="video/webm"
+              >
+            </video>
           </template>
+
+          <p>
+            11.09.2001 Neufundland.
+          </p>
+          <p>
+            Ein kleiner Ort an der Küste Kanadas wird am Tag des internationalen Schockmoments zur Herberge für tausende Menschen aus aller Welt, deren Flugzeuge dort landen müssen.
+          </p>
+          <p>
+            Ein Musical über Menschlichkeit im Ausnahmezustand und die wahren Begegnungen, die daraus entstanden. Einakter ohne Pause, mit Liveband.
+          </p>
         </FlatCard>
-      </SectionContainer> -->
+      </SectionContainer>
 
       <!-- Cast -->
       <SectionContainer title="Cast">
