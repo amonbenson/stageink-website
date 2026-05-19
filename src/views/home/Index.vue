@@ -1,7 +1,4 @@
 <script setup>
-import BackgroundSection from "@/components/BackgroundSection.vue";
-import RoundButton from "@/components/RoundButton.vue";
-import SectionContainer from "@/components/SectionContainer.vue";
 import ShowDates from "@/components/ShowDates.vue";
 import SiteLogo from "@/components/SiteLogo.vue";
 import SocialLinks from "@/components/SocialLinks.vue";

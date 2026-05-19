@@ -1,8 +1,6 @@
 <script setup>
 import { computed } from "vue";
 
-import FlatCard from "@/components/FlatCard.vue";
-
 const props = defineProps({
   image: { type: String, required: true },
   name: { type: String, required: true },

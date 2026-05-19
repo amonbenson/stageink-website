@@ -1,8 +1,5 @@
 <script setup>
-import BackgroundSection from "@/components/BackgroundSection.vue";
-import FlatCard from "@/components/FlatCard.vue";
-import RoundButton from "@/components/RoundButton.vue";
-import SectionContainer from "@/components/SectionContainer.vue";
+import GoogleMapsEmbed from "@/components/GoogleMapsEmbed.vue";
 import ShowDates from "@/components/ShowDates.vue";
 import SiteLogo from "@/components/SiteLogo.vue";
 import { useScrollTimeline } from "@/composables/useScrollTimeline.js";
