@@ -11,6 +11,7 @@ import cfaLogo from "./assets/cfaLogo.png?lqip&lqipsize=200";
 import imgAmon from "./assets/profiles/Amon_Post.jpg?w=500&format=webp&imagetools";
 import imgChrimi from "./assets/profiles/Chrimi_Post.jpg?w=500&format=webp&imagetools";
 import imgChris from "./assets/profiles/Chris_Post.jpg?w=500&format=webp&imagetools";
+import imgDan from "./assets/profiles/Dan_Post.jpg?w=500&format=webp&imagetools";
 import imgDaniel from "./assets/profiles/Daniel_Post.jpg?w=500&format=webp&imagetools";
 import imgFabi from "./assets/profiles/Fabi_Post.jpg?w=500&format=webp&imagetools";
 import imgFelix from "./assets/profiles/Felix_Post.jpg?w=500&format=webp&imagetools";
@@ -92,6 +93,7 @@ const band = [
   { name: "Tim Hildebrandt", roles: ["Fiddle"], image: imgTim },
   { name: "Max Schramm", roles: ["Drums"], image: imgMax },
   { name: "Joseph Pierce", roles: ["Keyboard 2"], image: imgJoseph },
+  { name: "Dan Carpenter", roles: ["Keyboard 3"], image: imgDan },
 ];
 
 // Shuffle cast entries in-place
