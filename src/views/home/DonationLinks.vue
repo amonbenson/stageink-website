@@ -6,9 +6,9 @@ import paypalLogo from "./assets/paypalLogo.png?lqip";
 </script>
 
 <template>
-  <div class="flex w-full flex-col items-center gap-4 sm:w-fit sm:flex-row sm:justify-start">
+  <div class="flex w-full flex-col items-center gap-16 sm:w-fit sm:flex-row sm:justify-start">
     <a
-      href="https://paypal.me/Stageink"
+      href="https://www.paypal.com/donate/?hosted_button_id=WE58RGLJNLSSC"
       target="_blank"
       rel="noopener noreferrer"
       class="aura-hover flex flex-col items-center gap-1 aura-paypal/25 aura-spread-[-2rem]"
@@ -19,7 +19,7 @@ import paypalLogo from "./assets/paypalLogo.png?lqip";
         alt="PayPal Logo"
         transparent
       />
-      <span class="text-paypal">paypal.me/stageink</span>
+      <span class="text-paypal">paypal.com</span>
     </a>
 
     <a
