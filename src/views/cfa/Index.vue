@@ -1,6 +1,6 @@
 <script setup>
 import GoogleMapsEmbed from "@/components/GoogleMapsEmbed.vue";
-import ShowDates from "@/components/ShowDates.vue";
+// import ShowDates from "@/components/ShowDates.vue";
 import SiteLogo from "@/components/SiteLogo.vue";
 import { useScrollTimeline } from "@/composables/useScrollTimeline.js";
 
@@ -101,16 +101,16 @@ shuffle(cast);
 // shuffle(creativeTeam);
 shuffle(band);
 
-const shows = [
-  new Date(2026, 5, 5, 19, 0),
-  new Date(2026, 5, 6, 14, 0),
-  new Date(2026, 5, 6, 19, 0),
-  new Date(2026, 5, 7, 18, 0),
-  new Date(2026, 5, 12, 19, 0),
-  new Date(2026, 5, 13, 14, 0),
-  new Date(2026, 5, 13, 19, 0),
-  new Date(2026, 5, 14, 18, 0),
-];
+// const shows = [
+//   new Date(2026, 5, 5, 19, 0),
+//   new Date(2026, 5, 6, 14, 0),
+//   new Date(2026, 5, 6, 19, 0),
+//   new Date(2026, 5, 7, 18, 0),
+//   new Date(2026, 5, 12, 19, 0),
+//   new Date(2026, 5, 13, 14, 0),
+//   new Date(2026, 5, 13, 19, 0),
+//   new Date(2026, 5, 14, 18, 0),
+// ];
 </script>
 
 <template>
@@ -145,7 +145,7 @@ const shows = [
         <div class="flex items-center justify-center">
           <RoundButton
             class="w-full max-w-lg font-bold"
-            href="https://www.tickettailor.com/events/stagiesberlinev/1943079"
+            href="https://eventfrog.de/de/p/theater-buehne/theater/theaterfest-130-1-jahre-verband-berliner-amateurbuehnen-e-v-7467689106316786728.html"
             style="--btn-color: var(--color-cfa-yellow); --btn-text: black;"
           >
             Tickets kaufen
@@ -231,10 +231,12 @@ const shows = [
             title="Spielzeiten"
             shadow
           >
-            <ShowDates :shows="shows" />
+            <!-- <ShowDates :shows="shows" /> -->
+
+            <p>11.07.2026, 15:15 &ndash; 15:45</p>
 
             <RoundButton
-              href="https://www.tickettailor.com/events/stagiesberlinev/1943079"
+              href="https://eventfrog.de/de/p/theater-buehne/theater/theaterfest-130-1-jahre-verband-berliner-amateurbuehnen-e-v-7467689106316786728.html"
               style="--btn-color: var(--color-cfa-yellow); --btn-text: black;"
             >
               Tickets kaufen
@@ -247,20 +249,20 @@ const shows = [
           >
             <div>
               <a
-                href="https://www.centre-francais.de/"
+                href="https://pumpeberlin.de/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <strong>Centre Français</strong>
+                <strong>Jugendkulturzentrum Pumpe</strong>
               </a>
-              <p>Müllerstrasse 74</p>
-              <p>13349 Berlin</p>
+              <p>Lützowstraße 42</p>
+              <p>10785 Berlin</p>
             </div>
 
             <div>
               <GoogleMapsEmbed
                 class="aspect-video w-full"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d481.30355221682305!2d13.339652748269584!3d52.55843849653598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a853dc64a7bb7d%3A0xcf534af820ae74c8!2sCentre%20Fran%C3%A7ais%20de%20Berlin!5e0!3m2!1sen!2sde!4v1777204253443!5m2!1sen!2sde"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.5720753810174!2d13.3553547766179!3d52.50498533734114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851b334ee4f5f%3A0xf4f3941228681144!2sJugendKulturZentrum%20PUMPE!5e0!3m2!1sen!2sde!4v1782058023460!5m2!1sen!2sde"
               />
             </div>
           </FlatCard>
