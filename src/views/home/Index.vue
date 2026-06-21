@@ -1,5 +1,5 @@
 <script setup>
-import ShowDates from "@/components/ShowDates.vue";
+// import ShowDates from "@/components/ShowDates.vue";
 import SiteLogo from "@/components/SiteLogo.vue";
 import SocialLinks from "@/components/SocialLinks.vue";
 
@@ -14,6 +14,7 @@ const socialLinks = [
   { label: "YouTube", icon: "simple-icons:youtube", url: "https://www.youtube.com/@StagiesBerlin" },
 ];
 
+/*
 const shows = [
   new Date(2026, 5, 5, 19, 0),
   new Date(2026, 5, 6, 14, 0),
@@ -24,6 +25,7 @@ const shows = [
   new Date(2026, 5, 13, 19, 0),
   new Date(2026, 5, 14, 18, 0),
 ];
+*/
 </script>
 
 <template>
@@ -56,18 +58,42 @@ const shows = [
         <!-- Production Timetable -->
         <div class="justify-self-center [grid-area:timetable]">
           <div class="group block w-fit space-y-4 rounded-4xl bg-white/75 p-4 text-center text-black backdrop-blur-lg lg:p-8">
+            <p>Ausschnitte aus</p>
+
             <h2>Come From Away</h2>
 
-            <p>Im <strong>Centre Français, 13349 Berlin</strong></p>
+            <div>
+              <p>
+                beim <a
+                  href="https://eventfrog.de/de/p/theater-buehne/theater/theaterfest-130-1-jahre-verband-berliner-amateurbuehnen-e-v-7467689106316786728.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <strong>Theaterfest 130+1 Jahre VBA</strong>
+                </a>
+              </p>
 
-            <ShowDates :shows="shows" />
+              <p>am 11.07.2026, 15:15 &ndash; 15:45</p>
+
+              <p>
+                im <a
+                  href="https://maps.app.goo.gl/ZRmaUXe1EKdQddCr6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <strong>Jugendkulturzentrum Pumpe</strong>
+                </a>
+              </p>
+            </div>
+
+            <!-- <ShowDates :shows="shows" /> -->
 
             <RoundButton to="/cfa/">
               Zur Projektseite
             </RoundButton>
 
             <RoundButton
-              href="https://www.tickettailor.com/events/stagiesberlinev/1943079"
+              href="https://eventfrog.de/de/p/theater-buehne/theater/theaterfest-130-1-jahre-verband-berliner-amateurbuehnen-e-v-7467689106316786728.html"
               style="--btn-color: var(--color-primary); --btn-text: white;"
             >
               Tickets jetzt <strong>HIER</strong> verfügbar!
