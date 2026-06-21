@@ -249,7 +249,7 @@ shuffle(band);
           >
             <div>
               <a
-                href="https://www.centre-francais.de/"
+                href="https://pumpeberlin.de/"
                 target="_blank"
                 rel="noopener noreferrer"
               >

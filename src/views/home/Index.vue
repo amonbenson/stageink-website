@@ -77,7 +77,7 @@ const shows = [
 
               <p>
                 im <a
-                  href="https://maps.app.goo.gl/ZRmaUXe1EKdQddCr6"
+                  href="https://pumpeberlin.de/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
