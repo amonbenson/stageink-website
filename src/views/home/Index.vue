@@ -116,7 +116,7 @@ const shows = [
           <p>
             <strong>HEATHERS</strong> (deutschsprachige Premiere)<br>
             <strong>BE MORE CHILL</strong> (neue Übersetzung)<br>
-            <strong>KOPFKINO</strong> (1. Inszenierung seit UA 2017)
+            <strong>COME FROM AWAY</strong> (deutschsprachige Amateur-Premiere)
           </p>
         </SectionContainer>
       </div>
