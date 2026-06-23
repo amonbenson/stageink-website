@@ -7,7 +7,7 @@ Source code for the [stageink.org](https://stageink.org) website. StageInk (Stag
 
 ## Tech Stack
 
-[Vue 3](https://vuejs.org) · [Vite](https://vite.dev) · [Tailwind CSS v4](https://tailwindcss.com) · [vite-ssg](https://github.com/antfu/vite-ssg) (static generation) · [Iconify](https://iconify.design)
+[Vue 3](https://vuejs.org) · [Vite](https://vite.dev) · [Tailwind CSS v4](https://tailwindcss.com) · [vite-ssg](https://github.com/antfu/vite-ssg) (static generation) · [GSAP](https://gsap.com) (animations) · [Iconify](https://iconify.design) · [vite-svg-loader](https://github.com/jpkleemans/vite-svg-loader) · [vite-imagetools](https://github.com/JonasKruckenberg/imagetools)
 
 ## Directory Layout
 
@@ -19,6 +19,8 @@ All application source code lives here. The most important subdirectories are:
 - **`src/components/`** — Reusable UI components shared across multiple views (e.g. `BackgroundSection.vue`, `SiteLogo.vue`). A component belongs here rather than in a view subdirectory if more than one page uses it.
 - **`src/content/`** — Larger content blocks that contain mostly text or structured markup rather than interactive logic (e.g. `Haftungsausschluss.vue`). These are separated from `components/` to keep purely presentational content distinct from UI components.
 - **`src/composables/`** — Vue composables: reusable stateful or reactive logic that is shared across components (e.g. `useScrollTimeline.js`).
+- **`src/assets/`** — App-wide assets shared across multiple pages (e.g. `stageInkLogo.svg`).
+- **`src/utils/`** — Plain JS utility functions with no Vue-specific logic (e.g. `shuffle.js`).
 
 #### Asset management
 
@@ -26,8 +28,8 @@ Assets (images, fonts, etc.) are organised by where they are used:
 
 | Location | Use when... |
 |---|---|
+| `src/assets/` | The asset is shared across the app (e.g. the site logo) |
 | `src/views/<view>/assets/` | The asset is only used by one specific page |
-| `src/components/` (alongside the component) | The asset is tightly coupled to a single shared component |
 | `public/` | The asset must not be bundled (see below) |
 
 Assets inside `src/` are **bundled by Vite** at build time: they are processed, optimised, fingerprinted (e.g. `logo.a3f2c1.png`), and inlined or copied into `dist/`. Referencing them from Vue files via `import` or relative paths is the normal workflow.
@@ -39,7 +41,6 @@ Assets inside `public/` are **copied to `dist/` as-is**, without any processing 
 Static assets that are served at a fixed path without bundling:
 
 - **`public/fonts/`** — Poppins web font files (`.woff2`), referenced by URL from `src/fonts.css`
-- **`public/images/`** — Site-wide images that need a stable URL
 - **`public/favicon.*`** — Favicon in multiple formats
 
 ### .github/workflows/
