@@ -233,7 +233,7 @@ shuffle(band);
           >
             <!-- <ShowDates :shows="shows" /> -->
 
-            <p>11.07.2026, 15:15 &ndash; 15:45</p>
+            <p>11.07.2026, 14:30 &ndash; 15:00</p>
 
             <RoundButton
               href="https://eventfrog.de/de/p/theater-buehne/theater/theaterfest-130-1-jahre-verband-berliner-amateurbuehnen-e-v-7467689106316786728.html"
