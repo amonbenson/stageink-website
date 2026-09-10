@@ -25,14 +25,14 @@ const props = defineProps({
   // Defaults to the image's natural dimensions.
   aspectRatio: {
     type: String,
-    default: null,
+    default: undefined,
   },
 });
 
 defineOptions({ inheritAttrs: false });
 
-const imgRef = ref(null);
-const containerRef = ref(null);
+const imgRef = ref(undefined);
+const containerRef = ref(undefined);
 
 // img mode: restore text color (hides alt text during placeholder display) and
 // optionally clear the background LQIP for transparent images.

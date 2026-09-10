@@ -12,7 +12,7 @@ defineProps({
 
 <template>
   <section
-    class="mx-auto w-full max-w-6xl px-4 py-4 text-justify md:px-8 lg:px-16"
+    class="section-container"
     v-bind="$attrs"
   >
     <details v-if="collapsible">

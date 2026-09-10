@@ -7,7 +7,7 @@ defineProps({
   // e.g. "3840/4799" — passed as CSS aspect-ratio value
   aspect: {
     type: String,
-    default: null,
+    default: undefined,
   },
   // true = bg-cover (crop to fill), false = bg-[length:100%_auto] (scale to width)
   cover: {

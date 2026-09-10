@@ -6,13 +6,17 @@ defineProps({
     type: Array,
     required: true,
   },
+  hoverEffect: {
+    type: String,
+    default: "aura",
+  },
 });
 </script>
 
 <template>
   <nav
     aria-label="Social Media"
-    class="flex flex-row items-center justify-center gap-6 lg:flex-col"
+    class="flex flex-col items-center justify-center gap-6"
   >
     <a
       v-for="link in links"
@@ -21,7 +25,10 @@ defineProps({
       :aria-label="link.label"
       target="_blank"
       rel="noopener noreferrer"
-      class="aura-hover aura-spread-5 aura-white"
+      :class="{
+        'aura-hover aura-spread-5 aura-white': hoverEffect === 'aura',
+        'hover-scale': hoverEffect === 'scale',
+      }"
     >
       <Icon
         :icon="link.icon"

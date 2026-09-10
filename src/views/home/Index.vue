@@ -51,7 +51,7 @@ const shows = [
         <div class="[grid-area:socials]">
           <SocialLinks
             :links="socialLinks"
-            class="aura aura-sky/65"
+            class="aura flex-row aura-sky/65 lg:flex-col"
           />
         </div>
 
