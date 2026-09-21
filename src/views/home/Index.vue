@@ -28,6 +28,8 @@ const shows = [
   new Date(2027, 5, 27, 18, 0),
 ];
 */
+
+const halloweenTicketLink = "https://www.reservix.de/tickets-musical-verein-stagies-berlin-ev-halloween-musical-konzertabend-in-berlin-grosser-saal-gemeinschaftshaus-gropiusstadt-am-31-10-2026/e2605547";
 </script>
 
 <template>
@@ -58,7 +60,7 @@ const shows = [
         </div>
 
         <!-- Production Timetable -->
-        <div class="flex max-w-200 flex-col items-center gap-8 justify-self-center [grid-area:timetable]">
+        <div class="flex max-w-230 flex-col items-center gap-8 justify-self-center [grid-area:timetable]">
           <div class="group flex w-full flex-col gap-4 rounded-4xl bg-white/75 p-4 text-justify text-black backdrop-blur-lg lg:p-8">
             <div>
               <h2 class="text-center!">
@@ -71,7 +73,7 @@ const shows = [
             </div>
 
             <div class="flex flex-col items-center gap-4 sm:flex-row">
-              <div class="flex flex-col justify-between gap-4">
+              <div class="flex h-full flex-col justify-between gap-4">
                 <div>
                   <p>
                     Berlin ist Musicalhauptstadt, wenn man neben den großen Häusern schaut. 5 Gruppen aus der Fülle an Musiktheater-Vereinen und -Projekten bringen am 31.10.2026 das Gemeinschaftshaus zum Erschauern und zum Feiern.
@@ -83,7 +85,7 @@ const shows = [
                 </div>
 
                 <RoundButton
-                  href="https://www.instagram.com/_stageink_/"
+                  :href="halloweenTicketLink"
                   style="--btn-color: var(--color-primary); --btn-text: white;"
                 >
                   Tickets
@@ -91,10 +93,16 @@ const shows = [
               </div>
 
               <div>
-                <LqipImage
-                  :src="halloweenPoster"
-                  class="w-full cursor-pointer shadow-xl sm:w-auto sm:max-w-72"
-                />
+                <a
+                  :href="halloweenTicketLink"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LqipImage
+                    :src="halloweenPoster"
+                    class="w-full cursor-pointer shadow-xl sm:w-auto sm:max-w-72"
+                  />
+                </a>
               </div>
             </div>
           </div>
