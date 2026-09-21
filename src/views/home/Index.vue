@@ -1,11 +1,13 @@
 <script setup>
 // import ShowDates from "@/components/ShowDates.vue";
+import LqipImage from "@/components/LqipImage.vue";
 import SiteLogo from "@/components/SiteLogo.vue";
 import SocialLinks from "@/components/SocialLinks.vue";
 
 import backgroundBushes from "./assets/backgroundBushes.png?lqip";
 import backgroundSky from "./assets/backgroundSky.png?lqip";
 import backgroundWall from "./assets/backgroundWall.png?lqip";
+import halloweenPoster from "./assets/halloweenPoster.png?lqip";
 import DonationLinks from "./DonationLinks.vue";
 
 const socialLinks = [
@@ -16,14 +18,14 @@ const socialLinks = [
 
 /*
 const shows = [
-  new Date(2026, 5, 5, 19, 0),
-  new Date(2026, 5, 6, 14, 0),
-  new Date(2026, 5, 6, 19, 0),
-  new Date(2026, 5, 7, 18, 0),
-  new Date(2026, 5, 12, 19, 0),
-  new Date(2026, 5, 13, 14, 0),
-  new Date(2026, 5, 13, 19, 0),
-  new Date(2026, 5, 14, 18, 0),
+  new Date(2027, 5, 18, 19, 0),
+  new Date(2027, 5, 19, 13, 30),
+  new Date(2027, 5, 19, 19, 0),
+  new Date(2027, 5, 20, 18, 0),
+  new Date(2027, 5, 25, 19, 0),
+  new Date(2027, 5, 26, 13, 30),
+  new Date(2027, 5, 26, 19, 0),
+  new Date(2027, 5, 27, 18, 0),
 ];
 */
 </script>
@@ -51,52 +53,76 @@ const shows = [
         <div class="[grid-area:socials]">
           <SocialLinks
             :links="socialLinks"
-            class="aura aura-sky/65"
+            class="aura flex-row aura-sky/65 lg:flex-col"
           />
         </div>
 
         <!-- Production Timetable -->
-        <div class="justify-self-center [grid-area:timetable]">
-          <div class="group block w-fit space-y-4 rounded-4xl bg-white/75 p-4 text-center text-black backdrop-blur-lg lg:p-8">
-            <p>Ausschnitte aus</p>
+        <div class="flex max-w-200 flex-col items-center gap-8 justify-self-center [grid-area:timetable]">
+          <div class="group flex w-full flex-col gap-4 rounded-4xl bg-white/75 p-4 text-justify text-black backdrop-blur-lg lg:p-8">
+            <div>
+              <h2 class="text-center!">
+                Halloween Musical Nacht
+              </h2>
 
-            <h2>Come From Away</h2>
+              <p class="text-center!">
+                31.10.2026, 19:00 Uhr
+              </p>
+            </div>
+
+            <div class="flex flex-col items-center gap-4 sm:flex-row">
+              <div class="flex flex-col justify-between gap-4">
+                <div>
+                  <p>
+                    Berlin ist Musicalhauptstadt, wenn man neben den großen Häusern schaut. 5 Gruppen aus der Fülle an Musiktheater-Vereinen und -Projekten bringen am 31.10.2026 das Gemeinschaftshaus zum Erschauern und zum Feiern.
+                  </p>
+
+                  <p>
+                    Stageink (Stagies Berlin e.V.), Encore! Musicals Berlin e.V., TAMUTHEA e.V., Musical Theater Society Berlin und der Berlin Stage Company e.V. präsentieren Gruseliges aus Musical und Popkultur auf der großen Bühne.
+                  </p>
+                </div>
+
+                <RoundButton
+                  href="https://www.instagram.com/_stageink_/"
+                  style="--btn-color: var(--color-primary); --btn-text: white;"
+                >
+                  Tickets
+                </RoundButton>
+              </div>
+
+              <div>
+                <LqipImage
+                  :src="halloweenPoster"
+                  class="w-full cursor-pointer shadow-xl sm:w-auto sm:max-w-72"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="group block w-full space-y-4 rounded-4xl bg-white/75 p-4 text-center text-black backdrop-blur-lg lg:p-8">
+            <div>
+              <p>Danke für 8+1 Shows</p>
+
+              <h2 class="text-center!">
+                Come From Away!
+              </h2>
+            </div>
 
             <div>
-              <p>
-                beim <a
-                  href="https://eventfrog.de/de/p/theater-buehne/theater/theaterfest-130-1-jahre-verband-berliner-amateurbuehnen-e-v-7467689106316786728.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <strong>Theaterfest 130+1 Jahre VBA</strong>
-                </a>
-              </p>
-
-              <p>am 11.07.2026, 14:30 &ndash; 15:00</p>
+              <p>Unsere nächste Hauptproduktion wird an folgenden Terminen stattfinden:</p>
 
               <p>
-                im <a
-                  href="https://pumpeberlin.de/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <strong>Jugendkulturzentrum Pumpe</strong>
-                </a>
+                <b>18. - 20</b> und <b>25. - 27. Juni 2027</b>
               </p>
             </div>
 
             <!-- <ShowDates :shows="shows" /> -->
 
-            <RoundButton to="/cfa/">
+            <!-- <RoundButton to="/cfa/">
               Zur Projektseite
-            </RoundButton>
+            </RoundButton> -->
 
-            <RoundButton
-              href="https://eventfrog.de/de/p/theater-buehne/theater/theaterfest-130-1-jahre-verband-berliner-amateurbuehnen-e-v-7467689106316786728.html"
-              style="--btn-color: var(--color-primary); --btn-text: white;"
-            >
-              Tickets jetzt <strong>HIER</strong> verfügbar!
+            <RoundButton href="https://www.instagram.com/_stageink_/">
+              Folge uns auf Instagram, um nichts zu verpassen!
             </RoundButton>
           </div>
         </div>
@@ -105,7 +131,8 @@ const shows = [
 
     <BackgroundSection :src="backgroundBushes">
       <!-- Welcome Text -->
-      <div class="aura w-full 3xl:mt-[calc(-20vw+15rem)]">
+      <!-- <div class="aura w-full 3xl:mt-[calc(-20vw+15rem)]"> -->
+      <div class="aura w-full">
         <SectionContainer title="Wir">
           <p>
             Stageink, gegründet 2009 in Berlin und seit 2016 als Stagies Berlin e.V. &mdash; das ist eine bunte Mischung von Menschen, die mit viel Herzblut und Engagement singen, schauspielern und tanzen. Wir bringen unterschiedlichste Musical- und Konzert-Produktionen auf große und kleine Berliner Bühnen.
