@@ -32,3 +32,6 @@ dist-ssr
 
 # Local backup directory
 /.backup/
+
+# Windows download metadata (alternate data streams)
+*:Zone.Identifier
