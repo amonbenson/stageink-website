@@ -7,7 +7,7 @@ import SocialLinks from "@/components/SocialLinks.vue";
 import backgroundBushes from "./assets/backgroundBushes.png?lqip";
 import backgroundSky from "./assets/backgroundSky.png?lqip";
 import backgroundWall from "./assets/backgroundWall.png?lqip";
-import halloweenPoster from "./assets/halloweenPoster.png?lqip";
+import musicalNightPoster from "./assets/musicalNightPoster.png?lqip";
 import DonationLinks from "./DonationLinks.vue";
 
 const socialLinks = [
@@ -28,8 +28,6 @@ const shows = [
   new Date(2027, 5, 27, 18, 0),
 ];
 */
-
-const halloweenTicketLink = "https://www.reservix.de/tickets-musical-verein-stagies-berlin-ev-halloween-musical-konzertabend-in-berlin-grosser-saal-gemeinschaftshaus-gropiusstadt-am-31-10-2026/e2605547";
 </script>
 
 <template>
@@ -61,51 +59,46 @@ const halloweenTicketLink = "https://www.reservix.de/tickets-musical-verein-stag
 
         <!-- Production Timetable -->
         <div class="flex max-w-230 flex-col items-center gap-8 justify-self-center [grid-area:timetable]">
-          <div class="group flex w-full flex-col gap-4 rounded-4xl bg-white/75 p-4 text-justify text-black backdrop-blur-lg lg:p-8">
-            <div>
-              <h2 class="text-center!">
-                Halloween Musical Nacht
-              </h2>
+          <article class="flex w-full flex-col gap-6 rounded-4xl bg-white/75 p-4 text-black backdrop-blur-lg sm:flex-row sm:items-center lg:gap-8 lg:p-8">
+            <div class="flex flex-1 flex-col gap-4">
+              <header class="space-y-1">
+                <h2>Musical Theatre Karaoke</h2>
 
-              <p class="text-center!">
-                31.10.2026, 19:00 Uhr
+                <p class="font-bold">
+                  <time datetime="2026-12-18T19:00">18.12.2026, 19:00 &ndash; 22:00 Uhr</time>
+                </p>
+
+                <address class="not-italic">
+                  <a
+                    href="https://www.google.com/maps/search/Schreinerstr.+59,+10247+Berlin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-primary underline-offset-4 hover:underline"
+                  >
+                    Wein Salon, Schreinerstr. 59, 10247 Berlin
+                  </a>
+                </address>
+              </header>
+
+              <p class="text-justify">
+                Stageink unterstützt die Winter- und Weihnachtsausgabe des zweimonatlichen Musical-Karaoke-Abends im Wein Salon. Kommt vorbei uns singt mit euren Freund*innen und Mitgliedern von Stageink bei veganen Getränke-Spezialitäten und Snacks eure liebsten winter- und weihnachtlichen Musicalsongs!
               </p>
             </div>
 
-            <div class="flex flex-col items-center gap-4 sm:flex-row">
-              <div class="flex h-full flex-col justify-between gap-4">
-                <div>
-                  <p>
-                    Berlin ist Musicalhauptstadt, wenn man neben den großen Häusern schaut. 5 Gruppen aus der Fülle an Musiktheater-Vereinen und -Projekten bringen am 31.10.2026 das Gemeinschaftshaus zum Erschauern und zum Feiern.
-                  </p>
+            <a
+              href="https://www.wein-salon.com/event/musical-theatre-karaoke-3/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full max-w-56 shrink-0 self-center lg:w-56"
+            >
+              <LqipImage
+                :src="musicalNightPoster"
+                alt="Plakat: Musical Theatre Karaoke im Wein Salon"
+                class="w-full shadow-xl"
+              />
+            </a>
+          </article>
 
-                  <p>
-                    Stageink (Stagies Berlin e.V.), Encore! Musicals Berlin e.V., TAMUTHEA e.V., Musical Theater Society Berlin und der Berlin Stage Company e.V. präsentieren Gruseliges aus Musical und Popkultur auf der großen Bühne.
-                  </p>
-                </div>
-
-                <RoundButton
-                  :href="halloweenTicketLink"
-                  style="--btn-color: var(--color-primary); --btn-text: white;"
-                >
-                  Tickets
-                </RoundButton>
-              </div>
-
-              <div>
-                <a
-                  :href="halloweenTicketLink"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <LqipImage
-                    :src="halloweenPoster"
-                    class="w-full cursor-pointer shadow-xl sm:w-auto sm:max-w-72"
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
           <div class="group block w-full space-y-4 rounded-4xl bg-white/75 p-4 text-center text-black backdrop-blur-lg lg:p-8">
             <div>
               <p>Danke für 8+1 Shows</p>
