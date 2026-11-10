@@ -35,3 +35,8 @@ dist-ssr
 
 # Windows download metadata (alternate data streams)
 *:Zone.Identifier
+
+# Environment files
+.env
+.env.*
+!.env.example
