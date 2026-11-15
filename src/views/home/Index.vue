@@ -151,11 +151,12 @@ const shows = [
 
       <BackgroundSection
         :src="backgroundWall"
-        cover
         aspect="3840/4799"
+        max-height="90rem"
         align-end
+        fade
         transparent
-        class="max-h-360 bg-top"
+        class="bg-top"
       >
         <div class="aura w-full">
           <SectionContainer title="Spenden">

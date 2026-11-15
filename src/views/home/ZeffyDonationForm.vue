@@ -48,7 +48,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="w-full overflow-hidden rounded-4xl">
-    <!-- Matches the loaded form's background and approximate height (in px, like the form itself) to avoid a layout jump -->
+    <!-- Matches the loaded form's background -->
     <div
       v-if="!consented"
       class="flex w-full flex-col items-center justify-center gap-4 bg-zeffy-light p-6 text-black"
