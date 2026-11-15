@@ -65,7 +65,7 @@ function watchBackgroundLoad() {
 
   img.src = props.src.url;
 
-  // Already in cache — fire immediately.
+  // Already in cache – fire immediately.
   if (img.complete) {
     img.onload();
   }

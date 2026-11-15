@@ -4,7 +4,7 @@ defineProps({
     type: Object,
     required: true,
   },
-  // e.g. "3840/4799" — passed as CSS aspect-ratio value
+  // e.g. "3840/4799" – passed as CSS aspect-ratio value
   aspect: {
     type: String,
     default: null,
@@ -19,7 +19,7 @@ defineProps({
     type: Boolean,
     default: false,
   },
-  // pass through to LqipImage — set true if the image has transparency so the
+  // pass through to LqipImage – set true if the image has transparency so the
   // LQIP is removed once the real image has loaded
   transparent: {
     type: Boolean,
