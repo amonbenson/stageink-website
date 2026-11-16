@@ -1,13 +1,13 @@
 <script setup>
+import { onMounted, ref } from "vue";
+
 import GoogleMapsEmbed from "@/components/GoogleMapsEmbed.vue";
-// import ShowDates from "@/components/ShowDates.vue";
 import SiteLogo from "@/components/SiteLogo.vue";
 import { useScrollTimeline } from "@/composables/useScrollTimeline.js";
 
 import { shuffle } from "../../utils/shuffle";
 import backgroundMap from "./assets/backgroundMap.png?lqip&quality=100";
 import cfaLogo from "./assets/cfaLogo.png?lqip&lqipsize=200";
-// import imgPlaceholder from "./assets/profiles/_Placeholder.png?w=500&format=webp&imagetools";
 import imgAmon from "./assets/profiles/Amon_Post.jpg?w=500&format=webp&imagetools";
 import imgChrimi from "./assets/profiles/Chrimi_Post.jpg?w=500&format=webp&imagetools";
 import imgChris from "./assets/profiles/Chris_Post.jpg?w=500&format=webp&imagetools";
@@ -52,7 +52,7 @@ useScrollTimeline((timeline) => {
   }, 0);
 });
 
-const cast = [
+const cast = ref([
   { name: "Sven Edthofer", roles: ["Claude", "Derm", "Brendas Bruder"], image: imgSven },
   { name: "Sophia Blume", roles: ["Bonnie", "Martha"], image: imgSophia },
   { name: "Francesca Valetta", roles: ["Beulah", "Delores", "Brenda"], image: imgFranzi },
@@ -67,7 +67,7 @@ const cast = [
   { name: "Joël-Edmond Kenfack Nguetsop", roles: ["Bob", "Muhumuza"], image: imgJoël },
   { name: "Christine Milo", roles: ["Hannah", "Margie", "Micky"], image: imgChrimi },
   { name: "Fitim Qenaj", roles: ["Dwight", "Ali"], image: imgFitim },
-];
+]);
 
 const creativeTeam = [
   { name: "Matthias Busch", roles: ["Projektleitung", "Regie"], image: imgMatthias },
@@ -83,7 +83,7 @@ const creativeTeam = [
   { name: "Kae Fox", roles: ["Intimacy Coordination"], image: imgKae },
 ];
 
-const band = [
+const band = ref([
   { name: "Fabian Menzel", roles: ["Dirigat"], image: imgFabi },
   { name: "Jamila Loutfi", roles: ["Keyboard 1"], image: imgJamila },
   { name: "Amon Benson", roles: ["Percussion"], image: imgAmon },
@@ -94,23 +94,13 @@ const band = [
   { name: "Max Schramm", roles: ["Drums"], image: imgMax },
   { name: "Joseph Pierce", roles: ["Keyboard 2"], image: imgJoseph },
   { name: "Dan Carpenter", roles: ["Keyboard 3"], image: imgDan },
-];
+]);
 
-// Shuffle cast entries in-place
-shuffle(cast);
-// shuffle(creativeTeam);
-shuffle(band);
-
-// const shows = [
-//   new Date(2026, 5, 5, 19, 0),
-//   new Date(2026, 5, 6, 14, 0),
-//   new Date(2026, 5, 6, 19, 0),
-//   new Date(2026, 5, 7, 18, 0),
-//   new Date(2026, 5, 12, 19, 0),
-//   new Date(2026, 5, 13, 14, 0),
-//   new Date(2026, 5, 13, 19, 0),
-//   new Date(2026, 5, 14, 18, 0),
-// ];
+// Shuffled after mounting, so the first client render matches the pre-rendered HTML
+onMounted(() => {
+  shuffle(cast.value);
+  shuffle(band.value);
+});
 </script>
 
 <template>
@@ -187,8 +177,8 @@ shuffle(band);
       <SectionContainer title="Cast">
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           <CastCard
-            v-for="member, i in cast"
-            :key="i"
+            v-for="member in cast"
+            :key="member.name"
             :image="member.image"
             :name="member.name"
             :roles="member.roles"
@@ -200,8 +190,8 @@ shuffle(band);
       <SectionContainer title="Band">
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           <CastCard
-            v-for="member, i in band"
-            :key="i"
+            v-for="member in band"
+            :key="member.name"
             :image="member.image"
             :name="member.name"
             :roles="member.roles"
@@ -213,8 +203,8 @@ shuffle(band);
       <SectionContainer title="Kreativteam">
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           <CastCard
-            v-for="member, i in creativeTeam"
-            :key="i"
+            v-for="member in creativeTeam"
+            :key="member.name"
             :image="member.image"
             :name="member.name"
             :roles="member.roles"
@@ -231,8 +221,6 @@ shuffle(band);
             title="Spielzeiten"
             shadow
           >
-            <!-- <ShowDates :shows="shows" /> -->
-
             <p>11.07.2026, 14:30 &ndash; 15:00</p>
 
             <RoundButton
@@ -272,7 +260,11 @@ shuffle(band);
   </main>
 </template>
 
-<!-- CSS scroll-driven animation alternative (no JS, compositor-thread). Requires Firefox 128+ and Chrome 115+, safari not supported yet. So we use a JS-based approach for now -->
+<!--
+  Switched off until Safari supports scroll-driven animations (animation-timeline).
+  This CSS-only version runs on the compositor thread. To switch it on, uncomment
+  this block and remove the useScrollTimeline() call above.
+-->
 <!--
 <style>
 @supports (animation-timeline: scroll()) {

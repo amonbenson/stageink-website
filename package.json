@@ -8,8 +8,7 @@
     "build": "vite-ssg build",
     "preview": "vite preview",
     "lint": "eslint . --max-warnings 0",
-    "lint:fix": "eslint . --max-warnings 0 --fix",
-    "deploy": "npm run build && ./deploy.sh"
+    "lint:fix": "eslint . --max-warnings 0 --fix"
   },
   "dependencies": {
     "@iconify/vue": "^5.0.0",

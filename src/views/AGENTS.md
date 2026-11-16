@@ -9,4 +9,4 @@ Extends the root `AGENTS.md`.
 
 ## cfa
 
-Project page of the "Come From Away" production. Profile photos import with a plain imagetools query (`?w=500&format=webp&imagetools`), not `?lqip`, since `CastCard` renders a bare `<img>`. Cast and band are shuffled during setup, so the client order differs from the pre-rendered HTML (a known hydration mismatch, against the rule in the root guide).
+Project page of the "Come From Away" production. Profile photos import with a plain imagetools query (`?w=500&format=webp&imagetools`), not `?lqip`, since `CastCard` renders a bare `<img>`. Cast and band are shuffled in `onMounted`, so the pre-rendered HTML keeps the source order.

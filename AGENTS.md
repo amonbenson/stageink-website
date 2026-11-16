@@ -22,7 +22,7 @@ npm run build     # vite-ssg build into dist/
 npm run preview   # serve dist/
 ```
 
-Before finishing: `lint:fix` and `build`. `npm run deploy` is obsolete (`deploy.sh` no longer exists).
+Before finishing: `lint:fix` and `build`.
 
 ## Layout
 
