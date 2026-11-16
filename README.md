@@ -66,6 +66,7 @@ GitHub Actions CI/CD pipelines:
 - Style with Tailwind utility classes in the template. Use a `<style scoped>` block only for things utilities can't express, such as pseudo-elements of native elements. Such a block needs `@reference "../main.css";` to use theme values and breakpoints in `@apply`.
 - Colors are defined once as `@theme` tokens in `src/main.css` (e.g. `--color-zeffy`). Don't hard-code hex values in components.
 - Use arbitrary values (`[…]`) only for numbers that can't be expressed on the spacing scale, such as values derived from an image's dimensions. Explain them in a comment.
+- Text is left-aligned (the browser default). Don't justify or center running text; centering is only for short UI elements such as buttons.
 - Use the `!` (important) suffix only to override inline styles set by third-party code (e.g. the Zeffy embed).
 - `aura` glows are drawn with `z-index: -10` inside the nearest isolated stacking context (`isolate`). Background layers behind them must sit lower (`-z-20`).
 

@@ -53,7 +53,7 @@ onBeforeUnmount(() => {
       v-if="!consented"
       class="flex w-full flex-col items-center justify-center gap-4 bg-zeffy-light p-6 text-black"
     >
-      <label class="flex max-w-lg cursor-pointer items-start gap-3 text-left text-sm md:text-base">
+      <label class="flex max-w-lg cursor-pointer items-start gap-3 text-sm md:text-base">
         <input
           v-model="consented"
           type="checkbox"

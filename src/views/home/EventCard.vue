@@ -125,7 +125,7 @@ onMounted(() => {
 
       <div
         v-if="$slots.default"
-        class="space-y-4 sm:text-justify"
+        class="space-y-4"
       >
         <slot />
       </div>

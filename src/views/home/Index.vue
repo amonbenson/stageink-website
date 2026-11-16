@@ -137,7 +137,7 @@ const wallPosterHeight = `min(${toCqw(WALL_POSTER_FRACTION * backgroundWall.heig
         </p>
       </EventCard>
 
-      <HeroCard class="space-y-4 text-center">
+      <HeroCard class="space-y-4">
         <div>
           <p>Danke für 8+1 Shows</p>
           <h2>Come From Away!</h2>
