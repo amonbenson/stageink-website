@@ -39,7 +39,8 @@ h1 {
 }
 
 h2 {
-  @apply text-3xl uppercase;
+  /* Long German words (e.g. HAFTUNGSAUSSCHLUSS) must not overflow narrow screens */
+  @apply text-3xl uppercase hyphens-auto wrap-break-word;
 }
 
 h3 {

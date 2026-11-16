@@ -1,7 +1,3 @@
-<script setup>
-import SectionContainer from "@/components/SectionContainer.vue";
-</script>
-
 <template>
   <SectionContainer
     title="Haftungsausschluss"

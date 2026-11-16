@@ -12,12 +12,16 @@ defineProps({
 
 <template>
   <section
-    class="mx-auto w-full max-w-6xl px-4 py-6 text-justify md:px-8 lg:px-16"
+    class="mx-auto w-full max-w-6xl px-4 py-6 sm:text-justify md:px-8 lg:px-16"
     v-bind="$attrs"
   >
     <details v-if="collapsible">
       <summary>
-        <h2 v-if="title">
+        <!-- min-w-0 lets long titles wrap inside the flex summary on phones -->
+        <h2
+          v-if="title"
+          class="min-w-0"
+        >
           {{ title }}
         </h2>
       </summary>
@@ -40,21 +44,25 @@ defineProps({
 </template>
 
 <style scoped>
+/* Makes the theme (breakpoints, colors) available to @apply in this block */
+@reference "../main.css";
+
 summary {
-  @apply relative cursor-pointer list-none;
+  @apply relative flex cursor-pointer list-none items-center gap-2 md:block;
 }
 
 summary::-webkit-details-marker {
   @apply hidden;
 }
 
+/* The ▶ marker sits inline on phones; from md the gutter is wide enough to hang it in the margin */
 summary::before {
   content: '▶';
-  @apply absolute left-[-1.2em] top-1/2 -translate-y-1/2 text-[0.7em] transition-transform duration-200;
+  @apply shrink-0 text-[0.7em] transition-transform duration-200 md:absolute md:top-1/2 md:left-[-1.2em] md:-translate-y-1/2;
 }
 
 details[open] > summary::before {
-  @apply -translate-y-1/2 rotate-90;
+  @apply rotate-90 md:-translate-y-1/2;
 }
 
 @media (prefers-reduced-motion: reduce) {

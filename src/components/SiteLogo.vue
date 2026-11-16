@@ -7,7 +7,13 @@ defineProps({
 </script>
 
 <template>
-  <RouterLink to="/">
-    <StageInkLogo :class="large ? 'w-64 lg:w-96' : 'w-64'" />
+  <RouterLink
+    to="/"
+    aria-label="Stageink – zur Startseite"
+  >
+    <StageInkLogo
+      aria-hidden="true"
+      :class="large ? 'w-64 lg:w-96' : 'w-64'"
+    />
   </RouterLink>
 </template>

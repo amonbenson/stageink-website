@@ -115,11 +115,11 @@ shuffle(band);
 
 <template>
   <main class="relative overflow-hidden">
-    <BackgroundSection
+    <LqipImage
       id="cfa-background-map"
       :src="backgroundMap"
-      cover
-      class="fixed top-0 left-0 h-screen w-screen origin-[20%_33%] bg-fixed bg-position-[20%_33%]"
+      background
+      class="fixed top-0 left-0 h-screen w-screen origin-[20%_33%] bg-cover bg-fixed bg-position-[20%_33%]"
     />
 
     <div class="isolate mb-32 space-y-12 lg:space-y-32">

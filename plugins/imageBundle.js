@@ -1,5 +1,5 @@
 // Transforms a single `?lqip` image import into an object with all derived
-// resources: { url, lqip, width, height }. The two sub-imports are handled
+// resources: { url, lqip, width, height, srcset }. The sub-imports are handled
 // by vite-imagetools, so this plugin must be registered before imagetools().
 //
 // A resolveId hook is required to claim the import before vite-imagetools can
@@ -11,9 +11,14 @@
 // Options (all optional):
 //   lqipsize=<n>  Width in px of the LQIP placeholder (default: 50)
 //   quality=<n>   WebP quality for the full-size image (default: imagetools default)
+//   widths=<a;b>  Also generate smaller versions with these widths in px. They
+//                 are exported as `srcset: [{ url, width }]` (ascending, ending
+//                 with the full-size image), so LqipImage only loads as many
+//                 pixels as the screen needs. Without it, `srcset` is null.
 //
-// Example:
+// Examples:
 //   import logo from "./logo.png?lqip&lqipsize=30&quality=80"
+//   import photo from "./photo.png?lqip&widths=640;1280;1920"
 const BUNDLE_PREFIX = "\0lqip:";
 
 export default function imageBundlePlugin() {
@@ -54,17 +59,28 @@ export default function imageBundlePlugin() {
       const lqipWidth = params.get("lqipsize") ?? "50";
       const quality = params.get("quality");
 
-      const urlQuery = quality
-        ? `?format=webp&quality=${quality}&imagetools`
-        : `?format=webp&imagetools`;
+      const qualityParam = quality ? `&quality=${quality}` : "";
+      const imageQuery = (resize = "") => `?${resize}format=webp${qualityParam}&imagetools`;
 
       const { default: sharp } = await import("sharp");
       const { width, height } = await sharp(path).metadata();
 
+      // Only widths smaller than the original; the original itself is always last.
+      const widths = (params.get("widths") ?? "")
+        .split(";")
+        .map(Number)
+        .filter(w => w > 0 && w < width)
+        .sort((a, b) => a - b);
+
+      const srcset = widths.length
+        ? `[${widths.map((w, i) => `{ url: _w${i}, width: ${w} }`).join(", ")}, { url: _url, width: ${width} }]`
+        : "null";
+
       return [
-        `import _url  from ${JSON.stringify(path + urlQuery)};`,
+        `import _url  from ${JSON.stringify(path + imageQuery())};`,
         `import _lqip from ${JSON.stringify(path + `?w=${lqipWidth}&format=webp&inline`)};`,
-        `export default { url: _url, lqip: _lqip, width: ${width}, height: ${height} };`,
+        ...widths.map((w, i) => `import _w${i} from ${JSON.stringify(path + imageQuery(`w=${w}&`))};`),
+        `export default { url: _url, lqip: _lqip, width: ${width}, height: ${height}, srcset: ${srcset} };`,
       ].join("\n");
     },
   };

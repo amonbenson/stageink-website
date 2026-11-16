@@ -1,8 +1,8 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 
 // Accepts a bundle object produced by a `?lqip` import:
-// { url: String, lqip: String, width: Number, height: Number }
+// { url: String, lqip: String, width: Number, height: Number, srcset: Array|null }
 const props = defineProps({
   src: {
     type: Object,
@@ -27,12 +27,22 @@ const props = defineProps({
     type: String,
     default: null,
   },
+  // img mode with a `widths` import: the rendered width (HTML `sizes`
+  // attribute), e.g. "14rem". The browser then picks the matching version.
+  sizes: {
+    type: String,
+    default: null,
+  },
 });
 
 defineOptions({ inheritAttrs: false });
 
 const imgRef = ref(null);
 const containerRef = ref(null);
+
+const ratio = computed(() => props.aspectRatio ?? `${props.src.width} / ${props.src.height}`);
+
+const srcsetAttr = computed(() => props.src.srcset?.map(({ url, width }) => `${url} ${width}w`).join(", "));
 
 // img mode: restore text color (hides alt text during placeholder display) and
 // optionally clear the background LQIP for transparent images.
@@ -48,22 +58,34 @@ function clearImgLqip() {
   }
 }
 
-// Background div mode: remove the LQIP layer from the stacked background-image.
-// CSS background-images have no load event, so we use a hidden Image object to
-// detect when the real image is ready.
-function watchBackgroundLoad() {
-  if (!props.transparent) {
-    return;
+// Background div mode. Without a srcset, the full image is part of the
+// pre-rendered HTML. With one, only the LQIP is, and the smallest version that
+// covers the element is chosen once its size is known (and upgraded if the
+// element grows). CSS backgrounds have no load event, so a hidden Image object
+// detects when a version is ready.
+const backgroundUrl = ref(props.src.srcset ? null : props.src.url);
+const backgroundLoaded = ref(false);
+let loadingWidth = 0;
+let resizeObserver = null;
+
+const backgroundImage = computed(() => {
+  const layers = [];
+
+  if (backgroundUrl.value) {
+    layers.push(`url(${backgroundUrl.value})`);
   }
 
-  const img = new Image();
-  img.onload = () => {
-    if (containerRef.value) {
-      containerRef.value.style.backgroundImage = `url(${props.src.url})`;
-    }
-  };
+  if (!(props.transparent && backgroundLoaded.value)) {
+    layers.push(`url(${props.src.lqip})`);
+  }
 
-  img.src = props.src.url;
+  return layers.join(", ");
+});
+
+function loadBackground(url, onLoad) {
+  const img = new Image();
+  img.onload = onLoad;
+  img.src = url;
 
   // Already in cache – fire immediately.
   if (img.complete) {
@@ -71,12 +93,54 @@ function watchBackgroundLoad() {
   }
 }
 
-onMounted(() => {
-  if (props.background) {
-    watchBackgroundLoad();
-  } else if (imgRef.value?.complete) {
-    clearImgLqip();
+// Pixels needed across the image's width: the element width, or more for
+// bg-cover when the element is relatively taller than the image.
+function requiredWidth(element) {
+  const { width, height } = element.getBoundingClientRect();
+  const isCover = getComputedStyle(element).backgroundSize.includes("cover");
+  const coverWidth = isCover ? height * props.src.width / props.src.height : 0;
+  return Math.max(width, coverWidth) * window.devicePixelRatio;
+}
+
+function pickBackgroundVersion() {
+  const needed = requiredWidth(containerRef.value);
+  const candidate = props.src.srcset.find(({ width }) => width >= needed) ?? props.src.srcset.at(-1);
+
+  if (candidate.width <= loadingWidth) {
+    return;
   }
+
+  loadingWidth = candidate.width;
+  loadBackground(candidate.url, () => {
+    backgroundUrl.value = candidate.url;
+    backgroundLoaded.value = true;
+  });
+}
+
+onMounted(() => {
+  if (!props.background) {
+    if (imgRef.value?.complete) {
+      clearImgLqip();
+    }
+
+    return;
+  }
+
+  if (props.src.srcset) {
+    // Pick right away (observers don't fire in background tabs), then upgrade if
+    // the element grows, e.g. once the surrounding layout has settled
+    pickBackgroundVersion();
+    resizeObserver = new ResizeObserver(pickBackgroundVersion);
+    resizeObserver.observe(containerRef.value);
+  } else {
+    loadBackground(props.src.url, () => {
+      backgroundLoaded.value = true;
+    });
+  }
+});
+
+onBeforeUnmount(() => {
+  resizeObserver?.disconnect();
 });
 </script>
 
@@ -85,10 +149,7 @@ onMounted(() => {
     v-if="background"
     ref="containerRef"
     v-bind="$attrs"
-    :style="{
-      backgroundImage: `url(${src.url}), url(${src.lqip})`,
-      aspectRatio: aspectRatio ?? `${src.width} / ${src.height}`,
-    }"
+    :style="{ backgroundImage, aspectRatio: ratio }"
   >
     <slot />
   </div>
@@ -98,8 +159,10 @@ onMounted(() => {
     ref="imgRef"
     v-bind="$attrs"
     :src="src.url"
+    :srcset="srcsetAttr"
+    :sizes="srcsetAttr ? sizes : undefined"
     :style="{
-      aspectRatio: aspectRatio ?? `${src.width} / ${src.height}`,
+      aspectRatio: ratio,
       backgroundImage: `url(${src.lqip})`,
       backgroundSize: 'cover',
       color: 'transparent',
