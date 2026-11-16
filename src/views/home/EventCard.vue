@@ -7,7 +7,7 @@ import HeroCard from "./HeroCard.vue";
 
 // One card per event. A single date renders as a one-time event (concert,
 // gig, …), several dates as a production with a show schedule.
-// See README › Events for examples.
+// See src/views/home/AGENTS.md › Events.
 const props = defineProps({
   title: {
     type: String,

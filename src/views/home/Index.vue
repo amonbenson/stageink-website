@@ -18,7 +18,7 @@ const socialLinks = [
   { label: "YouTube", icon: "simple-icons:youtube", url: "https://www.youtube.com/@StagiesBerlin" },
 ];
 
-// Background geometry – see README › Home page backgrounds. All lengths are
+// Background geometry: see AGENTS.md › Backgrounds. All lengths are
 // relative to the page width (cqw) because the images are scaled to it.
 const toCqw = fraction => `${(fraction * 100).toFixed(2)}cqw`;
 
@@ -49,7 +49,7 @@ const wallPosterHeight = `min(${toCqw(WALL_POSTER_FRACTION * backgroundWall.heig
   <!--
     One grid for the whole page. The background images are grid items placed on
     the named area lines, so each one is exactly as tall as the content it sits
-    behind (see README › Home page backgrounds).
+    behind (see AGENTS.md › Backgrounds).
   -->
   <main
     class="@container isolate grid grid-cols-1 grid-rows-[auto_1fr_auto_auto_auto] overflow-hidden [grid-template-areas:'logo'_'socials'_'events'_'about'_'donate'] lg:grid-cols-[minmax(0,1fr)_auto] lg:grid-rows-[auto_1fr_auto_auto] lg:[grid-template-areas:'logo_socials'_'events_socials'_'about_about'_'donate_donate']"
