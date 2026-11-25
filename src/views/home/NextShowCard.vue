@@ -8,7 +8,7 @@ import RosePetalHole from "./RosePetalHole.vue";
 // Name and ticket sale of the next production are announced at this moment.
 // The real values are deployed to next-show.json shortly before; until then it
 // holds a joke for anyone setting their device clock forward.
-const REVEAL_DATE = new Date("2026-11-27T00:00:00+01:00");
+const REVEAL_DATE = new Date("2026-11-27T18:00:00+01:00");
 
 const CLOCK_CLASS = "text-6xl/tight sm:text-8xl/tight lg:text-9xl/tight";
 // Larger digits on the same line height as CLOCK_CLASS, so the card keeps its
