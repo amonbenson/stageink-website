@@ -8,7 +8,7 @@ import backgroundWall from "./assets/backgroundWall.png?lqip&widths=640;1280;192
 import musicalNightPoster from "./assets/musicalNightPoster.png?lqip&widths=320;480;640";
 import DonationLinks from "./DonationLinks.vue";
 import EventCard from "./EventCard.vue";
-import HeroCard from "./HeroCard.vue";
+import NextShowCard from "./NextShowCard.vue";
 
 const instagramUrl = "https://www.instagram.com/_stageink_/";
 
@@ -119,6 +119,8 @@ const wallPosterHeight = `min(${toCqw(WALL_POSTER_FRACTION * backgroundWall.heig
     </div>
 
     <div class="flex w-full max-w-230 flex-col items-center gap-8 self-start justify-self-center p-4 [grid-area:events] md:p-8">
+      <NextShowCard />
+
       <EventCard
         title="Musical Theatre Karaoke"
         :dates="[new Date(2026, 11, 18, 19, 0)]"
@@ -136,24 +138,6 @@ const wallPosterHeight = `min(${toCqw(WALL_POSTER_FRACTION * backgroundWall.heig
           Stageink unterstützt die Winter- und Weihnachtsausgabe des zweimonatlichen Musical-Karaoke-Abends im Wein Salon. Kommt vorbei und singt mit euren Freund*innen und Mitgliedern von Stageink bei veganen Getränke-Spezialitäten und Snacks eure liebsten winter- und weihnachtlichen Musicalsongs!
         </p>
       </EventCard>
-
-      <HeroCard class="space-y-4">
-        <div>
-          <p>Danke für 8+1 Shows</p>
-          <h2>Come From Away!</h2>
-        </div>
-
-        <div>
-          <p>Unsere nächste Hauptproduktion wird an folgenden Terminen stattfinden:</p>
-          <p>
-            <b>18.–20.</b> und <b>25.–27. Juni 2027</b>
-          </p>
-        </div>
-
-        <RoundButton :href="instagramUrl">
-          Folge uns auf Instagram, um nichts zu verpassen!
-        </RoundButton>
-      </HeroCard>
     </div>
 
     <div class="aura w-full [grid-area:about]">

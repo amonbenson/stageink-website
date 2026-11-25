@@ -1,3 +1,4 @@
+import NextShowView from "@/views/abh/Index.vue";
 import ComeFromAwayView from "@/views/cfa/Index.vue";
 import HomeView from "@/views/home/Index.vue";
 
@@ -5,4 +6,5 @@ import HomeView from "@/views/home/Index.vue";
 export const routes = [
   { name: "home", path: "/", alias: "/index.html", component: HomeView },
   { name: "cfa", path: "/cfa/", component: ComeFromAwayView },
+  { name: "abh", path: "/abh/", component: NextShowView },
 ];

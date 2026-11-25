@@ -15,7 +15,12 @@
   --color-cfa-blue: #033daa;
   --color-cfa-blue-dark: #021a87;
 
+  --color-abh-hole: #120d10;
+  --color-abh-tunnel: #6f686c;
+  --color-abh-petal: #d6cac6;
+
   --font-sans: "Poppins", sans-serif;
+  --font-script: "Allura", cursive;
 
   --breakpoint-3xl: 120rem;
   --breakpoint-4xl: 160rem;
@@ -25,7 +30,9 @@ body {
   @apply bg-black overscroll-none;
 }
 
-html, body, #app {
+html,
+body,
+#app {
   @apply w-full min-h-full text-white text-base md:text-lg lg:text-xl overscroll-none;
 }
 
@@ -66,7 +73,9 @@ ul {
 
 @utility aura-* {
   --aura-opacity: calc(--modifier(integer) * 1%);
-  --aura-color: --alpha(--value(--color-*, [color]) / var(--aura-opacity, 100%));
+  --aura-color: --alpha(
+    --value(--color-*, [color]) / var(--aura-opacity, 100%)
+  );
 }
 
 @utility aura-spread-* {
