@@ -10,6 +10,20 @@ import RosePetalHole from "./RosePetalHole.vue";
 // holds a joke for anyone setting their device clock forward.
 const REVEAL_DATE = new Date("2026-11-27T00:00:00+01:00");
 
+const CLOCK_CLASS = "text-6xl/tight sm:text-8xl/tight lg:text-9xl/tight";
+// Larger digits on the same line height as CLOCK_CLASS, so the card keeps its
+// height when the last minute starts. 11rem is off the type scale.
+const FINAL_MINUTE_CLASS = "text-8xl/[4.6875rem] sm:text-9xl/30 lg:text-[11rem]/40";
+
+// Allura draws its glyphs right of the center of their advance width, so the
+// clock looks shifted right. Each character is moved back by this many em,
+// measured as the offset of the ink center with canvas measureText().
+const INK_OFFSET = { "0": 0.03, "1": 0.03, "2": 0.03, "3": 0.01, "4": 0.03, "5": 0.02, "6": 0.03, "7": 0.13, "8": 0.03, "9": 0.02, ":": 0.07, "–": 0.15 };
+
+// next-show.json is fetched this long before the reveal, so the name appears
+// the moment the countdown ends
+const PREFETCH_MS = 5000;
+
 // A failed fetch of next-show.json is retried this often
 const FETCH_RETRY_MS = 5000;
 
@@ -19,31 +33,58 @@ const background = useTemplateRef("background");
 // clock and never depends on the build time
 const now = ref(null);
 const show = ref(null);
+let fetched = null;
 let loading = false;
 let lastFetchAttempt = -Infinity;
 let timer = null;
 
-const clock = computed(() => {
+// Rounded up, so the clock reaches 0 exactly at the reveal. Null until
+// mounted, like now.
+const remaining = computed(() => {
   if (now.value === null) {
+    return null;
+  }
+
+  return Math.max(0, Math.ceil((REVEAL_DATE.getTime() - now.value) / 1000));
+});
+
+// The last minute counts down bare seconds in larger digits
+const finalMinute = computed(() => remaining.value !== null && remaining.value < 60);
+
+const clock = computed(() => {
+  if (remaining.value === null) {
     return "–:––:––:––";
   }
 
-  let remaining = Math.max(0, Math.floor((REVEAL_DATE.getTime() - now.value) / 1000));
-  const days = Math.floor(remaining / 86400);
-  remaining %= 86400;
-  const parts = [Math.floor(remaining / 3600), Math.floor(remaining % 3600 / 60), remaining % 60]
+  if (finalMinute.value) {
+    return String(remaining.value);
+  }
+
+  const days = Math.floor(remaining.value / 86400);
+  const seconds = remaining.value % 86400;
+  const parts = [Math.floor(seconds / 3600), Math.floor(seconds % 3600 / 60), seconds % 60]
     .map(value => String(value).padStart(2, "0"));
   return [days, ...parts].join(":");
 });
 
-// Fetched only once the countdown ends, so a page opened before the reveal
-// deploy still gets the real values
+const untilReveal = () => REVEAL_DATE.getTime() - Date.now();
+
+function reveal() {
+  clearTimeout(timer);
+  show.value = fetched;
+  background.value?.explode();
+}
+
+// Fetched only shortly before the reveal, so a page opened before the reveal
+// deploy still gets the real values. Held back until the countdown ends.
 async function loadShow() {
   loading = true;
   lastFetchAttempt = Date.now();
   try {
-    show.value = await fetchNextShow();
-    clearInterval(timer);
+    fetched = await fetchNextShow();
+    if (untilReveal() <= 0) {
+      reveal();
+    }
   } catch {
     // Retried by tick()
   } finally {
@@ -53,19 +94,24 @@ async function loadShow() {
 
 function tick() {
   now.value = Date.now();
-  if (now.value < REVEAL_DATE.getTime() || loading || now.value - lastFetchAttempt < FETCH_RETRY_MS) {
+  if (fetched && untilReveal() <= 0) {
+    reveal();
     return;
   }
 
-  loadShow();
+  if (!fetched && untilReveal() <= PREFETCH_MS && !loading && now.value - lastFetchAttempt >= FETCH_RETRY_MS) {
+    loadShow();
+  }
+
+  // Ticks on the full seconds before the reveal, so the clock steps in time
+  // and the reveal is not up to a second late
+  const delay = untilReveal() > 0 ? untilReveal() % 1000 || 1000 : 1000;
+  timer = setTimeout(tick, delay);
 }
 
-onMounted(() => {
-  tick();
-  timer = setInterval(tick, 1000);
-});
+onMounted(tick);
 
-onUnmounted(() => clearInterval(timer));
+onUnmounted(() => clearTimeout(timer));
 </script>
 
 <template>
@@ -113,17 +159,22 @@ onUnmounted(() => clearInterval(timer));
       <!-- One fixed-width box per digit, so the script digits don't jitter while counting -->
       <p
         role="timer"
-        class="font-script text-6xl/tight whitespace-nowrap text-primary sm:text-8xl/tight lg:text-9xl/tight"
+        class="font-script whitespace-nowrap text-primary"
+        :class="finalMinute ? FINAL_MINUTE_CLASS : CLOCK_CLASS"
       >
         <span
           v-for="(char, i) in clock"
           :key="i"
           class="inline-block text-center"
           :class="char === ':' ? 'px-[0.08em]' : 'w-[0.5em]'"
+          :style="{ translate: `-${INK_OFFSET[char] ?? 0}em` }"
         >{{ char }}</span>
       </p>
 
       <p class="text-xl lg:text-3xl">
+        <template v-if="finalMinute">
+          {{ remaining === 1 ? "Sekunde" : "Sekunden" }}
+        </template>
         bis zur Verkündung unserer neuen Produktion!
       </p>
     </div>

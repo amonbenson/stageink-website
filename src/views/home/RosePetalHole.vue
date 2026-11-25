@@ -5,6 +5,7 @@ import { onMounted, onUnmounted, useTemplateRef } from "vue";
 // middle. Petals the visitor touches with the cursor or a finger turn red
 // ("painting the roses red") until they disappear in the hole. The parent
 // forwards its pointer events to paint(), so the content on top stays usable.
+// explode() bursts a cloud of red and white petals out of the hole.
 
 // Positions are polar around the hole; radius 1 reaches the canvas corners
 const RESPAWN_RADIUS = 1.05;
@@ -13,6 +14,14 @@ const SPIRAL_TURN_SPEED = 0.12;
 const PETALS_PER_PIXEL = 1 / 14000;
 const BRUSH_RADIUS = 60;
 const PAINT_SPEED = 5;
+// Burst petals: launch speed in canvas half-diagonals per second, velocity
+// decay per second, downward pull in half-diagonals per second squared
+const BURST_COUNT = 140;
+const BURST_SPEED = [0.6, 2.6];
+const BURST_DRAG = 1.6;
+const BURST_GRAVITY = 0.35;
+const BURST_LIFETIME = [2, 4];
+const BURST_RED_SHARE = 0.7;
 
 const canvas = useTemplateRef("canvas");
 const reducedMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -22,6 +31,7 @@ let width = 0;
 let height = 0;
 let colors = {};
 let petals = [];
+let bursts = [];
 let spiralAngle = 0;
 let frame = null;
 let lastTime = null;
@@ -35,6 +45,9 @@ const smoothstep = (edge0, edge1, x) => {
   return t * t * (3 - 2 * t);
 };
 
+// Petals are smaller on narrow canvases
+const phoneScale = () => Math.min(1, Math.max(0.6, width / 700));
+
 function createPetal(radius) {
   return {
     radius,
@@ -46,6 +59,27 @@ function createPetal(radius) {
     flipSpeed: random(0.8, 2.2),
     redness: 0,
     painted: false,
+  };
+}
+
+function createBurstPetal() {
+  const reach = Math.hypot(width, height) / 2;
+  const angle = random(0, Math.PI * 2);
+  const speed = random(...BURST_SPEED) * reach;
+  const lifetime = random(...BURST_LIFETIME);
+  return {
+    x: width / 2,
+    y: height / 2,
+    vx: Math.cos(angle) * speed,
+    vy: Math.sin(angle) * speed,
+    size: random(40, 90),
+    rotation: random(0, Math.PI * 2),
+    spin: random(-6, 6),
+    flip: random(0, Math.PI * 2),
+    flipSpeed: random(2, 6),
+    redness: Math.random() < BURST_RED_SHARE ? 1 : 0,
+    age: 0,
+    lifetime,
   };
 }
 
@@ -102,6 +136,24 @@ function update(dt) {
       Object.assign(petal, createPetal(RESPAWN_RADIUS + random(0, 0.1)));
     }
   }
+
+  updateBursts(dt);
+}
+
+function updateBursts(dt) {
+  const reach = Math.hypot(width, height) / 2;
+  const decay = Math.exp(-BURST_DRAG * dt);
+  for (const petal of bursts) {
+    petal.vx *= decay;
+    petal.vy = petal.vy * decay + BURST_GRAVITY * reach * dt;
+    petal.x += petal.vx * dt;
+    petal.y += petal.vy * dt;
+    petal.rotation += petal.spin * dt;
+    petal.flip += petal.flipSpeed * dt;
+    petal.age += dt;
+  }
+
+  bursts = bursts.filter(petal => petal.age < petal.lifetime);
 }
 
 // Two dark arms of a logarithmic spiral, wider towards the edge, like the
@@ -141,27 +193,19 @@ function tracePetal(size) {
   context.bezierCurveTo(size * 0.6, -size * 0.6, size * 0.7, size * 0.1, 0, size * 0.5);
 }
 
-function drawPetal(petal) {
-  const { x, y } = petalPosition(petal);
-  // Petals shrink and fade as they sink into the hole, and are smaller on phones
-  const depth = Math.min(1, petal.radius * 1.4) ** 0.8 * Math.min(1, Math.max(0.6, width / 700));
-  const alpha = smoothstep(VANISH_RADIUS, 0.2, petal.radius);
-  if (alpha <= 0) {
-    return;
-  }
-
+function drawPetalShape({ x, y, rotation, flip, size, redness }, alpha) {
   context.save();
   context.translate(x, y);
-  context.rotate(petal.rotation);
+  context.rotate(rotation);
   // Tumbling: a petal seen edge-on gets narrow
-  context.scale(Math.max(0.25, Math.abs(Math.cos(petal.flip))), 1);
-  tracePetal(petal.size * depth);
+  context.scale(Math.max(0.25, Math.abs(Math.cos(flip))), 1);
+  tracePetal(size);
 
   context.globalAlpha = alpha * 0.9;
   context.fillStyle = colors.petal;
   context.fill();
-  if (petal.redness > 0) {
-    context.globalAlpha = alpha * petal.redness;
+  if (redness > 0) {
+    context.globalAlpha = alpha * redness;
     context.fillStyle = colors.paint;
     context.fill();
   }
@@ -169,10 +213,29 @@ function drawPetal(petal) {
   context.restore();
 }
 
+function drawPetal(petal) {
+  // Petals shrink and fade as they sink into the hole
+  const depth = Math.min(1, petal.radius * 1.4) ** 0.8 * phoneScale();
+  const alpha = smoothstep(VANISH_RADIUS, 0.2, petal.radius);
+  if (alpha <= 0) {
+    return;
+  }
+
+  drawPetalShape({ ...petal, ...petalPosition(petal), size: petal.size * depth }, alpha);
+}
+
+// Burst petals grow out of the hole and fade out at the end of their life
+function drawBurstPetal(petal) {
+  const grow = smoothstep(0, 0.3, petal.age);
+  const alpha = 1 - smoothstep(petal.lifetime * 0.6, petal.lifetime, petal.age);
+  drawPetalShape({ ...petal, size: petal.size * grow * phoneScale() }, alpha);
+}
+
 function draw() {
   context.clearRect(0, 0, width, height);
   drawSpiral();
   petals.forEach(drawPetal);
+  bursts.forEach(drawBurstPetal);
   context.globalAlpha = 1;
 }
 
@@ -222,7 +285,16 @@ function paint(event) {
   }
 }
 
-defineExpose({ paint });
+// Plays when the card is next on screen if it is not now
+function explode() {
+  if (!context || reducedMotion) {
+    return;
+  }
+
+  bursts = Array.from({ length: BURST_COUNT }, createBurstPetal);
+}
+
+defineExpose({ paint, explode });
 
 onMounted(() => {
   context = canvas.value.getContext("2d");
