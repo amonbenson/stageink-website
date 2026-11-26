@@ -6,8 +6,7 @@ import { fetchNextShow } from "@/utils/nextShow";
 import RosePetalHole from "./RosePetalHole.vue";
 
 // Name and ticket sale of the next production are announced at this moment.
-// The real values are deployed to next-show.json shortly before; until then it
-// holds a joke for anyone setting their device clock forward.
+// The values live only in next-show.json, never in the bundle.
 const REVEAL_DATE = new Date("2026-11-27T18:00:00+01:00");
 
 const CLOCK_CLASS = "text-6xl/tight sm:text-8xl/tight lg:text-9xl/tight";
